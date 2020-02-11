@@ -9,9 +9,9 @@
 import Foundation
 
 enum NetworkError: Error {
-    case failed
-    case noData
-    case authenticationError
-    case badRequest
-    case outdated
+    case emptyResponse
+    case emptyData
+    case clientError
+    case serverError
+    case networkError
 }

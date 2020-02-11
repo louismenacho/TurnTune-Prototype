@@ -23,8 +23,13 @@ class NetworkRouter<Endpoint: EndpointType>: Router  {
                 return
             }
             
-            guard let response = response, let data = data else {
-                completion(.failure(NetworkError.noData))
+            guard let response = response else {
+                completion(.failure(NetworkError.emptyResponse))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(NetworkError.emptyData))
                 return
             }
             
@@ -61,10 +66,9 @@ class NetworkRouter<Endpoint: EndpointType>: Router  {
         let httpResponse = response as! HTTPURLResponse
         switch httpResponse.statusCode {
         case 200...299: return .success(httpResponse)
-        case 401...500: return .failure(.authenticationError)
-        case 501...599: return .failure(.badRequest)
-        case 600: return .failure(.outdated)
-        default: return .failure(.failed)
+        case 400...499: return .failure(.clientError)
+        case 500...599: return .failure(.serverError)
+        default: return .failure(.networkError)
         }
     }
 }
