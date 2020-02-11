@@ -15,6 +15,16 @@
 		9508C24823EFDF1F0050017F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9508C24623EFDF1F0050017F /* LaunchScreen.storyboard */; };
 		9508C25323EFDF200050017F /* TurnTuneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C25223EFDF200050017F /* TurnTuneTests.swift */; };
 		9508C25E23EFDF200050017F /* TurnTuneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C25D23EFDF200050017F /* TurnTuneUITests.swift */; };
+		9549E5FC23F111210096F495 /* SpotifyAccountServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9549E5FB23F111210096F495 /* SpotifyAccountServices.swift */; };
+		9549E60023F11ACC0096F495 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9549E5FF23F11ACC0096F495 /* Token.swift */; };
+		9549E60223F278E40096F495 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9549E60123F278E40096F495 /* NetworkError.swift */; };
+		95C842E923F0660C008EFA5F /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C842E823F0660C008EFA5F /* EndpointType.swift */; };
+		95C842EB23F06661008EFA5F /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C842EA23F06661008EFA5F /* HttpMethod.swift */; };
+		95C842ED23F066CF008EFA5F /* HeaderEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C842EC23F066CF008EFA5F /* HeaderEncoder.swift */; };
+		95C842EF23F066E6008EFA5F /* ParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C842EE23F066E6008EFA5F /* ParameterEncoder.swift */; };
+		95C842F223F06E97008EFA5F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C842F123F06E97008EFA5F /* Router.swift */; };
+		95C842F423F0779C008EFA5F /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C842F323F0779C008EFA5F /* NetworkRouter.swift */; };
+		95C842F623F084A0008EFA5F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C842F523F084A0008EFA5F /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +59,16 @@
 		9508C25923EFDF200050017F /* TurnTuneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TurnTuneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9508C25D23EFDF200050017F /* TurnTuneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnTuneUITests.swift; sourceTree = "<group>"; };
 		9508C25F23EFDF200050017F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9549E5FB23F111210096F495 /* SpotifyAccountServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAccountServices.swift; sourceTree = "<group>"; };
+		9549E5FF23F11ACC0096F495 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		9549E60123F278E40096F495 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		95C842E823F0660C008EFA5F /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
+		95C842EA23F06661008EFA5F /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		95C842EC23F066CF008EFA5F /* HeaderEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderEncoder.swift; sourceTree = "<group>"; };
+		95C842EE23F066E6008EFA5F /* ParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoder.swift; sourceTree = "<group>"; };
+		95C842F123F06E97008EFA5F /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		95C842F323F0779C008EFA5F /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		95C842F523F084A0008EFA5F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +119,12 @@
 		9508C23A23EFDF1A0050017F /* TurnTune */ = {
 			isa = PBXGroup;
 			children = (
-				9508C23B23EFDF1A0050017F /* AppDelegate.swift */,
-				9508C23D23EFDF1B0050017F /* SceneDelegate.swift */,
-				9508C23F23EFDF1B0050017F /* ViewController.swift */,
-				9508C24123EFDF1B0050017F /* Main.storyboard */,
+				95C842DF23F03ED0008EFA5F /* Application */,
+				95C842E023F03F0F008EFA5F /* Model */,
+				95C842E323F03F21008EFA5F /* View */,
+				95C842E123F03F17008EFA5F /* Controller */,
+				95C842E423F03F8A008EFA5F /* Networking */,
 				9508C24423EFDF1F0050017F /* Assets.xcassets */,
-				9508C24623EFDF1F0050017F /* LaunchScreen.storyboard */,
 				9508C24923EFDF1F0050017F /* Info.plist */,
 			);
 			path = TurnTune;
@@ -126,6 +146,88 @@
 				9508C25F23EFDF200050017F /* Info.plist */,
 			);
 			path = TurnTuneUITests;
+			sourceTree = "<group>";
+		};
+		9549E5FA23F110DC0096F495 /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				95C842E823F0660C008EFA5F /* EndpointType.swift */,
+				9549E5FB23F111210096F495 /* SpotifyAccountServices.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		95C842DF23F03ED0008EFA5F /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				9508C23B23EFDF1A0050017F /* AppDelegate.swift */,
+				9508C23D23EFDF1B0050017F /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		95C842E023F03F0F008EFA5F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9549E5FF23F11ACC0096F495 /* Token.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		95C842E123F03F17008EFA5F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9508C23F23EFDF1B0050017F /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		95C842E323F03F21008EFA5F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9508C24623EFDF1F0050017F /* LaunchScreen.storyboard */,
+				9508C24123EFDF1B0050017F /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		95C842E423F03F8A008EFA5F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				95C842E723F0641B008EFA5F /* Encoding */,
+				9549E5FA23F110DC0096F495 /* Endpoint */,
+				95C842E623F06417008EFA5F /* Service */,
+				95C842E523F06412008EFA5F /* Manager */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		95C842E523F06412008EFA5F /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				95C842F523F084A0008EFA5F /* NetworkManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		95C842E623F06417008EFA5F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				95C842EA23F06661008EFA5F /* HttpMethod.swift */,
+				95C842F123F06E97008EFA5F /* Router.swift */,
+				95C842F323F0779C008EFA5F /* NetworkRouter.swift */,
+				9549E60123F278E40096F495 /* NetworkError.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		95C842E723F0641B008EFA5F /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				95C842EC23F066CF008EFA5F /* HeaderEncoder.swift */,
+				95C842EE23F066E6008EFA5F /* ParameterEncoder.swift */,
+			);
+			path = Encoding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +361,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95C842F223F06E97008EFA5F /* Router.swift in Sources */,
 				9508C24023EFDF1B0050017F /* ViewController.swift in Sources */,
+				95C842ED23F066CF008EFA5F /* HeaderEncoder.swift in Sources */,
+				9549E60023F11ACC0096F495 /* Token.swift in Sources */,
 				9508C23C23EFDF1A0050017F /* AppDelegate.swift in Sources */,
+				9549E5FC23F111210096F495 /* SpotifyAccountServices.swift in Sources */,
+				95C842EB23F06661008EFA5F /* HttpMethod.swift in Sources */,
+				95C842F623F084A0008EFA5F /* NetworkManager.swift in Sources */,
 				9508C23E23EFDF1B0050017F /* SceneDelegate.swift in Sources */,
+				95C842E923F0660C008EFA5F /* EndpointType.swift in Sources */,
+				95C842EF23F066E6008EFA5F /* ParameterEncoder.swift in Sources */,
+				95C842F423F0779C008EFA5F /* NetworkRouter.swift in Sources */,
+				9549E60223F278E40096F495 /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
