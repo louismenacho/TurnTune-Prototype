@@ -29,9 +29,9 @@ extension ViewController: WKNavigationDelegate {
         let components = URLComponents(url: navigationAction.request.url!, resolvingAgainstBaseURL: true)!
         if components.host == "spotify-login-callback" {
             let authorizationCode = components.queryItems![0].value!
-            print(authorizationCode)
             NetworkManager.shared.getApiToken(authorization: authorizationCode) { token in
-                dump(token)
+                NetworkManager.shared.spotifyAccessToken = token
+                NetworkManager.shared.search(query: "Feint", completion: { dump($0) })
             }
             webView.removeFromSuperview()
         }

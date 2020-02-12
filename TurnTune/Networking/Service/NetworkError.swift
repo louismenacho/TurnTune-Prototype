@@ -1,5 +1,5 @@
 //
-//  NetworkResponse.swift
+//  NetworkError.swift
 //  TurnTune
 //
 //  Created by Louis Menacho on 2/11/20.

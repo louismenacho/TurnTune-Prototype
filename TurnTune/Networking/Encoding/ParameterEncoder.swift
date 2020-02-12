@@ -20,9 +20,9 @@ class ParameterEncoder {
     }
     
     fileprivate static func encodeQueryParameters(for request: inout URLRequest, with parameters: HttpParameters) {
-        guard let requestURL = request.url else { fatalError("ParameterEncoder.encodeQueryParameters.requestURL") }
-        guard var requestComponents = URLComponents(url: requestURL, resolvingAgainstBaseURL: false) else { fatalError("ParameterEncoder.encodeQueryParameters.requestComponents") }
-        
+        guard let requestURL = request.url, var requestComponents = URLComponents(url: requestURL, resolvingAgainstBaseURL: false) else {
+            fatalError("ParameterEncoder.encodeQueryParameters")
+        }
         requestComponents.queryItems = parameters.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
         request.url = requestComponents.url
     }

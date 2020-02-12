@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  NetworkManager.swift
 //  TurnTune
 //
 //  Created by Louis Menacho on 2/9/20.
@@ -15,7 +15,10 @@ class NetworkManager {
     let clientID = "703fef1a418a49648d062f81bc35b559"
     let clientSecret = "e1a4d7ee7ff94855a5766c94948575f4"
     let redirectURI = "Spotify-Demo://spotify-login-callback"
-    let spotifyAccountServices = NetworkRouter<SpotifyAccountServices>()
+    var spotifyAccessToken: Token?
+    
+    fileprivate let spotifyAccountServices = NetworkRouter<SpotifyAccountServices>()
+    fileprivate let spotifyWebAPI = NetworkRouter<SpotifyWebAPI>()
     
     fileprivate func handleResult<T:Codable>(_ result: Result<T,Error>) -> T {
         switch result {
@@ -41,6 +44,14 @@ class NetworkManager {
     func getApiToken(authorization code: String, completion: @escaping (Token) -> Void) {
         spotifyAccountServices.request(.token(authorizationCode: code)) { (result: Result<Token, Error>) in
             completion(self.handleResult(result))
+        }
+    }
+    
+    // MARK: - Spotify Web API
+    
+    func search(query: String, completion: @escaping ([Track]) -> Void) {
+        spotifyWebAPI.request(.search(query)) { (result: Result<SearchResult, Error>) in
+            completion(self.handleResult(result.map { $0.tracks.items }))
         }
     }
 }
