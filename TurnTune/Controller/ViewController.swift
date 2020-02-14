@@ -31,7 +31,6 @@ extension ViewController: WKNavigationDelegate {
             let authorizationCode = components.queryItems![0].value!
             NetworkManager.shared.getApiToken(authorization: authorizationCode) { token in
                 NetworkManager.shared.spotifyAccessToken = token
-                NetworkManager.shared.search(query: "Feint", completion: { dump($0) })
             }
             webView.removeFromSuperview()
         }

@@ -10,10 +10,15 @@ import Foundation
 
 // MARK: - SearchResult
 struct SearchResult: Codable {
-    let tracks: Tracks
+    let albums: AlbumResult
+    let artists: ArtistResult
+    let tracks: TrackResult
+    let playlists: PlaylistResult
 }
 
-// MARK: - Tracks
-struct Tracks: Codable {
-    let items: [Track]
+enum CodingKeys: String, CodingKey {
+    case albums = "albums"
+    case artists = "artists"
+    case tracks = "tracks"
+    case playlists = "playlists"
 }

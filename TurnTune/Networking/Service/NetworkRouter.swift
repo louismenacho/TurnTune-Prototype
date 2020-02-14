@@ -38,7 +38,7 @@ class NetworkRouter<Endpoint: EndpointType>: Router  {
                 completion(.failure(networkError))
                 return
             case .success(let httpResponse):
-                print(httpResponse.statusCode)
+                dump(httpResponse)
             }
             
             do {

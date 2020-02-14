@@ -40,7 +40,7 @@ extension SpotifyWebAPI: EndpointType {
         case .search(let query):
             return [
                 "q": query,
-                "type": "track"
+                "type": "album,artist,playlist,track"
             ]
         }
     }

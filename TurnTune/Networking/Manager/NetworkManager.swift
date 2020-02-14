@@ -23,6 +23,7 @@ class NetworkManager {
     fileprivate func handleResult<T:Codable>(_ result: Result<T,Error>) -> T {
         switch result {
         case .failure(let error):
+            print(result.self)
             fatalError(error.localizedDescription)
         case .success(let value):
             return value
@@ -49,9 +50,27 @@ class NetworkManager {
     
     // MARK: - Spotify Web API
     
-    func search(query: String, completion: @escaping ([Track]) -> Void) {
+    func search(track query: String, completion: @escaping ([Track]) -> Void) {
         spotifyWebAPI.request(.search(query)) { (result: Result<SearchResult, Error>) in
             completion(self.handleResult(result.map { $0.tracks.items }))
+        }
+    }
+    
+    func search(artist query: String, completion: @escaping ([Artist]) -> Void) {
+        spotifyWebAPI.request(.search(query)) { (result: Result<SearchResult, Error>) in
+            completion(self.handleResult(result.map { $0.artists.items }))
+        }
+    }
+    
+    func search(album query: String, completion: @escaping ([Album]) -> Void) {
+        spotifyWebAPI.request(.search(query)) { (result: Result<SearchResult, Error>) in
+            completion(self.handleResult(result.map { $0.albums.items }))
+        }
+    }
+    
+    func search(playlist query: String, completion: @escaping ([Playlist]) -> Void) {
+        spotifyWebAPI.request(.search(query)) { (result: Result<SearchResult, Error>) in
+            completion(self.handleResult(result.map { $0.playlists.items }))
         }
     }
 }
