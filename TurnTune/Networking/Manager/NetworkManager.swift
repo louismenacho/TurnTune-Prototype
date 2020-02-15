@@ -19,17 +19,7 @@ class NetworkManager {
     
     fileprivate let spotifyAccountServices = NetworkRouter<SpotifyAccountServices>()
     fileprivate let spotifyWebAPI = NetworkRouter<SpotifyWebAPI>()
-    
-    fileprivate func handleResult<T:Codable>(_ result: Result<T,Error>) -> T {
-        switch result {
-        case .failure(let error):
-            print(result.self)
-            fatalError(error.localizedDescription)
-        case .success(let value):
-            return value
-        }
-    }
-    
+        
     // MARK: - Spotify Account Services
     
     func getAuthorizeRequest() -> URLRequest {
@@ -42,35 +32,41 @@ class NetworkManager {
     }
     
     
-    func getApiToken(authorization code: String, completion: @escaping (Token) -> Void) {
-        spotifyAccountServices.request(.token(authorizationCode: code)) { (result: Result<Token, Error>) in
-            completion(self.handleResult(result))
+    func generateToken(authorization code: String, completion: @escaping (Result<Token, Error>) -> Void) {
+        spotifyAccountServices.request(.token(authorizationCode: code)) { result in
+            completion(result)
         }
     }
+    
+    // TODO: - Add refresh token function
     
     // MARK: - Spotify Web API
     
-    func search(track query: String, completion: @escaping ([Track]) -> Void) {
-        spotifyWebAPI.request(.search(query)) { (result: Result<SearchResult, Error>) in
-            completion(self.handleResult(result.map { $0.tracks.items }))
+    func search(query: String, types: [String], completion: @escaping (Result<SearchResult, Error>) -> Void) {
+        spotifyWebAPI.request(.search(query, types: types)) { completion($0) }
+    }
+    
+    func search(track query: String, completion: @escaping (Result<[Track], Error>) -> Void) {
+        spotifyWebAPI.request(.search(query, types: ["track"])) { (result: Result<SearchResult,Error>) in
+            completion(result.map { $0.tracks.items })
         }
     }
     
-    func search(artist query: String, completion: @escaping ([Artist]) -> Void) {
-        spotifyWebAPI.request(.search(query)) { (result: Result<SearchResult, Error>) in
-            completion(self.handleResult(result.map { $0.artists.items }))
+    func search(artist query: String, completion: @escaping (Result<[Artist], Error>) -> Void) {
+        spotifyWebAPI.request(.search(query, types: ["artist"])) { (result: Result<SearchResult,Error>) in
+            completion(result.map { $0.artists.items })
         }
     }
     
-    func search(album query: String, completion: @escaping ([Album]) -> Void) {
-        spotifyWebAPI.request(.search(query)) { (result: Result<SearchResult, Error>) in
-            completion(self.handleResult(result.map { $0.albums.items }))
+    func search(album query: String, completion: @escaping (Result<[Album], Error>) -> Void) {
+        spotifyWebAPI.request(.search(query, types: ["album"])) { (result: Result<SearchResult,Error>) in
+            completion(result.map { $0.albums.items })
         }
     }
     
-    func search(playlist query: String, completion: @escaping ([Playlist]) -> Void) {
-        spotifyWebAPI.request(.search(query)) { (result: Result<SearchResult, Error>) in
-            completion(self.handleResult(result.map { $0.playlists.items }))
+    func search(playlist query: String, completion: @escaping (Result<[Playlist], Error>) -> Void) {
+        spotifyWebAPI.request(.search(query, types: ["playlist"])) { (result: Result<SearchResult,Error>) in
+            completion(result.map { $0.playlists.items })
         }
     }
 }

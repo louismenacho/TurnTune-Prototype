@@ -29,10 +29,9 @@ class ParameterEncoder {
     
     
     fileprivate static func encodeBodyParameters(for request: inout URLRequest, with parameters: HttpParameters) {
-        var bodyParameters = ""
-        parameters.forEach { bodyParameters.append("&\($0.key)=\($0.value)") }
-        bodyParameters.removeFirst()
-        request.httpBody = bodyParameters.data(using: .utf8)
+        var bodyParameters = [String]()
+        parameters.forEach { bodyParameters.append("\($0.key)=\($0.value)") }
+        request.httpBody = bodyParameters.joined(separator: "&").data(using: .utf8)
     }
     
 }

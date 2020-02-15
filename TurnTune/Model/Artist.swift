@@ -10,13 +10,13 @@ import Foundation
 
 struct Artist: Codable {
     let externalUrls: ExternalUrls
-    let followers: Followers
-    let genres: [String]
+    let followers: Followers?
+    let genres: [String]?
     let href: String
     let id: String
-    let images: [Image]
+    let images: [Image]?
     let name: String
-    let popularity: Int
+    let popularity: Int?
     let type, uri: String
 
     enum CodingKeys: String, CodingKey {

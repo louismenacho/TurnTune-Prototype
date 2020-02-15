@@ -200,21 +200,21 @@
 		95C842E023F03F0F008EFA5F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9549E5FF23F11ACC0096F495 /* Token.swift */,
 				9549E61823F6F3100096F495 /* Album.swift */,
 				9549E61923F6F3100096F495 /* Artist.swift */,
-				9549E61423F6F30F0096F495 /* ArtistResult.swift */,
-				9549E61723F6F3100096F495 /* Playlist.swift */,
-				9549E61623F6F3100096F495 /* PlaylistResult.swift */,
 				9549E61523F6F30F0096F495 /* Track.swift */,
-				9549E61A23F6F3110096F495 /* TrackResult.swift */,
-				9549E5FF23F11ACC0096F495 /* Token.swift */,
-				9549E60823F3CC190096F495 /* SearchResult.swift */,
-				9549E61223F6EE3E0096F495 /* AlbumResult.swift */,
-				9549E62223F6F56F0096F495 /* User.swift */,
+				9549E61723F6F3100096F495 /* Playlist.swift */,
 				9549E62423F6F5C20096F495 /* Image.swift */,
+				9549E62223F6F56F0096F495 /* User.swift */,
 				9549E62623F6F6A50096F495 /* Followers.swift */,
 				9549E62823F6F75E0096F495 /* ExternalIDS.swift */,
 				9549E62A23F6F77A0096F495 /* ExternalUrls.swift */,
+				9549E60823F3CC190096F495 /* SearchResult.swift */,
+				9549E61223F6EE3E0096F495 /* AlbumResult.swift */,
+				9549E61423F6F30F0096F495 /* ArtistResult.swift */,
+				9549E61A23F6F3110096F495 /* TrackResult.swift */,
+				9549E61623F6F3100096F495 /* PlaylistResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

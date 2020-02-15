@@ -9,7 +9,7 @@
 import Foundation
 
 enum SpotifyWebAPI {
-    case search(_ query: String)
+    case search(_ query: String, types: [String])
 }
 
 extension SpotifyWebAPI: EndpointType {
@@ -37,10 +37,10 @@ extension SpotifyWebAPI: EndpointType {
     
     var parameters: HttpParameters? {
         switch self {
-        case .search(let query):
+        case .search(let query, let types):
             return [
                 "q": query,
-                "type": "album,artist,playlist,track"
+                "type": types.joined(separator: ",")
             ]
         }
     }

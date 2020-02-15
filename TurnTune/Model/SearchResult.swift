@@ -15,10 +15,3 @@ struct SearchResult: Codable {
     let tracks: TrackResult
     let playlists: PlaylistResult
 }
-
-enum CodingKeys: String, CodingKey {
-    case albums = "albums"
-    case artists = "artists"
-    case tracks = "tracks"
-    case playlists = "playlists"
-}
