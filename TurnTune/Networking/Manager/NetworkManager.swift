@@ -18,7 +18,7 @@ class NetworkManager {
     var spotifyAccessToken: Token?
     
     fileprivate let spotifyAccountServices = NetworkRouter<SpotifyAccountServices>()
-    fileprivate let spotifyWebAPI = NetworkRouter<SpotifyWebAPI>()
+    let spotifyWebAPI = NetworkRouter<SpotifyWebAPI>()
         
     // MARK: - Spotify Account Services
     
@@ -67,6 +67,18 @@ class NetworkManager {
     func search(playlist query: String, completion: @escaping (Result<[Playlist], Error>) -> Void) {
         spotifyWebAPI.request(.search(query, types: ["playlist"])) { (result: Result<SearchResult,Error>) in
             completion(result.map { $0.playlists.items })
+        }
+    }
+    
+    // Playlists API
+    
+    func addTracks(tracks: [Track], completion: @escaping () -> Void) {}
+    
+    func removeTracks(tracks: [Track], completion: @escaping () -> Void) {}
+    
+    func createPlaylist(name: String, user: String, completion: @escaping (Result<Playlist, Error>) -> Void) {
+        spotifyWebAPI.request(.createPlaylist(name: name, user: user)) { (result: Result<Playlist, Error>) in
+            completion(result)
         }
     }
 }

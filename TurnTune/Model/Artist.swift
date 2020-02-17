@@ -10,7 +10,6 @@ import Foundation
 
 struct Artist: Codable {
     let externalUrls: ExternalUrls
-    let followers: Followers?
     let genres: [String]?
     let href: String
     let id: String
@@ -21,6 +20,6 @@ struct Artist: Codable {
 
     enum CodingKeys: String, CodingKey {
         case externalUrls = "external_urls"
-        case followers, genres, href, id, images, name, popularity, type, uri
+        case genres, href, id, images, name, popularity, type, uri
     }
 }

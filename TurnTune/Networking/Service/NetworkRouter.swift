@@ -35,6 +35,7 @@ class NetworkRouter<Endpoint: EndpointType>: Router  {
             
             switch self.handleNetworkResponse(response) {
             case .failure(let networkError):
+                dump(response)
                 completion(.failure(networkError))
                 return
             case .success(let httpResponse):

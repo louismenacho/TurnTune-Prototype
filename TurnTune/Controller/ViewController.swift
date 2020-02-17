@@ -36,6 +36,16 @@ extension ViewController: WKNavigationDelegate {
                     print(error.localizedDescription)
                 case .success(let token):
                     NetworkManager.shared.spotifyAccessToken = token
+                    dump(token)
+                    NetworkManager.shared.createPlaylist(name: "TurnTune", user: "melo3450") { result in
+                        switch result {
+                        case .failure(let error):
+                            print(error)
+                            print(error.localizedDescription)
+                        case .success(let playlist):
+                            dump(playlist)
+                        }
+                    }
                 }
             }
             webView.removeFromSuperview()

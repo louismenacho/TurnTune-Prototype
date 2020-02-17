@@ -10,6 +10,11 @@ import Foundation
 
 class ParameterEncoder {
     
+    enum ContentType: String {
+        case xwwwformurlencoded = "application/x-www-form-urlencoded"
+        case json = "application/json"
+    }
+    
     static func encode(request: inout URLRequest, with parameters: HttpParameters, for httpMethod: HttpMethod = .get) {
         switch httpMethod {
         case .get:
@@ -29,9 +34,17 @@ class ParameterEncoder {
     
     
     fileprivate static func encodeBodyParameters(for request: inout URLRequest, with parameters: HttpParameters) {
-        var bodyParameters = [String]()
-        parameters.forEach { bodyParameters.append("\($0.key)=\($0.value)") }
-        request.httpBody = bodyParameters.joined(separator: "&").data(using: .utf8)
+        guard let contentType = request.value(forHTTPHeaderField: "Content-Type") else { return }
+        switch ContentType(rawValue: contentType) {
+        case .xwwwformurlencoded:
+            var bodyParameters = [String]()
+            parameters.forEach { bodyParameters.append("\($0.key)=\($0.value)") }
+            request.httpBody = bodyParameters.joined(separator: "&").data(using: .utf8)
+        case .json:
+            request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        case .none:
+            return
+        }
     }
     
 }
