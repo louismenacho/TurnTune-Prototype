@@ -16,6 +16,7 @@ struct Track: Codable {
     let id: String
     let name: String
     let type: String
+    let uri: String
 
     enum CodingKeys: String, CodingKey {
         case album
@@ -25,5 +26,6 @@ struct Track: Codable {
         case id
         case name
         case type
+        case uri
     }
 }

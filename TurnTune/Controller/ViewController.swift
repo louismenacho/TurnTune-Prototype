@@ -29,25 +29,19 @@ extension ViewController: WKNavigationDelegate {
         let components = URLComponents(url: navigationAction.request.url!, resolvingAgainstBaseURL: true)!
         if components.host == "spotify-login-callback" {
             let authorizationCode = components.queryItems![0].value!
-            NetworkManager.shared.generateToken(authorization: authorizationCode) { result in
-                switch result {
-                case .failure(let error):
-                    print("failed to generate token")
-                    print(error.localizedDescription)
-                case .success(let token):
-                    NetworkManager.shared.spotifyAccessToken = token
-                    dump(token)
-                    NetworkManager.shared.createPlaylist(name: "TurnTune", user: "melo3450") { result in
-                        switch result {
-                        case .failure(let error):
-                            print(error)
-                            print(error.localizedDescription)
-                        case .success(let playlist):
-                            dump(playlist)
-                        }
-                    }
-                }
-            }
+            
+            let token = NetworkManager.shared.generateToken(authorization: authorizationCode)
+            dump(token)
+            
+            let playlist = NetworkManager.shared.createPlaylist(for: "melo3450", with: "TurnTune")
+            dump(playlist)
+            
+            let tracks = NetworkManager.shared.search(track: "Feint")
+            dump(tracks)
+            
+            let snapshot = NetworkManager.shared.addTracks(tracks: [tracks!.first!], to: playlist!)
+            dump(snapshot)
+            
             webView.removeFromSuperview()
         }
 

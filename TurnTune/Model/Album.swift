@@ -11,7 +11,7 @@ import Foundation
 struct Album: Codable {
     let artists: [Artist]
     let id: String
-    let images: [AlbumImage]
+    let images: [Image]
     let name: String
     let releaseDate: String
     let totalTracks: Int

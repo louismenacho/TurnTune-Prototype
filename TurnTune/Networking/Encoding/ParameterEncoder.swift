@@ -41,6 +41,7 @@ class ParameterEncoder {
             parameters.forEach { bodyParameters.append("\($0.key)=\($0.value)") }
             request.httpBody = bodyParameters.joined(separator: "&").data(using: .utf8)
         case .json:
+            print(parameters)
             request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         case .none:
             return

@@ -1,5 +1,5 @@
 //
-//  SpotifyWebAPI.swift
+//  SpotifyWebApi.swift
 //  TurnTune
 //
 //  Created by Louis Menacho on 2/12/20.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum SpotifyWebAPI {
-    case search(_ query: String, types: [String])
-    case addTracks(uris: [String], playlist: String)
-    case removeTracks(uris: [String], playlist: String)
-    case createPlaylist(name: String, user: String)
+enum SpotifyWebApi {
+    case search(_ query: String, _ types: [String])
+    case addTracks(uris: [String], playlistId: String)
+    case removeTracks(uris: [String], playlistId: String)
+    case createPlaylist(userId: String, playlistName: String)
 }
 
-extension SpotifyWebAPI: EndpointType {
+extension SpotifyWebApi: EndpointType {
     
     var host: String { "api.spotify.com" }
     
@@ -23,11 +23,11 @@ extension SpotifyWebAPI: EndpointType {
         switch self {
         case .search:
             return "/v1/search"
-        case .addTracks(let uris, let playlist),
-             .removeTracks(let uris, let playlist):
-            return "/v1/playlists/\(playlist)/\(uris.joined(separator: ","))"
-        case .createPlaylist(_, let user):
-            return "/v1/users/\(user)/playlists"
+        case .addTracks(_, let playlistId),
+             .removeTracks(_, let playlistId):
+            return "/v1/playlists/\(playlistId)/tracks"
+        case .createPlaylist(let userId, _):
+            return "/v1/users/\(userId)/playlists"
         }
     }
     
@@ -43,15 +43,15 @@ extension SpotifyWebAPI: EndpointType {
     }
     
     var headers: HttpHeaders? {
-        guard let token = NetworkManager.shared.spotifyAccessToken else { return nil }
+        guard let token = NetworkManager.shared.spotifyApiToken else { return nil }
         var httpHeader = ["Authorization": "Bearer \(token.access)"]
         
         switch self {
-        case .createPlaylist:
+        case .addTracks,
+             .removeTracks,
+             .createPlaylist:
             httpHeader["Content-Type"] = "application/json"
-        case .search,
-             .addTracks,
-             .removeTracks:
+        case .search:
             break
         }
         
@@ -65,10 +65,11 @@ extension SpotifyWebAPI: EndpointType {
                 "q": query,
                 "type": types.joined(separator: ",")
             ]
-        case .createPlaylist(let name, _):
-            return ["name": name]
-        case .addTracks, .removeTracks:
-            return nil
+        case .createPlaylist(_, let playlistName):
+            return ["name": playlistName]
+        case .addTracks(let uris, _),
+             .removeTracks(let uris, _):
+            return ["uris": uris]
         }
     }
     

@@ -10,8 +10,8 @@ import Foundation
 
 // MARK: - SearchResult
 struct SearchResult: Codable {
-    let albums: AlbumResult
-    let artists: ArtistResult
-    let tracks: TrackResult
-    let playlists: PlaylistResult
+    let albums: AlbumResult?
+    let artists: ArtistResult?
+    let tracks: TrackResult?
+    let playlists: PlaylistResult?
 }
