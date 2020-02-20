@@ -42,6 +42,9 @@ extension ViewController: WKNavigationDelegate {
             let snapshot = NetworkManager.shared.addTracks(tracks: [tracks!.first!], to: playlist!)
             dump(snapshot)
             
+            let getPlaylist = NetworkManager.shared.getPlaylist(id: playlist!.id)
+            dump(getPlaylist)
+            
             webView.removeFromSuperview()
         }
 

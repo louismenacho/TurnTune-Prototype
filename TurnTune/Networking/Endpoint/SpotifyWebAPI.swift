@@ -10,6 +10,7 @@ import Foundation
 
 enum SpotifyWebApi {
     case search(_ query: String, _ types: [String])
+    case getPlaylist(playlistId: String)
     case addTracks(uris: [String], playlistId: String)
     case removeTracks(uris: [String], playlistId: String)
     case createPlaylist(userId: String, playlistName: String)
@@ -23,21 +24,21 @@ extension SpotifyWebApi: EndpointType {
         switch self {
         case .search:
             return "/v1/search"
-        case .addTracks(_, let playlistId),
-             .removeTracks(_, let playlistId):
-            return "/v1/playlists/\(playlistId)/tracks"
+        case .getPlaylist(let playlistId):
+            return "/v1/playlists/\(playlistId)"
         case .createPlaylist(let userId, _):
             return "/v1/users/\(userId)/playlists"
+        case .addTracks(_, let playlistId), .removeTracks(_, let playlistId):
+            return "/v1/playlists/\(playlistId)/tracks"
+
         }
     }
     
     var method: HttpMethod {
         switch self {
-        case .search:
+        case .search, .getPlaylist:
             return .get
-        case .addTracks,
-             .removeTracks,
-             .createPlaylist:
+        case .createPlaylist, .addTracks, .removeTracks:
             return .post
         }
     }
@@ -47,11 +48,9 @@ extension SpotifyWebApi: EndpointType {
         var httpHeader = ["Authorization": "Bearer \(token.access)"]
         
         switch self {
-        case .addTracks,
-             .removeTracks,
-             .createPlaylist:
+        case .createPlaylist, .addTracks, .removeTracks:
             httpHeader["Content-Type"] = "application/json"
-        case .search:
+        case .search, .getPlaylist:
             break
         }
         
@@ -61,15 +60,13 @@ extension SpotifyWebApi: EndpointType {
     var parameters: HttpParameters? {
         switch self {
         case .search(let query, let types):
-            return [
-                "q": query,
-                "type": types.joined(separator: ",")
-            ]
+            return ["q": query, "type": types.joined(separator: ",")]
         case .createPlaylist(_, let playlistName):
             return ["name": playlistName]
-        case .addTracks(let uris, _),
-             .removeTracks(let uris, _):
+        case .addTracks(let uris, _), .removeTracks(let uris, _):
             return ["uris": uris]
+        case .getPlaylist:
+            return nil
         }
     }
     

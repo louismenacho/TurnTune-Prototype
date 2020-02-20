@@ -99,6 +99,10 @@ class NetworkManager {
     
     // Playlists API
     
+    func getPlaylist(id: String) -> Playlist? {
+        spotifyWebApi(request: .getPlaylist(playlistId: id))
+    }
+    
     func addTracks(tracks: [Track], to playlist: Playlist) -> Snapshot? {
         spotifyWebApi(request: .addTracks(uris: tracks.map({$0.uri}), playlistId: playlist.id))
     }
