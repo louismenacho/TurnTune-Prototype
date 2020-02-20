@@ -11,9 +11,9 @@ import Foundation
 enum SpotifyWebApi {
     case search(_ query: String, _ types: [String])
     case getPlaylist(playlistId: String)
+    case createPlaylist(userId: String, playlistName: String)
     case addTracks(uris: [String], playlistId: String)
     case removeTracks(uris: [String], playlistId: String)
-    case createPlaylist(userId: String, playlistName: String)
 }
 
 extension SpotifyWebApi: EndpointType {

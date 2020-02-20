@@ -103,6 +103,10 @@ class NetworkManager {
         spotifyWebApi(request: .getPlaylist(playlistId: id))
     }
     
+    func createPlaylist(for user: String, with name: String) -> Playlist? {
+        spotifyWebApi(request: .createPlaylist(userId: user, playlistName: name))
+    }
+    
     func addTracks(tracks: [Track], to playlist: Playlist) -> Snapshot? {
         spotifyWebApi(request: .addTracks(uris: tracks.map({$0.uri}), playlistId: playlist.id))
     }
@@ -110,9 +114,4 @@ class NetworkManager {
     func removeTracks(tracks: [Track], from playlist: Playlist) -> Snapshot? {
         spotifyWebApi(request: .removeTracks(uris: tracks.map({$0.uri}), playlistId: playlist.id))
     }
-    
-    func createPlaylist(for user: String, with name: String) -> Playlist? {
-        spotifyWebApi(request: .createPlaylist(userId: user, playlistName: name))
-    }
-
 }
