@@ -103,14 +103,22 @@ class NetworkManager {
         spotifyWebApi(request: .getPlaylist(playlistId: id))
     }
     
+    @discardableResult
     func createPlaylist(for user: String, with name: String) -> Playlist? {
         spotifyWebApi(request: .createPlaylist(userId: user, playlistName: name))
     }
     
+    @discardableResult
+    func deletePlaylist(id: String) -> String? {
+        spotifyWebApi(request: .deletePlaylist(playlistId: id))
+    }
+    
+    @discardableResult
     func addTracks(tracks: [Track], to playlist: Playlist) -> Snapshot? {
         spotifyWebApi(request: .addTracks(uris: tracks.map({$0.uri}), playlistId: playlist.id))
     }
     
+    @discardableResult
     func removeTracks(tracks: [Track], from playlist: Playlist) -> Snapshot? {
         spotifyWebApi(request: .removeTracks(uris: tracks.map({$0.uri}), playlistId: playlist.id))
     }

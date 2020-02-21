@@ -12,6 +12,7 @@ enum SpotifyWebApi {
     case search(_ query: String, _ types: [String])
     case getPlaylist(playlistId: String)
     case createPlaylist(userId: String, playlistName: String)
+    case deletePlaylist(playlistId: String)
     case addTracks(uris: [String], playlistId: String)
     case removeTracks(uris: [String], playlistId: String)
 }
@@ -28,6 +29,8 @@ extension SpotifyWebApi: EndpointType {
             return "/v1/playlists/\(playlistId)"
         case .createPlaylist(let userId, _):
             return "/v1/users/\(userId)/playlists"
+        case .deletePlaylist(let playlistId):
+            return "/v1/playlists/\(playlistId)/followers"
         case .addTracks(_, let playlistId), .removeTracks(_, let playlistId):
             return "/v1/playlists/\(playlistId)/tracks"
 
@@ -40,6 +43,8 @@ extension SpotifyWebApi: EndpointType {
             return .get
         case .createPlaylist, .addTracks, .removeTracks:
             return .post
+        case .deletePlaylist:
+            return .delete
         }
     }
     
@@ -50,7 +55,7 @@ extension SpotifyWebApi: EndpointType {
         switch self {
         case .createPlaylist, .addTracks, .removeTracks:
             httpHeader["Content-Type"] = "application/json"
-        case .search, .getPlaylist:
+        case .search, .getPlaylist, .deletePlaylist:
             break
         }
         
@@ -65,7 +70,7 @@ extension SpotifyWebApi: EndpointType {
             return ["name": playlistName]
         case .addTracks(let uris, _), .removeTracks(let uris, _):
             return ["uris": uris]
-        case .getPlaylist:
+        case .getPlaylist, .deletePlaylist:
             return nil
         }
     }

@@ -42,6 +42,11 @@ class NetworkRouter<Endpoint: EndpointType>: Router  {
                 print(httpResponse.statusCode)
             }
             
+            guard !data.isEmpty else {
+                completion(.success("No Data" as! T))
+                return
+            }
+            
             do {
                 let value = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(value))

@@ -16,11 +16,14 @@ class ParameterEncoder {
     }
     
     static func encode(request: inout URLRequest, with parameters: HttpParameters, for httpMethod: HttpMethod = .get) {
+        // TODO: - Wrong to determine from method type. Create ParamaterType Enum
         switch httpMethod {
         case .get:
             encodeQueryParameters(for: &request, with: parameters)
         case .post:
             encodeBodyParameters(for: &request, with: parameters)
+        case .delete:
+            break
         }
     }
     

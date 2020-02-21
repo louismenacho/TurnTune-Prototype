@@ -45,6 +45,8 @@ extension ViewController: WKNavigationDelegate {
             let getPlaylist = NetworkManager.shared.getPlaylist(id: playlist!.id)
             dump(getPlaylist)
             
+            print(NetworkManager.shared.deletePlaylist(id: getPlaylist!.id)!)
+            
             webView.removeFromSuperview()
         }
 
