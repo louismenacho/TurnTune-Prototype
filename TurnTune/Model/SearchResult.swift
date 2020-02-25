@@ -8,7 +8,6 @@
 
 import Foundation
 
-// MARK: - SearchResult
 struct SearchResult: Codable {
     let albums: AlbumResult?
     let artists: ArtistResult?

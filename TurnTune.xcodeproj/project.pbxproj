@@ -15,6 +15,8 @@
 		9508C24823EFDF1F0050017F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9508C24623EFDF1F0050017F /* LaunchScreen.storyboard */; };
 		9508C25323EFDF200050017F /* TurnTuneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C25223EFDF200050017F /* TurnTuneTests.swift */; };
 		9508C25E23EFDF200050017F /* TurnTuneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C25D23EFDF200050017F /* TurnTuneUITests.swift */; };
+		950A80482404C646009C3AF6 /* PlaylistTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A80472404C646009C3AF6 /* PlaylistTrack.swift */; };
+		950A804A2404CDA2009C3AF6 /* PlaylistTrackResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A80492404CDA2009C3AF6 /* PlaylistTrackResult.swift */; };
 		9549E5FC23F111210096F495 /* SpotifyAccountServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9549E5FB23F111210096F495 /* SpotifyAccountServices.swift */; };
 		9549E60023F11ACC0096F495 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9549E5FF23F11ACC0096F495 /* Token.swift */; };
 		9549E60223F278E40096F495 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9549E60123F278E40096F495 /* NetworkError.swift */; };
@@ -74,6 +76,8 @@
 		9508C25923EFDF200050017F /* TurnTuneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TurnTuneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9508C25D23EFDF200050017F /* TurnTuneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnTuneUITests.swift; sourceTree = "<group>"; };
 		9508C25F23EFDF200050017F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		950A80472404C646009C3AF6 /* PlaylistTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTrack.swift; sourceTree = "<group>"; };
+		950A80492404CDA2009C3AF6 /* PlaylistTrackResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTrackResult.swift; sourceTree = "<group>"; };
 		9549E5FB23F111210096F495 /* SpotifyAccountServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAccountServices.swift; sourceTree = "<group>"; };
 		9549E5FF23F11ACC0096F495 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		9549E60123F278E40096F495 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 				9549E61923F6F3100096F495 /* Artist.swift */,
 				9549E61523F6F30F0096F495 /* Track.swift */,
 				9549E61723F6F3100096F495 /* Playlist.swift */,
+				950A80472404C646009C3AF6 /* PlaylistTrack.swift */,
 				9549E62423F6F5C20096F495 /* Image.swift */,
 				9549E62223F6F56F0096F495 /* User.swift */,
 				957536D923FE20BB000C6DB5 /* Snapshot.swift */,
@@ -215,6 +220,7 @@
 				9549E61423F6F30F0096F495 /* ArtistResult.swift */,
 				9549E61A23F6F3110096F495 /* TrackResult.swift */,
 				9549E61623F6F3100096F495 /* PlaylistResult.swift */,
+				950A80492404CDA2009C3AF6 /* PlaylistTrackResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -422,12 +428,14 @@
 				957536DA23FE20BB000C6DB5 /* Snapshot.swift in Sources */,
 				95C842EB23F06661008EFA5F /* HttpMethod.swift in Sources */,
 				9549E60D23F3CC190096F495 /* SearchResult.swift in Sources */,
+				950A804A2404CDA2009C3AF6 /* PlaylistTrackResult.swift in Sources */,
 				9549E62123F6F3110096F495 /* TrackResult.swift in Sources */,
 				95C842F623F084A0008EFA5F /* NetworkManager.swift in Sources */,
 				9508C23E23EFDF1B0050017F /* SceneDelegate.swift in Sources */,
 				9549E61D23F6F3110096F495 /* PlaylistResult.swift in Sources */,
 				95C842E923F0660C008EFA5F /* EndpointType.swift in Sources */,
 				9549E61323F6EE3E0096F495 /* AlbumResult.swift in Sources */,
+				950A80482404C646009C3AF6 /* PlaylistTrack.swift in Sources */,
 				95C842EF23F066E6008EFA5F /* ParameterEncoder.swift in Sources */,
 				9549E62323F6F56F0096F495 /* User.swift in Sources */,
 				95C842F423F0779C008EFA5F /* NetworkRouter.swift in Sources */,

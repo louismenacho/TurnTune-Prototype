@@ -9,7 +9,7 @@
 import Foundation
 
 struct User: Codable {
-    var displayName: String
+    var displayName: String?
     var externalUrls: ExternalUrls
     var href: String
     var id, type, uri: String

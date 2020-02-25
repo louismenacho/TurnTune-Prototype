@@ -52,7 +52,7 @@ extension SpotifyAccountServices: EndpointType {
                 "response_type": "code",
                 "client_id": NetworkManager.shared.clientID,
                 "redirect_uri": NetworkManager.shared.redirectURI,
-                "scope": "playlist-modify-public"
+                "scope": "playlist-modify-private"
             ]
         case .token(let authorizationCode):
             return [

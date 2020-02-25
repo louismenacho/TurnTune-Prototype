@@ -20,6 +20,7 @@ struct Playlist: Codable {
     let primaryColor: String?
     let isPublic: Bool?
     let snapshotID: String
+    let tracks: PlaylistTrackResult
     let type, uri: String
 
     enum CodingKeys: String, CodingKey {
@@ -30,6 +31,6 @@ struct Playlist: Codable {
         case primaryColor = "primary_color"
         case isPublic = "public"
         case snapshotID = "snapshot_id"
-        case type, uri
+        case tracks, type, uri
     }
 }

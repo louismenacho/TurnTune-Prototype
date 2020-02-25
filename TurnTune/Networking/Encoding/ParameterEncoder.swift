@@ -16,11 +16,10 @@ class ParameterEncoder {
     }
     
     static func encode(request: inout URLRequest, with parameters: HttpParameters, for httpMethod: HttpMethod = .get) {
-        // TODO: - Wrong to determine from method type. Create ParamaterType Enum
         switch httpMethod {
         case .get:
             encodeQueryParameters(for: &request, with: parameters)
-        case .post:
+        case .post, .put:
             encodeBodyParameters(for: &request, with: parameters)
         case .delete:
             break
@@ -44,7 +43,6 @@ class ParameterEncoder {
             parameters.forEach { bodyParameters.append("\($0.key)=\($0.value)") }
             request.httpBody = bodyParameters.joined(separator: "&").data(using: .utf8)
         case .json:
-            print(parameters)
             request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         case .none:
             return

@@ -39,11 +39,16 @@ extension ViewController: WKNavigationDelegate {
             let tracks = NetworkManager.shared.search(track: "Feint")
             dump(tracks)
             
-            let snapshot = NetworkManager.shared.addTracks(tracks: [tracks!.first!], to: playlist!)
+            let snapshot = NetworkManager.shared.addTracks(tracks: Array(tracks!.prefix(5)), to: playlist!)
             dump(snapshot)
             
+            dump(Array(tracks!.prefix(5)).map({ $0.name })) //print original list before reorder
+            
+            let snapshot2 = NetworkManager.shared.reorderTrack(from: 3, to: 0, in: playlist!)
+            dump(snapshot2)
+            
             let getPlaylist = NetworkManager.shared.getPlaylist(id: playlist!.id)
-            dump(getPlaylist)
+            dump(getPlaylist!.tracks.items.map({ $0.track.name })) //get updated playlist and print list again
             
             print(NetworkManager.shared.deletePlaylist(id: getPlaylist!.id)!)
             
