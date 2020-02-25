@@ -48,7 +48,6 @@ extension SpotifyAccountServices: EndpointType {
         switch self {
         case .authorize:
             return [
-                //required
                 "response_type": "code",
                 "client_id": NetworkManager.shared.clientID,
                 "redirect_uri": NetworkManager.shared.redirectURI,
@@ -56,7 +55,6 @@ extension SpotifyAccountServices: EndpointType {
             ]
         case .token(let authorizationCode):
             return [
-                //required
                 "grant_type": "authorization_code",
                 "code": authorizationCode,
                 "client_id": NetworkManager.shared.clientID,
