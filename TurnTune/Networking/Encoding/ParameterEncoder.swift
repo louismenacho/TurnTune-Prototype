@@ -10,19 +10,12 @@ import Foundation
 
 class ParameterEncoder {
     
-    enum ContentType: String {
-        case xwwwformurlencoded = "application/x-www-form-urlencoded"
-        case json = "application/json"
-    }
-    
-    static func encode(request: inout URLRequest, with parameters: HttpParameters, for httpMethod: HttpMethod = .get) {
-        switch httpMethod {
-        case .get:
+    static func encode(request: inout URLRequest, with parameters: HttpParameters, in contentType: HttpContentType = .none) {
+        switch contentType {
+        case .none:
             encodeQueryParameters(for: &request, with: parameters)
-        case .post, .put:
-            encodeBodyParameters(for: &request, with: parameters)
-        case .delete:
-            break
+        default:
+            encodeBodyParameters(for: &request, with: parameters, in: contentType)
         }
     }
     
@@ -35,15 +28,14 @@ class ParameterEncoder {
     }
     
     
-    fileprivate static func encodeBodyParameters(for request: inout URLRequest, with parameters: HttpParameters) {
-        guard let contentType = request.value(forHTTPHeaderField: "Content-Type") else { return }
-        switch ContentType(rawValue: contentType) {
-        case .xwwwformurlencoded:
+    fileprivate static func encodeBodyParameters(for request: inout URLRequest, with parameters: HttpParameters, in contentType: HttpContentType) {
+        switch contentType {
+        case .json:
+            request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        case .urlencoded:
             var bodyParameters = [String]()
             parameters.forEach { bodyParameters.append("\($0.key)=\($0.value)") }
             request.httpBody = bodyParameters.joined(separator: "&").data(using: .utf8)
-        case .json:
-            request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         case .none:
             return
         }

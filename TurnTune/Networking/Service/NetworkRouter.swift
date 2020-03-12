@@ -65,7 +65,7 @@ class NetworkRouter<Endpoint: EndpointType>: Router  {
     
     fileprivate func setParameters(for route: Endpoint, _ request: inout URLRequest) {
         guard let parameters = route.parameters else { return }
-        ParameterEncoder.encode(request: &request, with: parameters, for: route.method)
+        ParameterEncoder.encode(request: &request, with: parameters, in: route.contentType)
     }
     
     fileprivate func handleNetworkResponse(_ response: URLResponse) -> Result<HTTPURLResponse, NetworkError> {

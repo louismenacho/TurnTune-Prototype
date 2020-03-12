@@ -17,5 +17,6 @@ protocol EndpointType {
     var method: HttpMethod { get }
     var headers: HttpHeaders? { get }
     var parameters: HttpParameters? { get }
+    var contentType: HttpContentType { get }
     var url: URL? { get }
 }
