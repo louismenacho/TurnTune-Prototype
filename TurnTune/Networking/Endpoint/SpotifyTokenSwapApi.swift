@@ -33,7 +33,7 @@ extension SpotifyTokenSwapApi: EndpointType {
     }
     
     var headers: HttpHeaders? {
-        nil
+        ["Content-Type": contentType.rawValue]
     }
     
     var parameters: HttpParameters? {
@@ -50,7 +50,7 @@ extension SpotifyTokenSwapApi: EndpointType {
     }
     
     var contentType: HttpContentType {
-        .none
+        .urlencoded
     }
     
     var url: URL? {

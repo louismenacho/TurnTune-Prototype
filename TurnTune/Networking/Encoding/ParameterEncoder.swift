@@ -27,15 +27,16 @@ class ParameterEncoder {
         request.url = requestComponents.url
     }
     
-    
     fileprivate static func encodeBodyParameters(for request: inout URLRequest, with parameters: HttpParameters, in contentType: HttpContentType) {
         switch contentType {
         case .json:
             request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         case .urlencoded:
-            var bodyParameters = [String]()
-            parameters.forEach { bodyParameters.append("\($0.key)=\($0.value)") }
-            request.httpBody = bodyParameters.joined(separator: "&").data(using: .utf8)
+            var bodyComponents = URLComponents()
+            bodyComponents.queryItems = parameters.map {
+                URLQueryItem(name: $0.key, value: "\($0.value)".addingPercentEncoding(withAllowedCharacters: .alphanumerics))
+            }
+            request.httpBody = bodyComponents.query?.data(using: .utf8)
         case .none:
             return
         }

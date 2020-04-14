@@ -24,12 +24,12 @@ class NetworkRouter<Endpoint: EndpointType>: Router  {
             }
             
             guard let response = response else {
-                completion(.failure(NetworkError.emptyResponse))
+                completion(.failure(NetworkError.nullResponse))
                 return
             }
             
             guard let data = data else {
-                completion(.failure(NetworkError.emptyData))
+                completion(.failure(NetworkError.nullData))
                 return
             }
             
@@ -42,7 +42,7 @@ class NetworkRouter<Endpoint: EndpointType>: Router  {
                 print(httpResponse.statusCode)
             }
             
-            guard !data.isEmpty else {
+            if data.isEmpty {
                 completion(.success("No Data" as! T))
                 return
             }

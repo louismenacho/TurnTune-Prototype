@@ -13,7 +13,7 @@ struct Token: Codable {
     let type: String
     let scope: String
     let expiresIn: Int
-    let refresh: String
+    let refresh: String?
 
     enum CodingKeys: String, CodingKey {
         case access = "access_token"

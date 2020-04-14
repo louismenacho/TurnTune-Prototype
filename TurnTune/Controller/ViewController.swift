@@ -30,7 +30,19 @@ extension ViewController: WKNavigationDelegate {
         if components.host == "spotify-login-callback" {
             let authorizationCode = components.queryItems![0].value!
             
-            NetworkManager.shared.generateToken(code: authorizationCode)
+            let spotifyNetworkManager = NetworkManager.shared
+            spotifyNetworkManager.generateToken(code: authorizationCode)
+            spotifyNetworkManager.refreshToken()
+            
+//            let tracks = spotifyNetworkManager.search(track: "Feint")?.tracks.items
+//            let playlist = spotifyNetworkManager.createPlaylist("TurnTune", for: "melo3450")
+//            spotifyNetworkManager.addTracks(tracks!, to: playlist!)
+//            spotifyNetworkManager.addTracks(tracks!, to: playlist!)
+//            spotifyNetworkManager.addTracks(tracks!, to: playlist!)
+//            spotifyNetworkManager.reorderTrack(from: 2, to: 0, in: playlist!)
+//            spotifyNetworkManager.getTracks(for: playlist!)
+//            spotifyNetworkManager.removeTracks(tracks!, from: playlist!)
+//            spotifyNetworkManager.deletePlaylist(playlist!)
             
             webView.removeFromSuperview()
         }

@@ -33,10 +33,7 @@ extension SpotifyAccountsApi: EndpointType {
     }
     
     var headers: HttpHeaders? {
-        switch self {
-        case .authorize:
-            return nil
-        }
+        nil
     }
     
     var parameters: HttpParameters? {

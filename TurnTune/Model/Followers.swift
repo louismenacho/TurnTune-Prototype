@@ -1,5 +1,5 @@
 //
-//  Snapshot.swift
+//  Followers.swift
 //  TurnTune
 //
 //  Created by Louis Menacho on 3/19/20.
@@ -8,10 +8,12 @@
 
 import Foundation
 
-struct Snapshot: Codable {
-    var snapshotId: String
+struct Followers: Codable {
+    var href: String?
+    var total: Int
 
     enum CodingKeys: String, CodingKey {
-        case snapshotId = "snapshot_id"
+        case href = "href"
+        case total = "total"
     }
 }

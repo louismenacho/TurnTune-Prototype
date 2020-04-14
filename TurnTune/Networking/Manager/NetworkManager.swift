@@ -63,61 +63,51 @@ class NetworkManager {
     
     func generateToken(code: String) {
         spotifyApiToken = spotifyTokenSwapApi(request: .token(code))
+        dump(spotifyApiToken)
     }
     
     func refreshToken() {
-        spotifyApiToken = spotifyTokenSwapApi(request: .refreshToken(spotifyApiToken!.refresh))
+        spotifyApiToken = spotifyTokenSwapApi(request: .refreshToken(spotifyApiToken!.refresh!))
+        dump(spotifyApiToken)
     }
     
     // MARK: - Spotify Web API
     
     // Search API
     
-    func search(_ query: String, types: [String] = ["track","artist","album"]) -> SearchResult? {
-        spotifyWebApi(request: .search(query, types))
-    }
-    
-    func search(track query: String) -> [Track]? {
-        search(query, types: ["track"])?.tracks?.items
-    }
-
-    func search(artist query: String) -> [Artist]? {
-        search(query, types: ["artist"])?.artists?.items
-    }
-
-    func search(album query: String) -> [Album]? {
-        search(query, types: ["album"])?.albums?.items
+    func search(track query: String) -> SearchResult? {
+        spotifyWebApi(request: .search(query, ["track"]))
     }
     
     // Playlists API
         
     @discardableResult
-    func createPlaylist(for user: String, with name: String) -> Playlist? {
-        spotifyWebApi(request: .createPlaylist(userId: user, name: name))
+    func createPlaylist(_ name: String, for user: String) -> Playlist? {
+        spotifyWebApi(request: .createPlaylist(user, name))
     }
     
     @discardableResult
-    func deletePlaylist(id: String) -> String? {
-        spotifyWebApi(request: .deletePlaylist(playlistId: id))
+    func deletePlaylist(_ playlist: Playlist) -> String? {
+        spotifyWebApi(request: .deletePlaylist(playlist.id))
     }
     
     @discardableResult
-    func getTracks(for playlist: Playlist) -> PlaylistTrackResult? {
-        spotifyWebApi(request: .getTracks(playlistId: playlist.id))
+    func getTracks(for playlist: Playlist) -> Paging<PlaylistTrack>? {
+        spotifyWebApi(request: .getTracks(playlist.id))
     }
     
     @discardableResult
-    func addTracks(tracks: [Track], to playlist: Playlist) -> Snapshot? {
-        spotifyWebApi(request: .addTracks(uris: tracks.map({$0.uri}), playlistId: playlist.id))
+    func addTracks(_ tracks: [Track], to playlist: Playlist) -> Snapshot? {
+        spotifyWebApi(request: .addTracks(playlist.id, tracks.map({$0.uri})))
     }
     
     @discardableResult
-    func removeTracks(tracks: [Track], from playlist: Playlist) -> Snapshot? {
-        spotifyWebApi(request: .removeTracks(uris: tracks.map({$0.uri}), playlistId: playlist.id))
+    func removeTracks(_ tracks: [Track], from playlist: Playlist) -> Snapshot? {
+        spotifyWebApi(request: .removeTracks(playlist.id, tracks.map({$0.uri})))
     }
     
     @discardableResult
     func reorderTrack(from position: Int, to newPosition: Int, in playlist: Playlist) -> Snapshot? {
-        spotifyWebApi(request: .reorderTrack(rangeStart: position, insertBefore: newPosition, playlistId: playlist.id))
+        spotifyWebApi(request: .reorderTrack(playlist.id, rangeStart: position, insertBefore: newPosition))
     }
 }

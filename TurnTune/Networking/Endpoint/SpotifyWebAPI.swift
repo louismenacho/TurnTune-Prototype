@@ -10,12 +10,12 @@ import Foundation
 
 enum SpotifyWebApi {
     case search(_ query: String, _ types: [String])
-    case createPlaylist(userId: String, name: String)
-    case deletePlaylist(playlistId: String)
-    case getTracks(playlistId: String)
-    case addTracks(uris: [String], playlistId: String)
-    case removeTracks(uris: [String], playlistId: String)
-    case reorderTrack(rangeStart: Int, insertBefore: Int ,playlistId: String)
+    case createPlaylist(_ userId: String, _ name: String)
+    case deletePlaylist(_ playlistId: String)
+    case getTracks(_ playlistId: String)
+    case addTracks(_ playlistId: String, _ uris: [String])
+    case removeTracks(_ playlistId: String, _ uris: [String])
+    case reorderTrack(_ playlistId: String, rangeStart: Int, insertBefore: Int)
 }
 
 extension SpotifyWebApi: EndpointType {
@@ -33,9 +33,9 @@ extension SpotifyWebApi: EndpointType {
         case let .deletePlaylist(playlistId):
             return "/v1/playlists/\(playlistId)/followers"
         case let .getTracks(playlistId),
-             let .addTracks(_, playlistId),
-             let .removeTracks(_, playlistId),
-             let .reorderTrack(_, _, playlistId):
+             let .addTracks(playlistId, _),
+             let .removeTracks(playlistId, _),
+             let .reorderTrack(playlistId, _, _):
             return "/v1/playlists/\(playlistId)/tracks"
         }
     }
@@ -80,11 +80,11 @@ extension SpotifyWebApi: EndpointType {
                 "public": "false",
                 "collaborative": "true"
             ]
-        case let .addTracks(uris, _), let .removeTracks(uris, _):
+        case let .addTracks(_, uris), let .removeTracks(_, uris):
             return [
                 "uris": uris
             ]
-        case let .reorderTrack(rangeStart, insertBefore, _):
+        case let .reorderTrack(_, rangeStart, insertBefore):
             return [
                 "range_start": rangeStart,
                 "insert_before": insertBefore

@@ -2,15 +2,16 @@
 //  SearchResult.swift
 //  TurnTune
 //
-//  Created by Louis Menacho on 2/12/20.
+//  Created by Louis Menacho on 3/18/20.
 //  Copyright © 2020 Louis Menacho. All rights reserved.
 //
 
 import Foundation
 
 struct SearchResult: Codable {
-    let albums: AlbumResult?
-    let artists: ArtistResult?
-    let tracks: TrackResult?
-    let playlists: PlaylistResult?
+    var tracks: Paging<Track>
+
+    enum CodingKeys: String, CodingKey {
+        case tracks = "tracks"
+    }
 }

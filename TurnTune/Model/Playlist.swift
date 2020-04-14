@@ -2,35 +2,44 @@
 //  Playlist.swift
 //  TurnTune
 //
-//  Created by Louis Menacho on 2/14/20.
+//  Created by Louis Menacho on 3/19/20.
 //  Copyright © 2020 Louis Menacho. All rights reserved.
 //
 
 import Foundation
 
 struct Playlist: Codable {
-    let collaborative: Bool
-    let description: String?
-    let externalUrls: ExternalUrls
-    let href: String
-    let id: String
-    let images: [Image]
-    let name: String
-    let owner: User
-    let primaryColor: String?
-    let isPublic: Bool?
-    let snapshotID: String
-    let tracks: PlaylistTrackResult
-    let type, uri: String
+    var collaborative: Bool
+    var description: String?
+    var externalUrls: ExternalUrls
+    var followers: Followers
+    var href: String
+    var id: String
+    var images: [Image]
+    var name: String
+    var owner: User
+    var primaryColor: String?
+    var isPublic: Bool
+    var snapshotID: String
+    var tracks: Paging<Track>
+    var type: String
+    var uri: String
 
     enum CodingKeys: String, CodingKey {
-        case collaborative
+        case collaborative = "collaborative"
         case description = "description"
         case externalUrls = "external_urls"
-        case href, id, images, name, owner
+        case followers = "followers"
+        case href = "href"
+        case id = "id"
+        case images = "images"
+        case name = "name"
+        case owner = "owner"
         case primaryColor = "primary_color"
         case isPublic = "public"
         case snapshotID = "snapshot_id"
-        case tracks, type, uri
+        case tracks = "tracks"
+        case type = "type"
+        case uri = "uri"
     }
 }
