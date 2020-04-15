@@ -16,7 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        FirebaseApp.configure()
+        
+        let db = Firestore.firestore()
+        print(db)
+        
+        Auth.auth().signInAnonymously() { (authResult, error) in
+            guard let user = authResult?.user else { return }
+            let isAnonymous = user.isAnonymous  // true
+            let uid = user.uid
+            print("User UID: \(uid), isAnonymous: \(isAnonymous)")
+        }
+        
         return true
     }
 

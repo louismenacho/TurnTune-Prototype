@@ -39,7 +39,7 @@ class NetworkRouter<Endpoint: EndpointType>: Router  {
                 completion(.failure(networkError))
                 return
             case .success(let httpResponse):
-                print(httpResponse.statusCode)
+                print("\(httpResponse.statusCode) \(route)")
             }
             
             if data.isEmpty {
