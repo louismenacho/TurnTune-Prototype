@@ -53,6 +53,8 @@
 		95C842F223F06E97008EFA5F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C842F123F06E97008EFA5F /* Router.swift */; };
 		95C842F423F0779C008EFA5F /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C842F323F0779C008EFA5F /* NetworkRouter.swift */; };
 		95C842F623F084A0008EFA5F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C842F523F084A0008EFA5F /* NetworkManager.swift */; };
+		95DA5A2F24478FE300E4C2B2 /* FirebaseAuth.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95DA5A2D24478FE300E4C2B2 /* FirebaseAuth.xcframework */; };
+		95DA5A3024478FE300E4C2B2 /* GTMSessionFetcher.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95DA5A2E24478FE300E4C2B2 /* GTMSessionFetcher.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +129,8 @@
 		95C842F123F06E97008EFA5F /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		95C842F323F0779C008EFA5F /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		95C842F523F084A0008EFA5F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		95DA5A2D24478FE300E4C2B2 /* FirebaseAuth.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseAuth.xcframework; sourceTree = "<group>"; };
+		95DA5A2E24478FE300E4C2B2 /* GTMSessionFetcher.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GTMSessionFetcher.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,12 +142,14 @@
 				952BACFE244788D400968B15 /* FirebaseCoreDiagnostics.xcframework in Frameworks */,
 				952BAD00244788D400968B15 /* FirebaseCore.xcframework in Frameworks */,
 				952BAD03244788D400968B15 /* FIRAnalyticsConnector.framework in Frameworks */,
+				95DA5A3024478FE300E4C2B2 /* GTMSessionFetcher.xcframework in Frameworks */,
 				952BAD04244788D400968B15 /* GoogleUtilities.xcframework in Frameworks */,
 				952BAD01244788D400968B15 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */,
 				952BACFF244788D400968B15 /* FirebaseInstallations.xcframework in Frameworks */,
 				952BACFC244788D400968B15 /* PromisesObjC.xcframework in Frameworks */,
 				952BAD02244788D400968B15 /* GoogleDataTransport.xcframework in Frameworks */,
 				952BACFB244788D400968B15 /* GoogleAppMeasurement.framework in Frameworks */,
+				95DA5A2F24478FE300E4C2B2 /* FirebaseAuth.xcframework in Frameworks */,
 				952BACFA244788D400968B15 /* nanopb.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,6 +229,7 @@
 			children = (
 				952BAD0524478AC300968B15 /* Header */,
 				952BACEE244788D400968B15 /* FirebaseAnalytics */,
+				95DA5A2C24478FE300E4C2B2 /* FirebaseAuth */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -351,6 +358,15 @@
 				95C842EE23F066E6008EFA5F /* ParameterEncoder.swift */,
 			);
 			path = Encoding;
+			sourceTree = "<group>";
+		};
+		95DA5A2C24478FE300E4C2B2 /* FirebaseAuth */ = {
+			isa = PBXGroup;
+			children = (
+				95DA5A2D24478FE300E4C2B2 /* FirebaseAuth.xcframework */,
+				95DA5A2E24478FE300E4C2B2 /* GTMSessionFetcher.xcframework */,
+			);
+			path = FirebaseAuth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -691,6 +707,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Firebase/FirebaseAnalytics",
+					"$(PROJECT_DIR)/Firebase/FirebaseAuth",
 				);
 				HEADER_SEARCH_PATHS = /Users/louismenacho/Desktop/TurnTune/Firebase/Header;
 				INFOPLIST_FILE = TurnTune/Info.plist;
@@ -716,6 +733,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Firebase/FirebaseAnalytics",
+					"$(PROJECT_DIR)/Firebase/FirebaseAuth",
 				);
 				HEADER_SEARCH_PATHS = /Users/louismenacho/Desktop/TurnTune/Firebase/Header;
 				INFOPLIST_FILE = TurnTune/Info.plist;
