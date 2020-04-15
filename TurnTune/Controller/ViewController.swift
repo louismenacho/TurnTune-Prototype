@@ -33,7 +33,6 @@ extension ViewController: WKNavigationDelegate {
             let spotifyNetworkManager = NetworkManager.shared
             spotifyNetworkManager.generateToken(code: authorizationCode)
 //            spotifyNetworkManager.refreshToken()
-            
 //            let tracks = spotifyNetworkManager.search(track: "Feint")?.tracks.items
 //            let playlist = spotifyNetworkManager.createPlaylist("TurnTune", for: "melo3450")
 //            spotifyNetworkManager.addTracks(tracks!, to: playlist!)
