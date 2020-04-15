@@ -46,6 +46,14 @@
 		9560ADD62423463D00DAF2E7 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560ADD52423463D00DAF2E7 /* Snapshot.swift */; };
 		9575781C2415413600F25C12 /* SpotifyTokenSwapApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9575781B2415413600F25C12 /* SpotifyTokenSwapApi.swift */; };
 		9575781E2415542600F25C12 /* HttpContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9575781D2415542600F25C12 /* HttpContentType.swift */; };
+		959D8411244791F200FE3CF5 /* FirebaseFirestore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959D840A244791F200FE3CF5 /* FirebaseFirestore.xcframework */; };
+		959D8412244791F200FE3CF5 /* gRPCCertificates-Cpp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 959D840B244791F200FE3CF5 /* gRPCCertificates-Cpp.bundle */; };
+		959D8413244791F200FE3CF5 /* gRPC-Core.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959D840C244791F200FE3CF5 /* gRPC-Core.xcframework */; };
+		959D8414244791F200FE3CF5 /* leveldb-library.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959D840D244791F200FE3CF5 /* leveldb-library.xcframework */; };
+		959D8415244791F200FE3CF5 /* gRPC-C++.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959D840E244791F200FE3CF5 /* gRPC-C++.xcframework */; };
+		959D8416244791F200FE3CF5 /* BoringSSL-GRPC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959D840F244791F200FE3CF5 /* BoringSSL-GRPC.xcframework */; };
+		959D8417244791F200FE3CF5 /* abseil.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959D8410244791F200FE3CF5 /* abseil.xcframework */; };
+		959D8419244792A300FE3CF5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 959D8418244792A300FE3CF5 /* GoogleService-Info.plist */; };
 		95C842E923F0660C008EFA5F /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C842E823F0660C008EFA5F /* EndpointType.swift */; };
 		95C842EB23F06661008EFA5F /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C842EA23F06661008EFA5F /* HttpMethod.swift */; };
 		95C842ED23F066CF008EFA5F /* HeaderEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C842EC23F066CF008EFA5F /* HeaderEncoder.swift */; };
@@ -122,6 +130,14 @@
 		9560ADD52423463D00DAF2E7 /* Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
 		9575781B2415413600F25C12 /* SpotifyTokenSwapApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyTokenSwapApi.swift; sourceTree = "<group>"; };
 		9575781D2415542600F25C12 /* HttpContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpContentType.swift; sourceTree = "<group>"; };
+		959D840A244791F200FE3CF5 /* FirebaseFirestore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseFirestore.xcframework; sourceTree = "<group>"; };
+		959D840B244791F200FE3CF5 /* gRPCCertificates-Cpp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "gRPCCertificates-Cpp.bundle"; sourceTree = "<group>"; };
+		959D840C244791F200FE3CF5 /* gRPC-Core.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = "gRPC-Core.xcframework"; sourceTree = "<group>"; };
+		959D840D244791F200FE3CF5 /* leveldb-library.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = "leveldb-library.xcframework"; sourceTree = "<group>"; };
+		959D840E244791F200FE3CF5 /* gRPC-C++.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = "gRPC-C++.xcframework"; sourceTree = "<group>"; };
+		959D840F244791F200FE3CF5 /* BoringSSL-GRPC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = "BoringSSL-GRPC.xcframework"; sourceTree = "<group>"; };
+		959D8410244791F200FE3CF5 /* abseil.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = abseil.xcframework; sourceTree = "<group>"; };
+		959D8418244792A300FE3CF5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		95C842E823F0660C008EFA5F /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
 		95C842EA23F06661008EFA5F /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		95C842EC23F066CF008EFA5F /* HeaderEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderEncoder.swift; sourceTree = "<group>"; };
@@ -140,17 +156,23 @@
 			files = (
 				952BACFD244788D400968B15 /* FirebaseAnalytics.framework in Frameworks */,
 				952BACFE244788D400968B15 /* FirebaseCoreDiagnostics.xcframework in Frameworks */,
+				959D8414244791F200FE3CF5 /* leveldb-library.xcframework in Frameworks */,
 				952BAD00244788D400968B15 /* FirebaseCore.xcframework in Frameworks */,
+				959D8417244791F200FE3CF5 /* abseil.xcframework in Frameworks */,
 				952BAD03244788D400968B15 /* FIRAnalyticsConnector.framework in Frameworks */,
+				959D8415244791F200FE3CF5 /* gRPC-C++.xcframework in Frameworks */,
 				95DA5A3024478FE300E4C2B2 /* GTMSessionFetcher.xcframework in Frameworks */,
+				959D8416244791F200FE3CF5 /* BoringSSL-GRPC.xcframework in Frameworks */,
 				952BAD04244788D400968B15 /* GoogleUtilities.xcframework in Frameworks */,
 				952BAD01244788D400968B15 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */,
 				952BACFF244788D400968B15 /* FirebaseInstallations.xcframework in Frameworks */,
+				959D8411244791F200FE3CF5 /* FirebaseFirestore.xcframework in Frameworks */,
 				952BACFC244788D400968B15 /* PromisesObjC.xcframework in Frameworks */,
 				952BAD02244788D400968B15 /* GoogleDataTransport.xcframework in Frameworks */,
 				952BACFB244788D400968B15 /* GoogleAppMeasurement.framework in Frameworks */,
 				95DA5A2F24478FE300E4C2B2 /* FirebaseAuth.xcframework in Frameworks */,
 				952BACFA244788D400968B15 /* nanopb.xcframework in Frameworks */,
+				959D8413244791F200FE3CF5 /* gRPC-Core.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +224,7 @@
 				95C842E423F03F8A008EFA5F /* Networking */,
 				9508C24423EFDF1F0050017F /* Assets.xcassets */,
 				9508C24923EFDF1F0050017F /* Info.plist */,
+				959D8418244792A300FE3CF5 /* GoogleService-Info.plist */,
 			);
 			path = TurnTune;
 			sourceTree = "<group>";
@@ -230,6 +253,7 @@
 				952BAD0524478AC300968B15 /* Header */,
 				952BACEE244788D400968B15 /* FirebaseAnalytics */,
 				95DA5A2C24478FE300E4C2B2 /* FirebaseAuth */,
+				959D8409244791F200FE3CF5 /* FirebaseFirestore */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -270,6 +294,20 @@
 				9549E60323F3C7640096F495 /* SpotifyWebApi.swift */,
 			);
 			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		959D8409244791F200FE3CF5 /* FirebaseFirestore */ = {
+			isa = PBXGroup;
+			children = (
+				959D840A244791F200FE3CF5 /* FirebaseFirestore.xcframework */,
+				959D840B244791F200FE3CF5 /* gRPCCertificates-Cpp.bundle */,
+				959D840C244791F200FE3CF5 /* gRPC-Core.xcframework */,
+				959D840D244791F200FE3CF5 /* leveldb-library.xcframework */,
+				959D840E244791F200FE3CF5 /* gRPC-C++.xcframework */,
+				959D840F244791F200FE3CF5 /* BoringSSL-GRPC.xcframework */,
+				959D8410244791F200FE3CF5 /* abseil.xcframework */,
+			);
+			path = FirebaseFirestore;
 			sourceTree = "<group>";
 		};
 		95C842DF23F03ED0008EFA5F /* Application */ = {
@@ -474,6 +512,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9508C24823EFDF1F0050017F /* LaunchScreen.storyboard in Resources */,
+				959D8412244791F200FE3CF5 /* gRPCCertificates-Cpp.bundle in Resources */,
+				959D8419244792A300FE3CF5 /* GoogleService-Info.plist in Resources */,
 				9508C24523EFDF1F0050017F /* Assets.xcassets in Resources */,
 				9508C24323EFDF1B0050017F /* Main.storyboard in Resources */,
 			);
@@ -708,6 +748,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Firebase/FirebaseAnalytics",
 					"$(PROJECT_DIR)/Firebase/FirebaseAuth",
+					"$(PROJECT_DIR)/Firebase/FirebaseFirestore",
 				);
 				HEADER_SEARCH_PATHS = /Users/louismenacho/Desktop/TurnTune/Firebase/Header;
 				INFOPLIST_FILE = TurnTune/Info.plist;
@@ -734,6 +775,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Firebase/FirebaseAnalytics",
 					"$(PROJECT_DIR)/Firebase/FirebaseAuth",
+					"$(PROJECT_DIR)/Firebase/FirebaseFirestore",
 				);
 				HEADER_SEARCH_PATHS = /Users/louismenacho/Desktop/TurnTune/Firebase/Header;
 				INFOPLIST_FILE = TurnTune/Info.plist;
