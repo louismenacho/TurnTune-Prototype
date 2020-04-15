@@ -63,12 +63,10 @@ class NetworkManager {
     
     func generateToken(code: String) {
         spotifyApiToken = spotifyTokenSwapApi(request: .token(code))
-        dump(spotifyApiToken)
     }
     
     func refreshToken() {
         spotifyApiToken = spotifyTokenSwapApi(request: .refreshToken(spotifyApiToken!.refresh!))
-        dump(spotifyApiToken)
     }
     
     // MARK: - Spotify Web API
