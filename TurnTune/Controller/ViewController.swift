@@ -10,11 +10,12 @@ import UIKit
 import WebKit
 
 class ViewController: UIViewController {
+    
+    let webView = WKWebView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let webView = WKWebView()
         webView.frame = view.frame
         webView.navigationDelegate = self
         webView.load(NetworkManager.shared.getAuthorizeRequest())
