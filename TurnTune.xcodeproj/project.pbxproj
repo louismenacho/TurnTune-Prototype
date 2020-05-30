@@ -15,6 +15,11 @@
 		9508C24823EFDF1F0050017F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9508C24623EFDF1F0050017F /* LaunchScreen.storyboard */; };
 		9508C25323EFDF200050017F /* TurnTuneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C25223EFDF200050017F /* TurnTuneTests.swift */; };
 		9508C25E23EFDF200050017F /* TurnTuneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C25D23EFDF200050017F /* TurnTuneUITests.swift */; };
+		9520BD1424823DFE0086DD02 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520BD1324823DFE0086DD02 /* HttpMethod.swift */; };
+		9520BD1824823E980086DD02 /* HttpParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520BD1724823E980086DD02 /* HttpParameters.swift */; };
+		9520BD1A24823ECE0086DD02 /* HttpHeaderValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520BD1924823ECE0086DD02 /* HttpHeaderValue.swift */; };
+		9520BD1C2482B42C0086DD02 /* HttpHeaderKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520BD1B2482B42C0086DD02 /* HttpHeaderKey.swift */; };
+		9520BD1E2482B9870086DD02 /* HttpHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520BD1D2482B9870086DD02 /* HttpHeaders.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +54,11 @@
 		9508C25923EFDF200050017F /* TurnTuneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TurnTuneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9508C25D23EFDF200050017F /* TurnTuneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnTuneUITests.swift; sourceTree = "<group>"; };
 		9508C25F23EFDF200050017F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9520BD1324823DFE0086DD02 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		9520BD1724823E980086DD02 /* HttpParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpParameters.swift; sourceTree = "<group>"; };
+		9520BD1924823ECE0086DD02 /* HttpHeaderValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpHeaderValue.swift; sourceTree = "<group>"; };
+		9520BD1B2482B42C0086DD02 /* HttpHeaderKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpHeaderKey.swift; sourceTree = "<group>"; };
+		9520BD1D2482B9870086DD02 /* HttpHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpHeaders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +109,12 @@
 		9508C23A23EFDF1A0050017F /* TurnTune */ = {
 			isa = PBXGroup;
 			children = (
-				9508C23B23EFDF1A0050017F /* AppDelegate.swift */,
-				9508C23D23EFDF1B0050017F /* SceneDelegate.swift */,
-				9508C23F23EFDF1B0050017F /* ViewController.swift */,
-				9508C24123EFDF1B0050017F /* Main.storyboard */,
+				9520BD0C24823C340086DD02 /* Application */,
+				9520BD0B24823BE50086DD02 /* Model */,
+				9520BD0A24823BE10086DD02 /* View */,
+				9520BD0924823BDC0086DD02 /* Controller */,
+				9520BD0824823BD90086DD02 /* Network */,
 				9508C24423EFDF1F0050017F /* Assets.xcassets */,
-				9508C24623EFDF1F0050017F /* LaunchScreen.storyboard */,
 				9508C24923EFDF1F0050017F /* Info.plist */,
 			);
 			path = TurnTune;
@@ -126,6 +136,83 @@
 				9508C25F23EFDF200050017F /* Info.plist */,
 			);
 			path = TurnTuneUITests;
+			sourceTree = "<group>";
+		};
+		9520BD0824823BD90086DD02 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9520BD1024823CBA0086DD02 /* EndPoint */,
+				9520BD0F24823CB80086DD02 /* Manager */,
+				9520BD0E24823CB50086DD02 /* Service */,
+				9520BD0D24823CA80086DD02 /* Encoding */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		9520BD0924823BDC0086DD02 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9508C23F23EFDF1B0050017F /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9520BD0A24823BE10086DD02 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9508C24623EFDF1F0050017F /* LaunchScreen.storyboard */,
+				9508C24123EFDF1B0050017F /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9520BD0B24823BE50086DD02 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9520BD0C24823C340086DD02 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				9508C23B23EFDF1A0050017F /* AppDelegate.swift */,
+				9508C23D23EFDF1B0050017F /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		9520BD0D24823CA80086DD02 /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Encoding;
+			sourceTree = "<group>";
+		};
+		9520BD0E24823CB50086DD02 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				9520BD1324823DFE0086DD02 /* HttpMethod.swift */,
+				9520BD1D2482B9870086DD02 /* HttpHeaders.swift */,
+				9520BD1B2482B42C0086DD02 /* HttpHeaderKey.swift */,
+				9520BD1924823ECE0086DD02 /* HttpHeaderValue.swift */,
+				9520BD1724823E980086DD02 /* HttpParameters.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		9520BD0F24823CB80086DD02 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		9520BD1024823CBA0086DD02 /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EndPoint;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +346,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9520BD1E2482B9870086DD02 /* HttpHeaders.swift in Sources */,
 				9508C24023EFDF1B0050017F /* ViewController.swift in Sources */,
+				9520BD1C2482B42C0086DD02 /* HttpHeaderKey.swift in Sources */,
 				9508C23C23EFDF1A0050017F /* AppDelegate.swift in Sources */,
+				9520BD1824823E980086DD02 /* HttpParameters.swift in Sources */,
+				9520BD1A24823ECE0086DD02 /* HttpHeaderValue.swift in Sources */,
+				9520BD1424823DFE0086DD02 /* HttpMethod.swift in Sources */,
 				9508C23E23EFDF1B0050017F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
