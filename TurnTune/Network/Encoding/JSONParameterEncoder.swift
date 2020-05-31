@@ -10,10 +10,7 @@ import Foundation
 
 public struct JSONParameterEncoder {
     static func encode(_ request: inout URLRequest, with parameters: HTTPParameters) throws {
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
-    }
-    
-    static func encoded(_ request: URLRequest, with parameters: HTTPParameters) throws -> Data {
-        return try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
     }
 }
