@@ -1,5 +1,5 @@
 //
-//  HttpParameters.swift
+//  HTTPParameters.swift
 //  TurnTune
 //
 //  Created by Louis Menacho on 5/30/20.
@@ -8,4 +8,4 @@
 
 import Foundation
 
-public typealias HttpParameters = [String: Any]
+public typealias HTTPParameters = [String: Any]

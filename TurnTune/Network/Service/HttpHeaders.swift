@@ -1,5 +1,5 @@
 //
-//  HttpHeaders.swift
+//  HTTPHeaders.swift
 //  TurnTune
 //
 //  Created by Louis Menacho on 5/30/20.
@@ -8,4 +8,4 @@
 
 import Foundation
 
-public typealias HttpHeaders = [HttpHeaderKey: HttpHeaderKey]
+public typealias HTTPHeaders = [String: String]
