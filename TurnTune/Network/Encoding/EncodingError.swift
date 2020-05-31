@@ -9,6 +9,6 @@
 import Foundation
 
 enum EncodingError: String, Error {
-    case missingUrl = "missing URL from request"
-    case invalidUrl = "invalid URL in request"
+    case missingURL = "missing URL from request"
+    case invalidURL = "invalid URL in request"
 }

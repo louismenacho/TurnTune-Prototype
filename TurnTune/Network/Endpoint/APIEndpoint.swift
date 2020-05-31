@@ -1,5 +1,5 @@
 //
-//  Endpoint.swift
+//  APIEndpoint.swift
 //  TurnTune
 //
 //  Created by Louis Menacho on 5/30/20.
@@ -8,12 +8,11 @@
 
 import Foundation
 
-protocol Endpoint {
-    var baseURL: String { get }
+protocol APIEndpoint {
+    var baseURL: URL? { get }
     var path: String { get }
     var method: HTTPMethod { get }
     var headers: HTTPHeaders? { get }
     var parameters: HTTPParameters? { get }
-    var headerField: HTTPHeaderField? { get }
-    var contentType: HTTPContentType? { get }
+    var contentType: HTTPHeaderValue? { get }
 }

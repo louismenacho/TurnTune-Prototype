@@ -1,5 +1,5 @@
 //
-//  HTTPContentType.swift
+//  HTTPHeaderValue.swift
 //  TurnTune
 //
 //  Created by Louis Menacho on 5/30/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum HTTPContentType: String {
+public enum HTTPHeaderValue: String {
     case json = "application/json"
     case xwwwformurlencoded = "application/x-www-form-urlencoded"
 }
