@@ -22,7 +22,6 @@
 		9520BD1E2482B9870086DD02 /* HTTPHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520BD1D2482B9870086DD02 /* HTTPHeaders.swift */; };
 		9572A17F2483594C009C7EE8 /* HTTPHeaderValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572A17E2483594C009C7EE8 /* HTTPHeaderValue.swift */; };
 		9572A18124835F1A009C7EE8 /* HTTPHeaderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572A18024835F1A009C7EE8 /* HTTPHeaderField.swift */; };
-		95C0086E2482E15000A8626A /* EncodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C0086D2482E15000A8626A /* EncodingError.swift */; };
 		95C008702482FAC800A8626A /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C0086F2482FAC800A8626A /* JSONParameterEncoder.swift */; };
 		95C008722482FDEA00A8626A /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C008712482FDEA00A8626A /* URLParameterEncoder.swift */; };
 		95C008742483047200A8626A /* QueryParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C008732483047200A8626A /* QueryParameterEncoder.swift */; };
@@ -69,7 +68,6 @@
 		9520BD1D2482B9870086DD02 /* HTTPHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaders.swift; sourceTree = "<group>"; };
 		9572A17E2483594C009C7EE8 /* HTTPHeaderValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderValue.swift; sourceTree = "<group>"; };
 		9572A18024835F1A009C7EE8 /* HTTPHeaderField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderField.swift; sourceTree = "<group>"; };
-		95C0086D2482E15000A8626A /* EncodingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodingError.swift; sourceTree = "<group>"; };
 		95C0086F2482FAC800A8626A /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
 		95C008712482FDEA00A8626A /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
 		95C008732483047200A8626A /* QueryParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryParameterEncoder.swift; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 				95C0086F2482FAC800A8626A /* JSONParameterEncoder.swift */,
 				95C008712482FDEA00A8626A /* URLParameterEncoder.swift */,
 				95C008732483047200A8626A /* QueryParameterEncoder.swift */,
-				95C0086D2482E15000A8626A /* EncodingError.swift */,
 			);
 			path = Encoding;
 			sourceTree = "<group>";
@@ -383,7 +380,6 @@
 				9520BD1424823DFE0086DD02 /* HTTPMethod.swift in Sources */,
 				9572A17F2483594C009C7EE8 /* HTTPHeaderValue.swift in Sources */,
 				95C008742483047200A8626A /* QueryParameterEncoder.swift in Sources */,
-				95C0086E2482E15000A8626A /* EncodingError.swift in Sources */,
 				9506EF6A2483491D009CDE78 /* APIEndpoint.swift in Sources */,
 				9508C23E23EFDF1B0050017F /* SceneDelegate.swift in Sources */,
 			);

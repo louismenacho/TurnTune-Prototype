@@ -10,14 +10,43 @@ import Foundation
 
 class HTTPRouter<Endpoint: APIEndpoint> {
     
-    func request(endpoint: Endpoint, completion: @escaping (Result<Codable,Error>) -> Void) {
-        
+    func request(endpoint: Endpoint, completion: @escaping (Result<Data, Error>) -> Void) {
+        do {
+            let request = try buildRequest(from: endpoint)
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                
+                guard let data = data else {
+                    completion(.failure(HTTPError.noData))
+                    return
+                }
+                
+                guard let response = response else {
+                    completion(.failure(HTTPError.noResponse))
+                    return
+                }
+                
+                guard 200...299 ~= (response as! HTTPURLResponse).statusCode  else {
+                    completion(.failure(HTTPError.responseError))
+                    return
+                }
+                
+                completion(.success(data))
+            }
+            .resume()
+        } catch {
+            completion(.failure(error))
+        }
     }
     
-    private func buildRequest(from endpoint: Endpoint) throws -> URLRequest {
+    func buildRequest(from endpoint: Endpoint) throws -> URLRequest {
         guard let requestURL = endpoint.baseURL?.appendingPathComponent(endpoint.path) else {
             throw HTTPError.invalidURL
         }
+        
         var request = URLRequest(url: requestURL)
         request.httpMethod = endpoint.method.rawValue
         request.allHTTPHeaderFields = endpoint.headers
@@ -32,6 +61,7 @@ class HTTPRouter<Endpoint: APIEndpoint> {
                 return URLParameterEncoder.encoded(request, with: endpoint.parameters!)
             }
         }()
+        
         return request
     }
 }

@@ -8,6 +8,10 @@
 
 import Foundation
 
-enum HTTPError: Error {
-    case invalidURL
+enum HTTPError: String, Error {
+    case missingURL = "Missing URL in request"
+    case invalidURL = "Invalid URL in request"
+    case noResponse = "No response"
+    case noData = "No data"
+    case responseError = "Response error"
 }
