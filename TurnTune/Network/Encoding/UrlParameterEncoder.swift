@@ -9,19 +9,29 @@
 import Foundation
 
 public struct URLParameterEncoder {
-    static func encode(_ request: inout URLRequest, with parameters: HTTPParameters) {
-        var components = URLComponents()
-        components.queryItems = parameters.map({
-            URLQueryItem(name: $0.key, value: "\($0.value)")
-        })
-        request.httpBody = components.query?.data(using: .utf8)
+    static func encode(_ request: inout URLRequest, with parameters: HTTPParameters) throws {
+        guard let data: Data = {
+            var components = URLComponents()
+            components.queryItems = parameters.map({
+                URLQueryItem(name: $0.key, value: "\($0.value)")
+            })
+            return components.query?.data(using: .utf8)
+        }() else {
+            throw EncoderError.invalidURLParameters
+        }
+        request.httpBody = data
     }
     
-    static func encoded(_ request: URLRequest, with parameters: HTTPParameters) -> Data? {
-        var components = URLComponents()
-        components.queryItems = parameters.map({
-            URLQueryItem(name: $0.key, value: "\($0.value)")
-        })
-        return components.query?.data(using: .utf8)
+    static func encoded(_ request: URLRequest, with parameters: HTTPParameters) throws -> Data {
+        guard let data: Data = {
+            var components = URLComponents()
+            components.queryItems = parameters.map({
+                URLQueryItem(name: $0.key, value: "\($0.value)")
+            })
+            return components.query?.data(using: .utf8)
+        }() else {
+            throw EncoderError.invalidURLParameters
+        }
+        return data
     }
 }

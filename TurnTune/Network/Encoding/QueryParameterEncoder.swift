@@ -10,28 +10,34 @@ import Foundation
 
 public struct QueryParameterEncoder {
     static func encode(_ request: inout URLRequest, with parameters: HTTPParameters) throws {
-        guard let requestUrl = request.url else {
-            throw HTTPError.missingURL
+        guard let url: URL = {
+            guard let requestUrl = request.url else {
+                return nil
+            }
+            var components = URLComponents(url: requestUrl, resolvingAgainstBaseURL: false)
+            components?.queryItems = parameters.map({
+                URLQueryItem(name: $0.key, value: "\($0.value)")
+            })
+            return components?.url
+        }() else {
+            throw EncoderError.invalidQueryParameters
         }
-        guard var components = URLComponents(url: requestUrl, resolvingAgainstBaseURL: false) else {
-            throw HTTPError.invalidURL
-        }
-        components.queryItems = parameters.map({
-            URLQueryItem(name: $0.key, value: "\($0.value)")
-        })
-        request.url = components.url
+        request.url = url
     }
     
-    static func encoded(_ request: URLRequest, with parameters: HTTPParameters) throws -> URL? {
-        guard let requestUrl = request.url else {
-            throw HTTPError.missingURL
+    static func encoded(_ request: URLRequest, with parameters: HTTPParameters) throws -> URL {
+        guard let url: URL = {
+            guard let requestUrl = request.url else {
+                return nil
+            }
+            var components = URLComponents(url: requestUrl, resolvingAgainstBaseURL: false)
+            components?.queryItems = parameters.map({
+                URLQueryItem(name: $0.key, value: "\($0.value)")
+            })
+            return components?.url
+        }() else {
+            throw EncoderError.invalidQueryParameters
         }
-        guard var components = URLComponents(url: requestUrl, resolvingAgainstBaseURL: false) else {
-            throw HTTPError.invalidURL
-        }
-        components.queryItems = parameters.map({
-            URLQueryItem(name: $0.key, value: "\($0.value)")
-        })
-        return components.url
+        return url
     }
 }

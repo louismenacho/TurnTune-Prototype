@@ -46,22 +46,20 @@ class HTTPRouter<Endpoint: APIEndpoint> {
         guard let requestURL = endpoint.baseURL?.appendingPathComponent(endpoint.path) else {
             throw HTTPError.invalidURL
         }
-        
         var request = URLRequest(url: requestURL)
         request.httpMethod = endpoint.method.rawValue
         request.allHTTPHeaderFields = endpoint.headers
-        request.httpBody = try {
+
+        if let parameters = endpoint.parameters {
             switch endpoint.contentType {
-            case .none:
-                request.url = try QueryParameterEncoder.encoded(request, with: endpoint.parameters!)
-                return nil
             case .json:
-                return try JSONParameterEncoder.encoded(request, with: endpoint.parameters!)
+                try JSONParameterEncoder.encode(&request, with: parameters)
             case .xwwwformurlencoded:
-                return URLParameterEncoder.encoded(request, with: endpoint.parameters!)
+                try URLParameterEncoder.encode(&request, with: parameters)
+            case .none:
+                try QueryParameterEncoder.encode(&request, with: parameters)
             }
-        }()
-        
+        }
         return request
     }
 }

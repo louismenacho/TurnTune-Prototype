@@ -8,10 +8,24 @@
 
 import Foundation
 
-enum HTTPError: String, Error {
-    case missingURL = "Missing URL in request"
-    case invalidURL = "Invalid URL in request"
-    case noResponse = "No response"
-    case noData = "No data"
-    case responseError = "Response error"
+enum HTTPError: Error {
+    case invalidURL
+    case noResponse
+    case noData
+    case responseError
+}
+
+extension HTTPError: LocalizedError {
+    var localizedDescription: String {
+        switch self {
+        case .invalidURL:
+            return "Invalid URL in request"
+        case .noResponse:
+            return "No response"
+        case .noData:
+            return "No data"
+        case .responseError:
+            return "Response error"
+        }
+    }
 }
