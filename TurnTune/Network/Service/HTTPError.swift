@@ -8,11 +8,11 @@
 
 import Foundation
 
-enum HTTPError: Error {
+public enum HTTPError: Error {
     case invalidURL
     case noResponse
     case noData
-    case responseError
+    case failedRequest(_ response: HTTPResponse)
 }
 
 extension HTTPError: LocalizedError {
@@ -24,8 +24,20 @@ extension HTTPError: LocalizedError {
             return "No response"
         case .noData:
             return "No data"
-        case .responseError:
-            return "Response error"
+        case .failedRequest(let response):
+            return "\(response.details.statusCode)"+"\(HTTPURLResponse.localizedString(forStatusCode: response.details.statusCode))" +
+            "\((try? JSONSerialization.jsonObject(with: response.data, options: [])) ?? "")"
+        }
+    }
+}
+
+extension HTTPError {
+    var response: HTTPResponse? {
+        switch self {
+        case .failedRequest(let response):
+            return response
+        default:
+            return nil
         }
     }
 }

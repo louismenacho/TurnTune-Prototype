@@ -21,8 +21,10 @@
 		9520BD1424823DFE0086DD02 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520BD1324823DFE0086DD02 /* HTTPMethod.swift */; };
 		9520BD1824823E980086DD02 /* HTTPParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520BD1724823E980086DD02 /* HTTPParameters.swift */; };
 		9520BD1E2482B9870086DD02 /* HTTPHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520BD1D2482B9870086DD02 /* HTTPHeaders.swift */; };
+		954E9AC72488BE21000AA66E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9AC62488BE21000AA66E /* NetworkManager.swift */; };
 		9572A17F2483594C009C7EE8 /* HTTPHeaderValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572A17E2483594C009C7EE8 /* HTTPHeaderValue.swift */; };
 		9572A18124835F1A009C7EE8 /* HTTPHeaderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572A18024835F1A009C7EE8 /* HTTPHeaderField.swift */; };
+		95AEC939248C052200105F73 /* HTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AEC938248C052200105F73 /* HTTPResponse.swift */; };
 		95C008702482FAC800A8626A /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C0086F2482FAC800A8626A /* JSONParameterEncoder.swift */; };
 		95C008722482FDEA00A8626A /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C008712482FDEA00A8626A /* URLParameterEncoder.swift */; };
 		95C008742483047200A8626A /* QueryParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C008732483047200A8626A /* QueryParameterEncoder.swift */; };
@@ -68,8 +70,10 @@
 		9520BD1324823DFE0086DD02 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		9520BD1724823E980086DD02 /* HTTPParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPParameters.swift; sourceTree = "<group>"; };
 		9520BD1D2482B9870086DD02 /* HTTPHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaders.swift; sourceTree = "<group>"; };
+		954E9AC62488BE21000AA66E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9572A17E2483594C009C7EE8 /* HTTPHeaderValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderValue.swift; sourceTree = "<group>"; };
 		9572A18024835F1A009C7EE8 /* HTTPHeaderField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderField.swift; sourceTree = "<group>"; };
+		95AEC938248C052200105F73 /* HTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponse.swift; sourceTree = "<group>"; };
 		95C0086F2482FAC800A8626A /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
 		95C008712482FDEA00A8626A /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
 		95C008732483047200A8626A /* QueryParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryParameterEncoder.swift; sourceTree = "<group>"; };
@@ -158,7 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				9520BD1024823CBA0086DD02 /* Endpoint */,
-				9520BD0F24823CB80086DD02 /* Manager */,
+				954E9AC52488BDFF000AA66E /* Manager */,
 				9520BD0E24823CB50086DD02 /* Service */,
 				9520BD0D24823CA80086DD02 /* Encoding */,
 			);
@@ -213,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				95F529F324838B8B00263F02 /* HTTPRouter.swift */,
+				95AEC938248C052200105F73 /* HTTPResponse.swift */,
 				9520BD1324823DFE0086DD02 /* HTTPMethod.swift */,
 				9520BD1D2482B9870086DD02 /* HTTPHeaders.swift */,
 				9520BD1724823E980086DD02 /* HTTPParameters.swift */,
@@ -223,13 +228,6 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		9520BD0F24823CB80086DD02 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
 		9520BD1024823CBA0086DD02 /* Endpoint */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +235,14 @@
 				9506EF6B24834E53009CDE78 /* SpotifyAccountsService.swift */,
 			);
 			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		954E9AC52488BDFF000AA66E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				954E9AC62488BE21000AA66E /* NetworkManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,10 +382,12 @@
 				9506EF6C24834E53009CDE78 /* SpotifyAccountsService.swift in Sources */,
 				95F529F6248402EE00263F02 /* HTTPError.swift in Sources */,
 				9508C24023EFDF1B0050017F /* ViewController.swift in Sources */,
+				95AEC939248C052200105F73 /* HTTPResponse.swift in Sources */,
 				95C008702482FAC800A8626A /* JSONParameterEncoder.swift in Sources */,
 				951701FD24875ED3002EEE35 /* EncoderError.swift in Sources */,
 				9508C23C23EFDF1A0050017F /* AppDelegate.swift in Sources */,
 				9520BD1824823E980086DD02 /* HTTPParameters.swift in Sources */,
+				954E9AC72488BE21000AA66E /* NetworkManager.swift in Sources */,
 				9572A18124835F1A009C7EE8 /* HTTPHeaderField.swift in Sources */,
 				9520BD1424823DFE0086DD02 /* HTTPMethod.swift in Sources */,
 				9572A17F2483594C009C7EE8 /* HTTPHeaderValue.swift in Sources */,

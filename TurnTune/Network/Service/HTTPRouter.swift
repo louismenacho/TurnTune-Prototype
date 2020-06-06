@@ -10,7 +10,7 @@ import Foundation
 
 class HTTPRouter<Endpoint: APIEndpoint> {
     
-    func request(endpoint: Endpoint, completion: @escaping (Result<Data, Error>) -> Void) {
+    func request(_ endpoint: Endpoint, completion: @escaping (Result<HTTPResponse, Error>) -> Void) {
         do {
             let request = try buildRequest(from: endpoint)
             URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -24,17 +24,17 @@ class HTTPRouter<Endpoint: APIEndpoint> {
                     return
                 }
                 
-                guard let response = response else {
+                guard let response = response as? HTTPURLResponse else {
                     completion(.failure(HTTPError.noResponse))
                     return
                 }
                 
-                guard 200...299 ~= (response as! HTTPURLResponse).statusCode  else {
-                    completion(.failure(HTTPError.responseError))
+                guard 200...299 ~= response.statusCode else {
+                    completion(.failure(HTTPError.failedRequest((data, response))))
                     return
                 }
                 
-                completion(.success(data))
+                completion(.success((data, response)))
             }
             .resume()
         } catch {

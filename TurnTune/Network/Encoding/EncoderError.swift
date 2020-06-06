@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum EncoderError: Error {
+public enum EncoderError: Error {
     case invalidJSONParameters(description: String)
     case invalidURLParameters
     case invalidQueryParameters
