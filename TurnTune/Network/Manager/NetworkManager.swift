@@ -12,28 +12,29 @@ class NetworkManager<Endpoint: APIEndpoint> {
    
     private var router = HTTPRouter<Endpoint>()
     
-    func request(_ endpoint: Endpoint, completion: @escaping (Data) -> Void) {
+    func urlRequest(for endpoint: Endpoint) -> URLRequest? {
+        return try? router.buildRequest(from: endpoint)
+    }
+    
+    func request(_ endpoint: Endpoint, completion: @escaping ([String: Any]?) -> Void) {
         router.request(endpoint) { result in
+            print(endpoint)
             switch result {
             case.failure(let error):
                 self.handleError(error)
-            case.success(let (data, response)):
-                self.handleData(data)
-                self.handleResponse(response)
-                completion(data)
+            case.success(let response):
+                self.handleHTTPResponse(response)
+                completion(try? JSONSerialization.jsonObject(with: response.data, options: []) as? [String: Any])
             }
         }
     }
     
-    func handleData(_ data: Data) {
-        print((try? JSONSerialization.jsonObject(with: data, options: [])) ?? "")
+    private func handleHTTPResponse(_ response: HTTPResponse) {
+        print("\(response.details.statusCode) \(HTTPURLResponse.localizedString(forStatusCode: response.details.statusCode))")
+        print((try? JSONSerialization.jsonObject(with: response.data, options: [])) ?? "")
     }
-    
-    func handleResponse( _ response: HTTPURLResponse) {
-        print("\(response.statusCode) \(HTTPURLResponse.localizedString(forStatusCode: response.statusCode))")
-    }
-    
-    func handleError(_ error: Error) {
+     
+    private func handleError(_ error: Error) {
         switch error {
         case is HTTPError:
             print((error as! HTTPError).localizedDescription)
