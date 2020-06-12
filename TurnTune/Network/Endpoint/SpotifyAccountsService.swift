@@ -15,7 +15,7 @@ enum SpotifyAccountsService {
 extension SpotifyAccountsService: APIEndpoint {
    
     var baseURL: URL? {
-        return URL(string: "https://accounts.spotify.com")
+        URL(string: "https://accounts.spotify.com")
     }
     
     var path: String {
