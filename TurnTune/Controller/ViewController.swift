@@ -12,14 +12,14 @@ import WebKit
 class ViewController: UIViewController {
     
     let webView = WKWebView()
-    let networkManager = NetworkManager<SpotifyAccountsService>()
+    let spotifyAccountsService = NetworkManager<SpotifyAccountsService>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(webView)
         webView.frame = view.frame
         webView.navigationDelegate = self
-        webView.load(networkManager.urlRequest(for: .authorize("client_id", "redirect_uri"))!)
+        webView.load(spotifyAccountsService.urlRequest(for: .authorize("client_id", "redirect_uri"))!)
     }
 }
 

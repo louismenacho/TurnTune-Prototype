@@ -13,7 +13,7 @@ public struct URLParameterEncoder {
         guard let data: Data = {
             var components = URLComponents()
             components.queryItems = parameters.map({
-                URLQueryItem(name: $0.key, value: "\($0.value)")
+                URLQueryItem(name: $0.key, value: "\($0.value)".addingPercentEncoding(withAllowedCharacters: .alphanumerics))
             })
             return components.query?.data(using: .utf8)
         }() else {

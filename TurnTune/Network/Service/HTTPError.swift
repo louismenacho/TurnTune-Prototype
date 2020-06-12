@@ -25,7 +25,7 @@ extension HTTPError: LocalizedError {
         case .noData:
             return "No data"
         case .failedRequest(let response):
-            return "\(response.details.statusCode)"+"\(HTTPURLResponse.localizedString(forStatusCode: response.details.statusCode))" +
+            return "\(response.details.statusCode) "+"\(HTTPURLResponse.localizedString(forStatusCode: response.details.statusCode))\n" +
             "\((try? JSONSerialization.jsonObject(with: response.data, options: [])) ?? "")"
         }
     }

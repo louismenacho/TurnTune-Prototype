@@ -18,7 +18,7 @@ class NetworkManager<Endpoint: APIEndpoint> {
     
     func request(_ endpoint: Endpoint, completion: @escaping ([String: Any]?) -> Void) {
         router.request(endpoint) { result in
-            print(endpoint)
+            print("REQUEST: \(endpoint)")
             switch result {
             case.failure(let error):
                 self.handleError(error)
