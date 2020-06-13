@@ -10,6 +10,8 @@ import Foundation
 
 class HTTPRouter<Endpoint: APIEndpoint> {
     
+    var accessToken: String?
+    
     func request(_ endpoint: Endpoint, completion: @escaping (Result<HTTPResponse, Error>) -> Void) {
         do {
             let request = try buildRequest(from: endpoint)
@@ -49,7 +51,10 @@ class HTTPRouter<Endpoint: APIEndpoint> {
         var request = URLRequest(url: requestURL)
         request.httpMethod = endpoint.method.rawValue
         request.allHTTPHeaderFields = endpoint.headers
-
+        if let accessToken = accessToken {
+            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        }
+        
         if let parameters = endpoint.parameters {
             switch endpoint.contentType {
             case .json:

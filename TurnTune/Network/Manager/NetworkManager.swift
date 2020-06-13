@@ -12,6 +12,10 @@ class NetworkManager<Endpoint: APIEndpoint> {
    
     private var router = HTTPRouter<Endpoint>()
     
+    func setAccessToken(token: String) {
+        router.accessToken = token
+    }
+    
     func urlRequest(for endpoint: Endpoint) -> URLRequest? {
         return try? router.buildRequest(from: endpoint)
     }
@@ -30,7 +34,7 @@ class NetworkManager<Endpoint: APIEndpoint> {
     }
     
     private func handleHTTPResponse(_ response: HTTPResponse) {
-        print("\(response.details.statusCode) \(HTTPURLResponse.localizedString(forStatusCode: response.details.statusCode))")
+        print(response.details.statusCode, HTTPURLResponse.localizedString(forStatusCode: response.details.statusCode))
         print((try? JSONSerialization.jsonObject(with: response.data, options: [])) ?? "")
     }
      

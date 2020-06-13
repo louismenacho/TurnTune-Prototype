@@ -35,10 +35,6 @@ extension SpotifyAccountsService: APIEndpoint {
     var headers: HTTPHeaders? {
         var headers = [HTTPHeaderField: HTTPHeaderValue]()
         headers[.contentType] = contentType
-        switch self {
-        case .authorize:
-            break
-        }
         return Dictionary(uniqueKeysWithValues: headers.map({($0.key.rawValue, $0.value.rawValue)}))
     }
     

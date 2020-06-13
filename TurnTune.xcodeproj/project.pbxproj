@@ -22,6 +22,7 @@
 		9520BD1824823E980086DD02 /* HTTPParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520BD1724823E980086DD02 /* HTTPParameters.swift */; };
 		9520BD1E2482B9870086DD02 /* HTTPHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520BD1D2482B9870086DD02 /* HTTPHeaders.swift */; };
 		954E9AC72488BE21000AA66E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9AC62488BE21000AA66E /* NetworkManager.swift */; };
+		9566AB71249327C700CF3B3F /* SpotifyWebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9566AB70249327C700CF3B3F /* SpotifyWebAPI.swift */; };
 		9570FD6F24930FDA0045FF69 /* SpotifyTokenSwap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9570FD6E24930FDA0045FF69 /* SpotifyTokenSwap.swift */; };
 		9572A17F2483594C009C7EE8 /* HTTPHeaderValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572A17E2483594C009C7EE8 /* HTTPHeaderValue.swift */; };
 		9572A18124835F1A009C7EE8 /* HTTPHeaderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572A18024835F1A009C7EE8 /* HTTPHeaderField.swift */; };
@@ -72,6 +73,7 @@
 		9520BD1724823E980086DD02 /* HTTPParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPParameters.swift; sourceTree = "<group>"; };
 		9520BD1D2482B9870086DD02 /* HTTPHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaders.swift; sourceTree = "<group>"; };
 		954E9AC62488BE21000AA66E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		9566AB70249327C700CF3B3F /* SpotifyWebAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyWebAPI.swift; sourceTree = "<group>"; };
 		9570FD6E24930FDA0045FF69 /* SpotifyTokenSwap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyTokenSwap.swift; sourceTree = "<group>"; };
 		9572A17E2483594C009C7EE8 /* HTTPHeaderValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderValue.swift; sourceTree = "<group>"; };
 		9572A18024835F1A009C7EE8 /* HTTPHeaderField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderField.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				9506EF692483491D009CDE78 /* APIEndpoint.swift */,
 				9506EF6B24834E53009CDE78 /* SpotifyAccountsService.swift */,
 				9570FD6E24930FDA0045FF69 /* SpotifyTokenSwap.swift */,
+				9566AB70249327C700CF3B3F /* SpotifyWebAPI.swift */,
 			);
 			path = Endpoint;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				9520BD1E2482B9870086DD02 /* HTTPHeaders.swift in Sources */,
 				95F529F424838B8B00263F02 /* HTTPRouter.swift in Sources */,
 				9506EF6C24834E53009CDE78 /* SpotifyAccountsService.swift in Sources */,
+				9566AB71249327C700CF3B3F /* SpotifyWebAPI.swift in Sources */,
 				95F529F6248402EE00263F02 /* HTTPError.swift in Sources */,
 				9508C24023EFDF1B0050017F /* ViewController.swift in Sources */,
 				95AEC939248C052200105F73 /* HTTPResponse.swift in Sources */,
