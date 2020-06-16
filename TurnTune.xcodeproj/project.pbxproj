@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,7 @@
 		9570FD6F24930FDA0045FF69 /* SpotifyTokenSwap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9570FD6E24930FDA0045FF69 /* SpotifyTokenSwap.swift */; };
 		9572A17F2483594C009C7EE8 /* HTTPHeaderValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572A17E2483594C009C7EE8 /* HTTPHeaderValue.swift */; };
 		9572A18124835F1A009C7EE8 /* HTTPHeaderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572A18024835F1A009C7EE8 /* HTTPHeaderField.swift */; };
+		957470052495748E0094A171 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 957470042495748E0094A171 /* GoogleService-Info.plist */; };
 		95AEC939248C052200105F73 /* HTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AEC938248C052200105F73 /* HTTPResponse.swift */; };
 		95C008702482FAC800A8626A /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C0086F2482FAC800A8626A /* JSONParameterEncoder.swift */; };
 		95C008722482FDEA00A8626A /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C008712482FDEA00A8626A /* URLParameterEncoder.swift */; };
@@ -84,6 +85,7 @@
 		9570FD6E24930FDA0045FF69 /* SpotifyTokenSwap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyTokenSwap.swift; sourceTree = "<group>"; };
 		9572A17E2483594C009C7EE8 /* HTTPHeaderValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderValue.swift; sourceTree = "<group>"; };
 		9572A18024835F1A009C7EE8 /* HTTPHeaderField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderField.swift; sourceTree = "<group>"; };
+		957470042495748E0094A171 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		95AEC938248C052200105F73 /* HTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponse.swift; sourceTree = "<group>"; };
 		95C0086F2482FAC800A8626A /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
 		95C008712482FDEA00A8626A /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
@@ -135,7 +137,6 @@
 				9639C82515C53654C3C66D2B /* Pods-TurnTuneTests.debug.xcconfig */,
 				4266E3537D27DE2155028C76 /* Pods-TurnTuneTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -181,6 +182,7 @@
 				9520BD0824823BD90086DD02 /* Network */,
 				9508C24423EFDF1F0050017F /* Assets.xcassets */,
 				9508C24923EFDF1F0050017F /* Info.plist */,
+				957470042495748E0094A171 /* GoogleService-Info.plist */,
 			);
 			path = TurnTune;
 			sourceTree = "<group>";
@@ -402,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9508C24823EFDF1F0050017F /* LaunchScreen.storyboard in Resources */,
+				957470052495748E0094A171 /* GoogleService-Info.plist in Resources */,
 				9508C24523EFDF1F0050017F /* Assets.xcassets in Resources */,
 				9508C24323EFDF1B0050017F /* Main.storyboard in Resources */,
 			);
