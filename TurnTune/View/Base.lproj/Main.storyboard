@@ -15,8 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SvS-Z5-s4P">
-                                <rect key="frame" x="98" y="343" width="219" height="231.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SvS-Z5-s4P">
+                                <rect key="frame" x="97.5" y="332.5" width="219" height="231.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Vod-wg-pwB">
                                         <rect key="frame" x="0.0" y="0.0" width="219" height="170"/>
@@ -76,6 +76,10 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="SvS-Z5-s4P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9qZ-2b-ZH1"/>
+                            <constraint firstItem="SvS-Z5-s4P" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="yOd-6X-hHu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="gNG-37-Tbm"/>
@@ -102,10 +106,10 @@
             </objects>
             <point key="canvasLocation" x="259" y="138"/>
         </scene>
-        <!--View Controller-->
+        <!--Room Creator View Controller-->
         <scene sceneID="v3g-s1-JSH">
             <objects>
-                <viewController id="gka-gs-Jda" sceneMemberID="viewController">
+                <viewController id="gka-gs-Jda" customClass="RoomCreatorViewController" customModule="TurnTune" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BbM-Yo-wca">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -144,6 +148,9 @@
                         <viewLayoutGuide key="safeArea" id="RW3-Dm-GCA"/>
                     </view>
                     <navigationItem key="navigationItem" id="4Ej-kY-Irm"/>
+                    <connections>
+                        <outlet property="roomCodeLabel" destination="kpT-y9-ela" id="cNJ-4a-KZx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TUZ-vR-aX2" sceneMemberID="firstResponder"/>
             </objects>
@@ -219,6 +226,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NeN-I1-yTC"/>
+        <segue reference="88J-IZ-TsZ"/>
     </inferredMetricsTieBreakers>
 </document>

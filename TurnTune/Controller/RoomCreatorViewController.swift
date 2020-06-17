@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RoomCreatorViewController.swift
 //  TurnTune
 //
 //  Created by Louis Menacho on 2/9/20.
@@ -9,21 +9,23 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController {
+class RoomCreatorViewController: UIViewController {
     
-    let webView = WKWebView()
-    let spotifyAccountsService = NetworkManager<SpotifyAccountsService>()
-
+    var roomCreatorViewModel : RoomCreatorViewModel!
+    
+    @IBOutlet weak var roomCodeLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(webView)
+        let webView = WKWebView()
         webView.frame = view.frame
         webView.navigationDelegate = self
-        webView.load(spotifyAccountsService.urlRequest(for: .authorize("client_id", "redirect_uri"))!)
+        view.addSubview(webView)
+        webView.load(roomCreatorViewModel.serviceAuthorization())
     }
 }
 
-extension ViewController: WKNavigationDelegate {
+extension RoomCreatorViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         decisionHandler(.allow)
@@ -34,6 +36,7 @@ extension ViewController: WKNavigationDelegate {
         else {
             return
         }
+        roomCodeLabel.text = roomCreatorViewModel.roomCode
         print(authorizationCode)
         webView.removeFromSuperview()
     }
