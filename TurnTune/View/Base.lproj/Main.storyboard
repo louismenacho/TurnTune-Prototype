@@ -7,19 +7,37 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="95S-iv-caQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X8X-JT-0dI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uDU-6Q-q4h">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="eCi-Cc-Uha"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h2O-0Y-Mux" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="299" y="138"/>
+        </scene>
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="TurnTune" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SvS-Z5-s4P">
-                                <rect key="frame" x="97.5" y="332.5" width="219" height="231.5"/>
+                                <rect key="frame" x="97.5" y="329" width="219" height="238"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Vod-wg-pwB">
-                                        <rect key="frame" x="0.0" y="0.0" width="219" height="170"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="219" height="238"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ROOM CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9DL-OS-NHJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="219" height="34"/>
@@ -48,26 +66,21 @@
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <state key="normal" title="JOIN"/>
                                                 <connections>
-                                                    <segue destination="cvg-pz-5Om" kind="presentation" modalPresentationStyle="fullScreen" id="88J-IZ-TsZ"/>
+                                                    <action selector="joinButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ID7-fS-lKI"/>
                                                 </connections>
                                             </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R3U-FJ-Jcu">
-                                        <rect key="frame" x="0.0" y="178" width="219" height="53.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKW-6t-9Gk">
-                                                <rect key="frame" x="97.5" y="0.0" width="24.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XA5-6N-3B4">
+                                                <rect key="frame" x="0.0" y="170" width="219" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="731-kN-aNW">
-                                                <rect key="frame" x="85.5" y="20.5" width="48" height="33"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4r-5v-Rbp">
+                                                <rect key="frame" x="0.0" y="204" width="219" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <state key="normal" title="HOST"/>
                                                 <connections>
-                                                    <segue destination="gka-gs-Jda" kind="show" id="K7k-X7-ez9"/>
+                                                    <action selector="hostButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CGE-5J-MFP"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -83,28 +96,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="gNG-37-Tbm"/>
+                    <connections>
+                        <segue destination="gka-gs-Jda" kind="show" identifier="RoomCreatorViewController" id="3eZ-hL-6RH"/>
+                        <segue destination="cvg-pz-5Om" kind="presentation" identifier="PlaylistViewController" modalPresentationStyle="fullScreen" id="VEN-13-ZRS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="95S-iv-caQ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X8X-JT-0dI" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uDU-6Q-q4h">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="eCi-Cc-Uha"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h2O-0Y-Mux" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="259" y="138"/>
         </scene>
         <!--Room Creator View Controller-->
         <scene sceneID="v3g-s1-JSH">
@@ -133,9 +132,6 @@
                                         <rect key="frame" x="7.5" y="66" width="88" height="33"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <state key="normal" title="CONTINUE"/>
-                                        <connections>
-                                            <segue destination="cvg-pz-5Om" kind="presentation" modalPresentationStyle="fullScreen" id="NeN-I1-yTC"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -150,11 +146,12 @@
                     <navigationItem key="navigationItem" id="4Ej-kY-Irm"/>
                     <connections>
                         <outlet property="roomCodeLabel" destination="kpT-y9-ela" id="cNJ-4a-KZx"/>
+                        <segue destination="cvg-pz-5Om" kind="presentation" modalPresentationStyle="fullScreen" id="Vbj-aa-mEN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TUZ-vR-aX2" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1821.7391304347827" y="-219.64285714285714"/>
+            <point key="canvasLocation" x="1812" y="-590"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="wxK-pC-6hS">
@@ -222,10 +219,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q8V-eM-IMn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2593" y="138"/>
+            <point key="canvasLocation" x="2548" y="138"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="88J-IZ-TsZ"/>
+        <segue reference="VEN-13-ZRS"/>
     </inferredMetricsTieBreakers>
 </document>

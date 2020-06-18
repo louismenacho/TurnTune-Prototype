@@ -26,7 +26,7 @@ class RoomCreatorViewModel {
         switch service {
         case .spotify:
             let spotifyAccountsService = NetworkManager<SpotifyAccountsService>()
-            return spotifyAccountsService.urlRequest(for: .authorize("", ""))!
+            return spotifyAccountsService.urlRequest(for: .authorize("695de2c68a184c69aaebdf6b2ed02260", "TurnTune://spotify-login-callback"))!
         }
     }
     
