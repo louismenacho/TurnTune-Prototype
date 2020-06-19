@@ -98,7 +98,7 @@
                     <navigationItem key="navigationItem" id="gNG-37-Tbm"/>
                     <connections>
                         <segue destination="gka-gs-Jda" kind="show" identifier="RoomCreatorViewController" id="3eZ-hL-6RH"/>
-                        <segue destination="cvg-pz-5Om" kind="presentation" identifier="PlaylistViewController" modalPresentationStyle="fullScreen" id="VEN-13-ZRS"/>
+                        <segue destination="Kpo-wk-ueu" kind="presentation" identifier="PlayRoomViewController" modalPresentationStyle="fullScreen" id="VEN-13-ZRS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -129,9 +129,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKd-33-Inb">
-                                        <rect key="frame" x="7.5" y="66" width="88" height="33"/>
+                                        <rect key="frame" x="19" y="66" width="65" height="33"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <state key="normal" title="CONTINUE"/>
+                                        <state key="normal" title="CREATE"/>
+                                        <connections>
+                                            <action selector="createButtonPressed:" destination="gka-gs-Jda" eventType="touchUpInside" id="fXg-Sm-r3E"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -146,34 +149,52 @@
                     <navigationItem key="navigationItem" id="4Ej-kY-Irm"/>
                     <connections>
                         <outlet property="roomCodeLabel" destination="kpT-y9-ela" id="cNJ-4a-KZx"/>
-                        <segue destination="cvg-pz-5Om" kind="presentation" modalPresentationStyle="fullScreen" id="Vbj-aa-mEN"/>
+                        <segue destination="Kpo-wk-ueu" kind="presentation" identifier="PlaylistViewController" modalPresentationStyle="fullScreen" id="Vbj-aa-mEN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TUZ-vR-aX2" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1812" y="-590"/>
         </scene>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="ahI-4X-kHO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kpo-wk-ueu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XR0-8L-Ycf">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cvg-pz-5Om" kind="relationship" relationship="rootViewController" id="uJZ-wy-QN3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FUW-pV-eLX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2547.826086956522" y="137.94642857142856"/>
+        </scene>
+        <!--Play Room View Controller-->
         <scene sceneID="wxK-pC-6hS">
             <objects>
-                <viewController id="cvg-pz-5Om" sceneMemberID="viewController">
+                <viewController id="cvg-pz-5Om" customClass="PlayRoomViewController" customModule="TurnTune" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rsv-dw-O3e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uQM-82-5WZ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" separatorInsetReference="fromAutomaticInsets" rowHeight="42" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uQM-82-5WZ">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="TPQ-vp-gv0">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="41.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TrackTableViewCell" id="TPQ-vp-gv0">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="42"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TPQ-vp-gv0" id="Jwf-pA-VLJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="41.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nnn-nq-UEb">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="41.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="42"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="7d1-ij-Ecw">
                                                             <rect key="frame" x="0.0" y="0.5" width="374" height="41"/>
@@ -203,6 +224,38 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MemberTableViewCell" id="0xx-Pf-qR2">
+                                        <rect key="frame" x="0.0" y="70" width="414" height="42"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0xx-Pf-qR2" id="ftJ-t9-SvO">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Dg2-L0-AcN">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="42"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="IJe-7q-t1w">
+                                                            <rect key="frame" x="0.0" y="11" width="374" height="20.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HF3-G9-BOP">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="117.5" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Dg2-L0-AcN" secondAttribute="bottom" id="SGB-kc-Ats"/>
+                                                <constraint firstAttribute="trailing" secondItem="Dg2-L0-AcN" secondAttribute="trailing" constant="20" id="YIz-93-liK"/>
+                                                <constraint firstItem="Dg2-L0-AcN" firstAttribute="top" secondItem="ftJ-t9-SvO" secondAttribute="top" id="hEP-aT-Y1o"/>
+                                                <constraint firstItem="Dg2-L0-AcN" firstAttribute="leading" secondItem="ftJ-t9-SvO" secondAttribute="leading" constant="20" id="oCr-qs-WOw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
@@ -216,10 +269,13 @@
                         <viewLayoutGuide key="safeArea" id="dNT-yt-0Y9"/>
                     </view>
                     <navigationItem key="navigationItem" id="Gxu-WE-Q6z"/>
+                    <connections>
+                        <outlet property="tableView" destination="uQM-82-5WZ" id="rZO-I9-hoU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q8V-eM-IMn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2548" y="138"/>
+            <point key="canvasLocation" x="3457.971014492754" y="137.94642857142856"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

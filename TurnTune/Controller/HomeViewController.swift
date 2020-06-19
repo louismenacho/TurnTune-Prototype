@@ -30,7 +30,7 @@ class HomeViewController: UIViewController {
                 print(error)
                 return
             }
-            self.performSegue(withIdentifier: "PlaylistViewController", sender: self)
+            self.performSegue(withIdentifier: "PlayRoomViewController", sender: self)
         }
     }
     

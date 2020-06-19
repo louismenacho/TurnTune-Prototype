@@ -23,6 +23,10 @@ class RoomCreatorViewController: UIViewController {
         view.addSubview(webView)
         webView.load(roomCreatorViewModel.serviceAuthorization())
     }
+    
+    @IBAction func createButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "PlayRoomViewController", sender: self)
+    }
 }
 
 extension RoomCreatorViewController: WKNavigationDelegate {
