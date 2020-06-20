@@ -9,6 +9,8 @@
 import UIKit
 
 class PlayRoomViewController: UIViewController {
+    
+    var playRoomViewModel: PlayRoomViewModel!
 
     @IBOutlet weak var tableView: UITableView!
     

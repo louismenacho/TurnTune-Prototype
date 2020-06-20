@@ -14,12 +14,8 @@ enum ServiceType {
 }
 
 class RoomCreator {
-    
-    let host: User
-    var service: ServiceType = .spotify
     var roomCode: String = ""
-    
-    init(with host: User) {
-        self.host = host
-    }
+    var service: ServiceType = .spotify
+    var accessToken: String?
+    var refreshToken: String?
 }

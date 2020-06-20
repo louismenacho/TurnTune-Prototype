@@ -13,13 +13,21 @@ class RoomCreatorViewModel {
     
     private let roomCreator: RoomCreator
     
-    var host: User { roomCreator.host }
     var service: ServiceType { roomCreator.service }
     var roomCode: String { roomCreator.roomCode }
  
     init(with roomCreator: RoomCreator) {
         self.roomCreator = roomCreator
-        generateRoomCode()
+    }
+    
+    func generateRoomCode() -> String {
+        var code = ""
+        repeat {
+            let letter = Character(UnicodeScalar(Int.random(in: 65...90))!)
+            code = "\(code)\(letter)"
+        } while code.count < 4
+        roomCreator.roomCode = code
+        return code
     }
     
     func serviceAuthorization() -> URLRequest {
@@ -30,13 +38,14 @@ class RoomCreatorViewModel {
         }
     }
     
-    func generateRoomCode() {
-        var code = ""
-        repeat {
-            let randomNumber = Int.random(in: 65...90)
-            let letter = Character(UnicodeScalar(randomNumber)!)
-            code = "\(code)\(letter)"
-        } while code.count < 4
-        roomCreator.roomCode = code
+    func generateToken(with authorizationCode: String? = nil) {
+        switch service {
+        case .spotify:
+            let spotifyTokenSwap = NetworkManager<SpotifyTokenSwap>()
+            spotifyTokenSwap.request(.token(authorizationCode!)) { token in
+                self.roomCreator.accessToken = token?["access_token"] as? String
+                self.roomCreator.refreshToken = token?["refresh_token"] as? String
+            }
+        }
     }
 }

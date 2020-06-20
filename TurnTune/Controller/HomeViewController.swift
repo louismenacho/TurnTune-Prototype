@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RoomCreatorViewController" {
-            let roomCreator = RoomCreator(with: Auth.auth().currentUser!)
+            let roomCreator = RoomCreator()
             let roomCreatorViewModel = RoomCreatorViewModel(with: roomCreator)
             let roomCreatorViewController = segue.destination as! RoomCreatorViewController
             roomCreatorViewController.roomCreatorViewModel = roomCreatorViewModel

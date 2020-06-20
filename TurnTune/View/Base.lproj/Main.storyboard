@@ -149,7 +149,7 @@
                     <navigationItem key="navigationItem" id="4Ej-kY-Irm"/>
                     <connections>
                         <outlet property="roomCodeLabel" destination="kpT-y9-ela" id="cNJ-4a-KZx"/>
-                        <segue destination="Kpo-wk-ueu" kind="presentation" identifier="PlaylistViewController" modalPresentationStyle="fullScreen" id="Vbj-aa-mEN"/>
+                        <segue destination="Kpo-wk-ueu" kind="presentation" identifier="PlayRoomViewController" modalPresentationStyle="fullScreen" id="Vbj-aa-mEN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TUZ-vR-aX2" sceneMemberID="firstResponder"/>
@@ -279,6 +279,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VEN-13-ZRS"/>
+        <segue reference="Vbj-aa-mEN"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -28,6 +28,8 @@
 		955FC1502498917F00C52854 /* RoomCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955FC14F2498917F00C52854 /* RoomCreator.swift */; };
 		955FC15224989C2200C52854 /* RoomCreatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955FC15124989C2200C52854 /* RoomCreatorViewModel.swift */; };
 		9566AB71249327C700CF3B3F /* SpotifyWebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9566AB70249327C700CF3B3F /* SpotifyWebAPI.swift */; };
+		956E6DB3249C539800664518 /* PlayRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956E6DB2249C539800664518 /* PlayRoom.swift */; };
+		956E6DB5249C651A00664518 /* PlayRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956E6DB4249C651900664518 /* PlayRoomViewModel.swift */; };
 		9570FD6F24930FDA0045FF69 /* SpotifyTokenSwap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9570FD6E24930FDA0045FF69 /* SpotifyTokenSwap.swift */; };
 		9572A17F2483594C009C7EE8 /* HTTPHeaderValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572A17E2483594C009C7EE8 /* HTTPHeaderValue.swift */; };
 		9572A18124835F1A009C7EE8 /* HTTPHeaderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572A18024835F1A009C7EE8 /* HTTPHeaderField.swift */; };
@@ -90,6 +92,8 @@
 		955FC14F2498917F00C52854 /* RoomCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCreator.swift; sourceTree = "<group>"; };
 		955FC15124989C2200C52854 /* RoomCreatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCreatorViewModel.swift; sourceTree = "<group>"; };
 		9566AB70249327C700CF3B3F /* SpotifyWebAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyWebAPI.swift; sourceTree = "<group>"; };
+		956E6DB2249C539800664518 /* PlayRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayRoom.swift; sourceTree = "<group>"; };
+		956E6DB4249C651900664518 /* PlayRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayRoomViewModel.swift; sourceTree = "<group>"; };
 		9570FD6E24930FDA0045FF69 /* SpotifyTokenSwap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyTokenSwap.swift; sourceTree = "<group>"; };
 		9572A17E2483594C009C7EE8 /* HTTPHeaderValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderValue.swift; sourceTree = "<group>"; };
 		9572A18024835F1A009C7EE8 /* HTTPHeaderField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderField.swift; sourceTree = "<group>"; };
@@ -248,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				955FC14F2498917F00C52854 /* RoomCreator.swift */,
+				956E6DB2249C539800664518 /* PlayRoom.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				955FC15124989C2200C52854 /* RoomCreatorViewModel.swift */,
+				956E6DB4249C651900664518 /* PlayRoomViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -564,12 +570,14 @@
 				9508C24023EFDF1B0050017F /* RoomCreatorViewController.swift in Sources */,
 				95464574249B2E88003FCB5F /* PlayRoomViewController.swift in Sources */,
 				95AEC939248C052200105F73 /* HTTPResponse.swift in Sources */,
+				956E6DB3249C539800664518 /* PlayRoom.swift in Sources */,
 				95C008702482FAC800A8626A /* JSONParameterEncoder.swift in Sources */,
 				9570FD6F24930FDA0045FF69 /* SpotifyTokenSwap.swift in Sources */,
 				955FC1502498917F00C52854 /* RoomCreator.swift in Sources */,
 				951701FD24875ED3002EEE35 /* EncoderError.swift in Sources */,
 				955FC15224989C2200C52854 /* RoomCreatorViewModel.swift in Sources */,
 				9508C23C23EFDF1A0050017F /* AppDelegate.swift in Sources */,
+				956E6DB5249C651A00664518 /* PlayRoomViewModel.swift in Sources */,
 				9520BD1824823E980086DD02 /* HTTPParameters.swift in Sources */,
 				954E9AC72488BE21000AA66E /* NetworkManager.swift in Sources */,
 				9572A18124835F1A009C7EE8 /* HTTPHeaderField.swift in Sources */,

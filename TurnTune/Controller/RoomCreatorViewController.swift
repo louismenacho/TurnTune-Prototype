@@ -24,6 +24,16 @@ class RoomCreatorViewController: UIViewController {
         webView.load(roomCreatorViewModel.serviceAuthorization())
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PlayRoomViewController" {
+            let playRoom = PlayRoom(with: roomCreatorViewModel.roomCode)
+            let playRoomViewModel = PlayRoomViewModel(with: playRoom)
+            let navigationController = segue.destination as! UINavigationController
+            let playRoomViewController = navigationController.viewControllers[0] as! PlayRoomViewController
+            playRoomViewController.playRoomViewModel = playRoomViewModel
+        }
+    }
+    
     @IBAction func createButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "PlayRoomViewController", sender: self)
     }
@@ -32,16 +42,12 @@ class RoomCreatorViewController: UIViewController {
 extension RoomCreatorViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        decisionHandler(.allow)
-        guard
-            let components = URLComponents(url: navigationAction.request.url!, resolvingAgainstBaseURL: true),
-            components.host == "spotify-login-callback",
-            let authorizationCode = components.queryItems?[0].value
-        else {
-            return
+        let components = URLComponents(url: navigationAction.request.url!, resolvingAgainstBaseURL: true)
+        if components?.host == "spotify-login-callback", let authorizationCode = components?.queryItems?[0].value {
+            roomCreatorViewModel.generateToken(with: authorizationCode)
+            roomCodeLabel.text = roomCreatorViewModel.generateRoomCode()
+            webView.removeFromSuperview()
         }
-        roomCodeLabel.text = roomCreatorViewModel.roomCode
-        print(authorizationCode)
-        webView.removeFromSuperview()
+        decisionHandler(.allow)
     }
 }

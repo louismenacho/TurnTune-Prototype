@@ -22,7 +22,6 @@ class NetworkManager<Endpoint: APIEndpoint> {
     
     func request(_ endpoint: Endpoint, completion: @escaping ([String: Any]?) -> Void) {
         router.request(endpoint) { result in
-            print("REQUEST: \(endpoint)")
             switch result {
             case.failure(let error):
                 self.handleError(error)
@@ -46,6 +45,14 @@ class NetworkManager<Endpoint: APIEndpoint> {
             print((error as! EncoderError).localizedDescription)
         default:
             print(error.localizedDescription)
+        }
+    }
+}
+
+class SpotifyTokenSwapManager: NetworkManager<SpotifyTokenSwap> {
+    func token(code: String, completion: @escaping (Token) -> Void) {
+        request(.token(code)) {
+            
         }
     }
 }
