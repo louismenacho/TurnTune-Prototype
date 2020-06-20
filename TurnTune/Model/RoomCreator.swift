@@ -15,7 +15,6 @@ enum ServiceType {
 
 class RoomCreator {
     var roomCode: String = ""
-    var service: ServiceType = .spotify
-    var accessToken: String?
-    var refreshToken: String?
+    var token: Token?
+    var service: ServiceType?
 }

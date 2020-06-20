@@ -12,6 +12,7 @@ import FirebaseAuth
 class PlayRoom {
     
     let roomCode: String
+    let token: Token?
     
     var host: User = Auth.auth().currentUser!
     var members = [User]()
@@ -19,7 +20,8 @@ class PlayRoom {
     var nextTrack: String = ""
     var queue = [String]()
     
-    init(with roomCode: String) {
+    init(with roomCode: String, token: Token?) {
         self.roomCode = roomCode
+        self.token = token
     }
 }

@@ -13,7 +13,6 @@ class HTTPRouter<Endpoint: APIEndpoint> {
     var accessToken: String?
     
     func request(_ endpoint: Endpoint, completion: @escaping (Result<HTTPResponse, Error>) -> Void) {
-        print("REQUEST: \(endpoint)")
         do {
             let request = try buildRequest(from: endpoint)
             URLSession.shared.dataTask(with: request) { (data, response, error) in

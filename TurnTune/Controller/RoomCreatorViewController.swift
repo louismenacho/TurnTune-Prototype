@@ -17,21 +17,26 @@ class RoomCreatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let webView = WKWebView()
-        webView.frame = view.frame
-        webView.navigationDelegate = self
-        view.addSubview(webView)
-        webView.load(roomCreatorViewModel.serviceAuthorization())
+        roomCreatorViewModel.service = .spotify
+        presentWebView(load: roomCreatorViewModel.serviceAuthorizeRequest())
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlayRoomViewController" {
-            let playRoom = PlayRoom(with: roomCreatorViewModel.roomCode)
+            let playRoom = PlayRoom(with: roomCreatorViewModel.roomCode, token: roomCreatorViewModel.token)
             let playRoomViewModel = PlayRoomViewModel(with: playRoom)
             let navigationController = segue.destination as! UINavigationController
             let playRoomViewController = navigationController.viewControllers[0] as! PlayRoomViewController
             playRoomViewController.playRoomViewModel = playRoomViewModel
         }
+    }
+    
+    func presentWebView(load request: URLRequest) {
+        let webView = WKWebView()
+        webView.frame = view.frame
+        webView.navigationDelegate = self
+        webView.load(request)
+        view.addSubview(webView)
     }
     
     @IBAction func createButtonPressed(_ sender: UIButton) {
@@ -45,7 +50,8 @@ extension RoomCreatorViewController: WKNavigationDelegate {
         let components = URLComponents(url: navigationAction.request.url!, resolvingAgainstBaseURL: true)
         if components?.host == "spotify-login-callback", let authorizationCode = components?.queryItems?[0].value {
             roomCreatorViewModel.generateToken(with: authorizationCode)
-            roomCodeLabel.text = roomCreatorViewModel.generateRoomCode()
+            roomCreatorViewModel.generateRoomCode()
+            roomCodeLabel.text = roomCreatorViewModel.roomCode
             webView.removeFromSuperview()
         }
         decisionHandler(.allow)

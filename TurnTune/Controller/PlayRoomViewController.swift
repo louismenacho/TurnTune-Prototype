@@ -39,8 +39,8 @@ extension PlayRoomViewController: UITableViewDataSource {
         [
         1,
         1,
-        5,
-        5
+        playRoomViewModel.queue.count,
+        playRoomViewModel.members.count
         ][section]
     }
     

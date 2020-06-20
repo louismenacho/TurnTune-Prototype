@@ -20,14 +20,19 @@ class NetworkManager<Endpoint: APIEndpoint> {
         return try? router.buildRequest(from: endpoint)
     }
     
-    func request(_ endpoint: Endpoint, completion: @escaping ([String: Any]?) -> Void) {
+    func request<T: Codable>(_ endpoint: Endpoint, completion: @escaping (T) -> Void) {
+        print("REQUEST: \(endpoint)")
         router.request(endpoint) { result in
             switch result {
             case.failure(let error):
                 self.handleError(error)
             case.success(let response):
                 self.handleHTTPResponse(response)
-                completion(try? JSONSerialization.jsonObject(with: response.data, options: []) as? [String: Any])
+                do {
+                    completion(try JSONDecoder().decode(T.self, from: response.data))
+                } catch {
+                    self.handleError(error)
+                }
             }
         }
     }
@@ -45,14 +50,6 @@ class NetworkManager<Endpoint: APIEndpoint> {
             print((error as! EncoderError).localizedDescription)
         default:
             print(error.localizedDescription)
-        }
-    }
-}
-
-class SpotifyTokenSwapManager: NetworkManager<SpotifyTokenSwap> {
-    func token(code: String, completion: @escaping (Token) -> Void) {
-        request(.token(code)) {
-            
         }
     }
 }
