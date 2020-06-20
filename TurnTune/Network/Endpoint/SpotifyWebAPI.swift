@@ -9,6 +9,9 @@
 import Foundation
 
 enum SpotifyWebAPI {
+    // Users Profile API
+    case currentUserProfile
+    
     // Search API
     case search(_ query: String, _ types: [String])
     
@@ -31,6 +34,10 @@ extension SpotifyWebAPI: APIEndpoint {
     
     var path: String {
         switch self {
+        // Users Profile API
+        case .currentUserProfile:
+            return "/me"
+            
         // Search API
         case .search:
             return "/search"
@@ -52,6 +59,10 @@ extension SpotifyWebAPI: APIEndpoint {
     
     var method: HTTPMethod {
         switch self {
+        // Users Profile API
+        case .currentUserProfile:
+            return .get
+            
         // Search API
         case .search:
             return .get
@@ -81,6 +92,10 @@ extension SpotifyWebAPI: APIEndpoint {
     
     var parameters: HTTPParameters? {
         switch self {
+        // Users Profile API
+        case .currentUserProfile:
+            return nil
+            
         // Search API
         case let .search(query, types):
             return [
@@ -116,6 +131,10 @@ extension SpotifyWebAPI: APIEndpoint {
     
     var contentType: HTTPHeaderValue? {
         switch self {
+        // Users Profile API
+        case .currentUserProfile:
+            return .none
+            
         // Search API
         case .search:
             return .none

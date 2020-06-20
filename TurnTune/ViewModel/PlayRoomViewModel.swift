@@ -26,6 +26,9 @@ class PlayRoomViewModel {
     
     init(with playRoom: PlayRoom) {
         self.playRoom = playRoom
-        
+        spotifyWebAPI.setAccessToken(token: token!.access)
+        spotifyWebAPI.request(.currentUserProfile) { (user: UserProfile) in
+            print(user)
+        }
     }
 }

@@ -12,7 +12,7 @@ import FirebaseAuth
 class PlayRoom {
     
     let roomCode: String
-    let token: Token?
+    var token: Token?
     
     var host: User = Auth.auth().currentUser!
     var members = [User]()
