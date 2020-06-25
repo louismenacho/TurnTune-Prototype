@@ -14,20 +14,22 @@ class RoomCreatorViewController: UIViewController {
     var roomCreatorViewModel : RoomCreatorViewModel!
     
     @IBOutlet weak var roomCodeLabel: UILabel!
+    @IBOutlet weak var createButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        roomCreatorViewModel.service = .spotify
         presentWebView(load: roomCreatorViewModel.serviceAuthorizeRequest())
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlayRoomViewController" {
-            let playRoom = PlayRoom(with: roomCreatorViewModel.roomCode, token: roomCreatorViewModel.token)
-            let playRoomViewModel = PlayRoomViewModel(with: playRoom)
             let navigationController = segue.destination as! UINavigationController
             let playRoomViewController = navigationController.viewControllers[0] as! PlayRoomViewController
-            playRoomViewController.playRoomViewModel = playRoomViewModel
+            roomCreatorViewModel.taskCompletion = {
+                let playRoom = PlayRoom(from: self.roomCreatorViewModel)
+                let playRoomViewModel = PlayRoomViewModel(with: playRoom)
+                playRoomViewController.playRoomViewModel = playRoomViewModel
+            }
         }
     }
     
@@ -40,6 +42,7 @@ class RoomCreatorViewController: UIViewController {
     }
     
     @IBAction func createButtonPressed(_ sender: UIButton) {
+        roomCreatorViewModel.createPlaylist()
         performSegue(withIdentifier: "PlayRoomViewController", sender: self)
     }
 }

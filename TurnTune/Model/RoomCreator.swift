@@ -7,14 +7,9 @@
 //
 
 import Foundation
-import FirebaseAuth
-
-enum ServiceType {
-    case spotify
-}
 
 class RoomCreator {
     var roomCode: String = ""
     var token: Token?
-    var service: ServiceType?
+    var playlist: Playlist?
 }

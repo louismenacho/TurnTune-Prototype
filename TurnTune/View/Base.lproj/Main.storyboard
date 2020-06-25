@@ -148,6 +148,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="4Ej-kY-Irm"/>
                     <connections>
+                        <outlet property="createButton" destination="GKd-33-Inb" id="Eds-dR-6b8"/>
                         <outlet property="roomCodeLabel" destination="kpT-y9-ela" id="cNJ-4a-KZx"/>
                         <segue destination="Kpo-wk-ueu" kind="presentation" identifier="PlayRoomViewController" modalPresentationStyle="fullScreen" id="Vbj-aa-mEN"/>
                     </connections>

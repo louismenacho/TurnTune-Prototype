@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:359246465151:ios:487a47f10e07170dc9174a</string>
+	<string>1:359246465151:ios:8174c1b737a575fcc9174a</string>
 	<key>DATABASE_URL</key>
 	<string>https://turntune.firebaseio.com</string>
 </dict>
