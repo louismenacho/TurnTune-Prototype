@@ -97,6 +97,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="gNG-37-Tbm"/>
                     <connections>
+                        <outlet property="nameTextField" destination="TpM-1O-f1v" id="Yaq-VQ-qyL"/>
+                        <outlet property="roomCodeTextField" destination="T4C-xb-H4a" id="o9M-y4-9OV"/>
                         <segue destination="gka-gs-Jda" kind="show" identifier="RoomCreatorViewController" id="3eZ-hL-6RH"/>
                         <segue destination="Kpo-wk-ueu" kind="presentation" identifier="PlayRoomViewController" modalPresentationStyle="fullScreen" id="VEN-13-ZRS"/>
                     </connections>
@@ -280,6 +282,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Vbj-aa-mEN"/>
+        <segue reference="VEN-13-ZRS"/>
     </inferredMetricsTieBreakers>
 </document>

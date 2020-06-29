@@ -12,6 +12,9 @@ import FirebaseFirestore
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var roomCodeTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
