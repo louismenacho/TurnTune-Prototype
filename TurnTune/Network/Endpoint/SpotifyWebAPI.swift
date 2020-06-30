@@ -12,6 +12,9 @@ enum SpotifyWebAPI {
     // Users Profile API
     case currentUserProfile
     
+    // Player API
+    case addToQueue(_ uri: String)
+    
     // Search API
     case search(_ query: String, _ types: [String])
     
@@ -37,6 +40,10 @@ extension SpotifyWebAPI: APIEndpoint {
         // Users Profile API
         case .currentUserProfile:
             return "/me"
+        
+        // Player API
+        case .addToQueue:
+            return "/player/queue"
             
         // Search API
         case .search:
@@ -62,6 +69,10 @@ extension SpotifyWebAPI: APIEndpoint {
         // Users Profile API
         case .currentUserProfile:
             return .get
+            
+        // Playlists API
+        case .addToQueue:
+            return .post
             
         // Search API
         case .search:
@@ -95,6 +106,10 @@ extension SpotifyWebAPI: APIEndpoint {
         // Users Profile API
         case .currentUserProfile:
             return nil
+            
+        // Playlists API
+        case let .addToQueue(uri):
+            return ["uri": uri]
             
         // Search API
         case let .search(query, types):
@@ -134,6 +149,10 @@ extension SpotifyWebAPI: APIEndpoint {
         // Users Profile API
         case .currentUserProfile:
             return .none
+        
+        // Playlists API
+        case .addToQueue:
+            return .json
             
         // Search API
         case .search:
