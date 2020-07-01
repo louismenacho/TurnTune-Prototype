@@ -24,7 +24,7 @@ class HomeViewController: UIViewController {
             let roomCreator = RoomCreator()
             let roomCreatorViewModel = RoomCreatorViewModel(with: roomCreator)
             let roomCreatorViewController = segue.destination as! RoomCreatorViewController
-            roomCreatorViewController.roomCreatorViewModel = roomCreatorViewModel
+            roomCreatorViewController.viewModel = roomCreatorViewModel
         }
     }
     

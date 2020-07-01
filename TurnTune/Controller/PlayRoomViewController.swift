@@ -10,8 +10,11 @@ import UIKit
 
 class PlayRoomViewController: UIViewController {
     
-    var playRoomViewModel: PlayRoomViewModel! {
+    var viewModel: PlayRoomViewModel! {
         didSet {
+            if !isViewLoaded {
+                return
+            }
             tableView.dataSource = self
             tableView.reloadData()
         }
@@ -21,6 +24,9 @@ class PlayRoomViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if viewModel != nil {
+            tableView.dataSource = self
+        }
     }
 }
 
@@ -32,17 +38,17 @@ extension PlayRoomViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         [
-        "NOW PLAYING",
-        "UP NEXT",
-        "MEMBERS"
+            "NOW PLAYING",
+            "UP NEXT",
+            "MEMBERS"
         ][section]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         [
-        1,
-        1,
-        playRoomViewModel.members.count
+            1,
+            1,
+            1 + viewModel.members.count
         ][section]
     }
     

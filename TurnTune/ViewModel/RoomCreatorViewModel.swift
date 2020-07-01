@@ -15,7 +15,6 @@ class RoomCreatorViewModel {
     private let roomCreator: RoomCreator
     var roomCode: String { roomCreator.roomCode }
     var token: Token { roomCreator.token! }
-    var playlist: Playlist { roomCreator.playlist! }
     
     private let spotifyAccountsService = NetworkManager<SpotifyAccountsService>()
     private let spotifyTokenSwap = NetworkManager<SpotifyTokenSwap>()
@@ -25,7 +24,7 @@ class RoomCreatorViewModel {
     
     private let group = DispatchGroup()
     
-    var taskCompletion: (() -> Void)?
+    var completion: (() -> Void)?
  
     init(with roomCreator: RoomCreator) {
         self.roomCreator = roomCreator
@@ -40,7 +39,6 @@ class RoomCreatorViewModel {
             let letter = Character(UnicodeScalar(Int.random(in: 65...90))!)
             roomCreator.roomCode = "\(roomCreator.roomCode)\(letter)"
         } while roomCreator.roomCode.count < 4
-        roomsCollectionRef.document(roomCreator.roomCode).setData(["host": Auth.auth().currentUser!.uid])
     }
     
     func generateToken(with authorizationCode: String? = nil) {
@@ -48,27 +46,17 @@ class RoomCreatorViewModel {
         spotifyTokenSwap.request(.token(authorizationCode!)) { (token: Token) in
             self.roomCreator.token = token
             self.spotifyWebAPI.setAccessToken(token: token.access)
-            self.roomsCollectionRef.document(self.roomCreator.roomCode).setData([
-                "accessToken": token.access,
-                "refreshToken": token.refresh!
-            ])
             self.group.leave()
         }
     }
     
-    func createPlaylist() {
+    func createRoom() {
         group.wait() // for token to generate
-        spotifyWebAPI.request(.currentUserProfile) { (user: UserProfile) in
-            self.spotifyWebAPI.request(.createPlaylist(user.id, "TurnTune")) { (playlist: Playlist) in
-                self.roomCreator.playlist = playlist
-                self.roomsCollectionRef.document(self.roomCreator.playlist!.id).setData(["playlist": playlist.id])
-                DispatchQueue.main.async { self.taskCompletion?() }
-                
-                #warning("Temporary, delete after testing")
-                self.spotifyWebAPI.request(.deletePlaylist(playlist.id)) { (response: String) in
-                    print(response)
-                }
-            }
-        }
+        roomsCollectionRef.document(roomCreator.roomCode).setData([
+            "host": Auth.auth().currentUser!.uid, // handle
+            "accessToken": token.access,
+            "refreshToken": token.refresh!
+        ])
+        completion?()
     }
 }

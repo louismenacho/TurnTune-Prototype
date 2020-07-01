@@ -11,5 +11,4 @@ import Foundation
 class RoomCreator {
     var roomCode: String = ""
     var token: Token?
-    var playlist: Playlist?
 }

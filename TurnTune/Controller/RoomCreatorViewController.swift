@@ -11,24 +11,25 @@ import WebKit
 
 class RoomCreatorViewController: UIViewController {
     
-    var roomCreatorViewModel : RoomCreatorViewModel!
+    var viewModel : RoomCreatorViewModel!
     
     @IBOutlet weak var roomCodeLabel: UILabel!
     @IBOutlet weak var createButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presentWebView(load: roomCreatorViewModel.serviceAuthorizeRequest())
+        presentWebView(load: viewModel.serviceAuthorizeRequest())
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("here")
         if segue.identifier == "PlayRoomViewController" {
             let navigationController = segue.destination as! UINavigationController
             let playRoomViewController = navigationController.viewControllers[0] as! PlayRoomViewController
-            roomCreatorViewModel.taskCompletion = {
-                let playRoom = PlayRoom(from: self.roomCreatorViewModel)
+            viewModel.completion = {
+                let playRoom = PlayRoom(from: self.viewModel)
                 let playRoomViewModel = PlayRoomViewModel(with: playRoom)
-                playRoomViewController.playRoomViewModel = playRoomViewModel
+                playRoomViewController.viewModel = playRoomViewModel
             }
         }
     }
@@ -42,8 +43,8 @@ class RoomCreatorViewController: UIViewController {
     }
     
     @IBAction func createButtonPressed(_ sender: UIButton) {
-        roomCreatorViewModel.createPlaylist()
         performSegue(withIdentifier: "PlayRoomViewController", sender: self)
+        viewModel.createRoom()
     }
 }
 
@@ -52,9 +53,9 @@ extension RoomCreatorViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let components = URLComponents(url: navigationAction.request.url!, resolvingAgainstBaseURL: true)
         if components?.host == "spotify-login-callback", let authorizationCode = components?.queryItems?[0].value {
-            roomCreatorViewModel.generateToken(with: authorizationCode)
-            roomCreatorViewModel.generateRoomCode()
-            roomCodeLabel.text = roomCreatorViewModel.roomCode
+            viewModel.generateToken(with: authorizationCode)
+            viewModel.generateRoomCode()
+            roomCodeLabel.text = viewModel.roomCode
             webView.removeFromSuperview()
         }
         decisionHandler(.allow)
