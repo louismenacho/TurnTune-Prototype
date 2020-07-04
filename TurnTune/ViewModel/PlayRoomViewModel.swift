@@ -14,9 +14,7 @@ class PlayRoomViewModel {
     private let playRoom: PlayRoom
 
     var roomCode: String { playRoom.roomCode }
-    var token: Token { playRoom.token }
-    
-    var host: User { playRoom.host }
+    var token: Token? { playRoom.token }
     var members: [User] { playRoom.members }
     var currentTrack: String { playRoom.currentTrack }
     var nextTrack: String { playRoom.nextTrack }

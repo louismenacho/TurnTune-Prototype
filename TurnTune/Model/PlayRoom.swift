@@ -12,15 +12,16 @@ import FirebaseAuth
 class PlayRoom {
     
     let roomCode: String
-    var token: Token
-    
-    var host: User = Auth.auth().currentUser!
-    var members = [User]()
+    var token: Token?
+    var members: [User]
     var currentTrack: String = ""
     var nextTrack: String = ""
     
     init(from viewModel: RoomCreatorViewModel) {
         self.roomCode = viewModel.roomCode
-        self.token = viewModel.token
+        self.members = [Auth.auth().currentUser!]
+        viewModel.generateTokenCompletion = { token in
+            self.token = token
+        }
     }
 }

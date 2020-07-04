@@ -12,19 +12,18 @@ import FirebaseFirestore
 
 class RoomCreatorViewModel {
     
+    var generateTokenCompletion: ((Token) -> Void)?
+    
     private let roomCreator: RoomCreator
     var roomCode: String { roomCreator.roomCode }
-    var token: Token { roomCreator.token! }
+    var token: Token? { roomCreator.token }
     
     private let spotifyAccountsService = NetworkManager<SpotifyAccountsService>()
     private let spotifyTokenSwap = NetworkManager<SpotifyTokenSwap>()
-    private let spotifyWebAPI = NetworkManager<SpotifyWebAPI>()
     
     private let roomsCollectionRef = Firestore.firestore().collection("rooms")
     
     private let group = DispatchGroup()
-    
-    var completion: (() -> Void)?
  
     init(with roomCreator: RoomCreator) {
         self.roomCreator = roomCreator
@@ -41,22 +40,28 @@ class RoomCreatorViewModel {
         } while roomCreator.roomCode.count < 4
     }
     
-    func generateToken(with authorizationCode: String? = nil) {
+    func generateToken(with authorizationCode: String) {
         group.enter()
-        spotifyTokenSwap.request(.token(authorizationCode!)) { (token: Token) in
+        spotifyTokenSwap.request(.token(authorizationCode)) { (token: Token) in
             self.roomCreator.token = token
-            self.spotifyWebAPI.setAccessToken(token: token.access)
+            self.generateTokenCompletion?(token)
             self.group.leave()
         }
     }
     
     func createRoom() {
-        group.wait() // for token to generate
-        roomsCollectionRef.document(roomCreator.roomCode).setData([
-            "host": Auth.auth().currentUser!.uid, // handle
-            "accessToken": token.access,
-            "refreshToken": token.refresh!
+        let roomDocumentRef = roomsCollectionRef.document(roomCode)
+        let hostDocumentRef = roomDocumentRef.collection("members").document("host")
+        hostDocumentRef.setData([
+            "uid": Auth.auth().currentUser!.uid
         ])
-        completion?()
+        
+        // notify when token generates
+        group.notify(queue: .main) {
+            roomDocumentRef.setData([
+                "accessToken": self.token!.access,
+                "refreshToken": self.token!.refresh!
+            ])
+        }
     }
 }
