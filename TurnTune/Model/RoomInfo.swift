@@ -1,5 +1,5 @@
 //
-//  RoomCreator.swift
+//  RoomInfo.swift
 //  TurnTune
 //
 //  Created by Louis Menacho on 6/16/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RoomCreator {
-    var roomCode: String = ""
+class RoomInfo {
+    var code: String = ""
     var token: Token?
 }
