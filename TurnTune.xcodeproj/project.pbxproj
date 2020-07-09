@@ -42,6 +42,7 @@
 		958063C5249EC61F00514688 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958063C4249EC61F00514688 /* Artist.swift */; };
 		958063C7249FA06D00514688 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 958063C6249FA06D00514688 /* GoogleService-Info.plist */; };
 		958347B924B438D60066ACD3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958347B824B438D60066ACD3 /* HomeViewModel.swift */; };
+		958347BB24B6D9D90066ACD3 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958347BA24B6D9D90066ACD3 /* Member.swift */; };
 		95AEC939248C052200105F73 /* HTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AEC938248C052200105F73 /* HTTPResponse.swift */; };
 		95C008702482FAC800A8626A /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C0086F2482FAC800A8626A /* JSONParameterEncoder.swift */; };
 		95C008722482FDEA00A8626A /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C008712482FDEA00A8626A /* URLParameterEncoder.swift */; };
@@ -114,6 +115,7 @@
 		958063C4249EC61F00514688 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		958063C6249FA06D00514688 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		958347B824B438D60066ACD3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		958347BA24B6D9D90066ACD3 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		95AEC938248C052200105F73 /* HTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponse.swift; sourceTree = "<group>"; };
 		95C0086F2482FAC800A8626A /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
 		95C008712482FDEA00A8626A /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 		9520BD0B24823BE50086DD02 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				958347BA24B6D9D90066ACD3 /* Member.swift */,
 				955FC14F2498917F00C52854 /* RoomInfo.swift */,
 				956E6DB2249C539800664518 /* PlayRoom.swift */,
 			);
@@ -627,6 +630,7 @@
 				955FC15224989C2200C52854 /* RoomCreatorViewModel.swift in Sources */,
 				958347B924B438D60066ACD3 /* HomeViewModel.swift in Sources */,
 				9508C23C23EFDF1A0050017F /* AppDelegate.swift in Sources */,
+				958347BB24B6D9D90066ACD3 /* Member.swift in Sources */,
 				956E6DB5249C651A00664518 /* PlayRoomViewModel.swift in Sources */,
 				9520BD1824823E980086DD02 /* HTTPParameters.swift in Sources */,
 				958063BD249EC41F00514688 /* Playlist.swift in Sources */,

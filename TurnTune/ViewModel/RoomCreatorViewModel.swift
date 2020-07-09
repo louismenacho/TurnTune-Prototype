@@ -52,9 +52,7 @@ class RoomCreatorViewModel {
         ])
         
         let hostDocumentRef = roomDocumentRef.collection("members").document("host")
-        hostDocumentRef.setData([
-            "uid": Auth.auth().currentUser!.uid
-        ])
+        try! hostDocumentRef.setData(from: Member())
         // notify when token generates
         group.notify(queue: .main) {
             let tokenDocument = roomDocumentRef.collection("info").document("token")
