@@ -12,37 +12,23 @@ import FirebaseFirestore
 
 class HomeViewModel {
     
-    var signInCompletion: ((User) -> Void)?
+    var signInCompletion: (() -> Void)?
     var getRoomCompletion: ((DocumentSnapshot) -> Void)?
-    var setDisplayNameCompletion: (() -> Void)?
     
     private let roomsCollectionRef = Firestore.firestore().collection("rooms")
     private let group = DispatchGroup()
     
-    func join(with roomCode: String, name: String) {
-        signIn()
-        group.notify(queue: .main) {
-            self.getRoom(roomCode)
-            self.setDisplayName(name)
-        }
-    }
-    
-    private func signIn() {
-        group.enter()
+    func signIn() {
         Auth.auth().signInAnonymously { (authResult, error) in
             if let error = error {
                 print(error)
                 return
             }
-            guard let authResult = authResult else {
-                return
-            }
-            self.signInCompletion?(authResult.user)
-            self.group.leave()
+            self.signInCompletion?()
         }
     }
     
-    private func getRoom(_ code: String) {
+    func getRoom(with code: String) {
         roomsCollectionRef.document(code).getDocument { (document, error) in
             if let error = error {
                 print(error)
@@ -55,7 +41,7 @@ class HomeViewModel {
         }
     }
     
-    private func setDisplayName(_ name: String) {
+    func setDisplayName(to name: String) {
         let changeRequest = Auth.auth().currentUser!.createProfileChangeRequest()
         changeRequest.displayName = name
         changeRequest.commitChanges { error in
@@ -63,7 +49,6 @@ class HomeViewModel {
                 print(error)
                 return
             }
-            self.setDisplayNameCompletion?()
         }
     }
     

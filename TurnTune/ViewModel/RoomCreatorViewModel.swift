@@ -25,9 +25,6 @@ class RoomCreatorViewModel {
  
     init(with roomInfo: RoomInfo) {
         self.roomInfo = roomInfo
-        generateTokenCompletion = { token in
-            self.roomInfo.token = token
-        }
     }
     
     func serviceAuthorizeRequest() -> URLRequest {

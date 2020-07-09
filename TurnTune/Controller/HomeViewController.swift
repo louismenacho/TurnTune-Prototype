@@ -29,25 +29,29 @@ class HomeViewController: UIViewController {
             let roomCreatorViewController = segue.destination as! RoomCreatorViewController
             roomCreatorViewController.viewModel = roomCreatorViewModel
         }
+        if segue.identifier == "PlayRoomViewController" {
+            
+        }
     }
     
     @IBAction func joinButtonPressed(_ sender: UIButton) {
-        viewModel.join(with: roomCodeTextField.text!, name: nameTextField.text!)
+        viewModel.signIn()
+        viewModel.signInCompletion = {
+            self.viewModel.getRoom(with: self.roomCodeTextField.text!)
+            self.viewModel.setDisplayName(to: self.nameTextField.text!)
+        }
         viewModel.getRoomCompletion = { room in
-            if room.exists {
-                self.performSegue(withIdentifier: "PlayRoomViewController", sender: self)
-            } else {
+            guard room.exists else {
                 print("room does not exist")
+                return
             }
+            self.performSegue(withIdentifier: "PlayRoomViewController", sender: self)
         }
     }
     
     @IBAction func hostButtonPressed(_ sender: UIButton) {
-        Auth.auth().signInAnonymously { (authResult, error) in
-            if let error = error {
-                print(error)
-                return
-            }
+        viewModel.signIn()
+        viewModel.signInCompletion = {
             self.performSegue(withIdentifier: "RoomCreatorViewController", sender: self)
         }
     }
