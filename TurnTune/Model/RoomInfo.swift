@@ -11,4 +11,10 @@ import Foundation
 class RoomInfo {
     var code: String = ""
     var token: Token?
+    
+    init(code: String? = nil) {
+        if let code = code {
+            self.code = code
+        }
+    }
 }

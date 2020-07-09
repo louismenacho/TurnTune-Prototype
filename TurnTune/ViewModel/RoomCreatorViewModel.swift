@@ -16,7 +16,6 @@ class RoomCreatorViewModel {
     let roomInfo: RoomInfo
     var roomCode: String { roomInfo.code }
     var token: Token? { roomInfo.token }
-    var generateTokenCompletion: ((Token) -> Void)?
     
     private let spotifyAccountsService = NetworkManager<SpotifyAccountsService>()
     private let spotifyTokenSwap = NetworkManager<SpotifyTokenSwap>()
@@ -42,21 +41,24 @@ class RoomCreatorViewModel {
         group.enter()
         spotifyTokenSwap.request(.token(authorizationCode)) { (token: Token) in
             self.roomInfo.token = token
-            self.generateTokenCompletion?(token)
             self.group.leave()
         }
     }
     
     func createRoom() {
         let roomDocumentRef = roomsCollectionRef.document(roomCode)
+        roomDocumentRef.setData([
+            "date_created": Timestamp(date: Date())
+        ])
+        
         let hostDocumentRef = roomDocumentRef.collection("members").document("host")
         hostDocumentRef.setData([
             "uid": Auth.auth().currentUser!.uid
         ])
-        
         // notify when token generates
         group.notify(queue: .main) {
-            try! roomDocumentRef.setData(from: self.token!)
+            let tokenDocument = roomDocumentRef.collection("info").document("token")
+            try! tokenDocument.setData(from: self.token!)
         }
     }
 }

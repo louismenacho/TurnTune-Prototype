@@ -16,8 +16,8 @@ class PlayRoom {
     var currentTrack: String = ""
     var nextTrack: String = ""
     
-    init(from viewModel: RoomCreatorViewModel) {
-        self.roomInfo = viewModel.roomInfo
+    init(with roomInfo: RoomInfo) {
+        self.roomInfo = roomInfo
         self.members = [Auth.auth().currentUser!]
     }
 }

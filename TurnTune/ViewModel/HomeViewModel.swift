@@ -13,35 +13,40 @@ import FirebaseFirestore
 class HomeViewModel {
     
     var signInCompletion: (() -> Void)?
-    var getRoomCompletion: ((DocumentSnapshot) -> Void)?
+    var getRoomCompletion: (() -> Void)?
     
     private let roomsCollectionRef = Firestore.firestore().collection("rooms")
-    private let group = DispatchGroup()
     
-    func signIn() {
+    func signIn(with name: String) {
         Auth.auth().signInAnonymously { (authResult, error) in
             if let error = error {
                 print(error)
                 return
             }
+            self.setDisplayName(to: name)
             self.signInCompletion?()
         }
     }
     
     func getRoom(with code: String) {
+        if code.isEmpty {
+            print("Enter a Room Code")
+            return
+        }
         roomsCollectionRef.document(code).getDocument { (document, error) in
             if let error = error {
                 print(error)
                 return
             }
-            guard let document = document else {
+            guard let document = document, document.exists else {
+                print("Room does not exist")
                 return
             }
-            self.getRoomCompletion?(document)
+            self.getRoomCompletion?()
         }
     }
     
-    func setDisplayName(to name: String) {
+    private func setDisplayName(to name: String) {
         let changeRequest = Auth.auth().currentUser!.createProfileChangeRequest()
         changeRequest.displayName = name
         changeRequest.commitChanges { error in
