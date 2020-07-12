@@ -19,11 +19,11 @@ class HomeViewModel {
     
     func signIn(with name: String) {
         Auth.auth().signInAnonymously { (authResult, error) in
-            if let error = error {
-                print(error)
+            guard let authResult = authResult else {
+                print(error ?? "Authentication failed")
                 return
             }
-            self.setDisplayName(to: name)
+            self.setDisplayName(to: name, for: authResult.user)
             self.signInCompletion?()
         }
     }
@@ -33,21 +33,17 @@ class HomeViewModel {
             print("Enter a Room Code")
             return
         }
-        roomsCollectionRef.document(code).getDocument { (document, error) in
-            if let error = error {
-                print(error)
-                return
-            }
-            guard let document = document, document.exists else {
-                print("Room does not exist")
+        roomsCollectionRef.document(code).getDocument { (documentSnapshot, error) in
+            guard let document = documentSnapshot, document.exists else {
+                print(error ?? "Room does not exist")
                 return
             }
             self.getRoomCompletion?()
         }
     }
     
-    private func setDisplayName(to name: String) {
-        let changeRequest = Auth.auth().currentUser!.createProfileChangeRequest()
+    private func setDisplayName(to name: String, for user: User) {
+        let changeRequest = user.createProfileChangeRequest()
         changeRequest.displayName = name
         changeRequest.commitChanges { error in
             if let error = error {

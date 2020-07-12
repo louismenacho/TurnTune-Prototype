@@ -10,11 +10,11 @@ import Foundation
 import FirebaseAuth
 
 struct Member: Codable {
-    var name: String
     var uid: String
+    var name: String
     
-    init() {
-        self.name = Auth.auth().currentUser!.displayName!
-        self.uid = Auth.auth().currentUser!.uid
+    init(uid: String, name: String) {
+        self.uid = uid
+        self.name = name
     }
 }

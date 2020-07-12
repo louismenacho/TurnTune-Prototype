@@ -12,12 +12,12 @@ import FirebaseAuth
 class PlayRoom {
     
     let roomInfo: RoomInfo
-    var members: [Member]
+    var members = [Member]()
     var currentTrack: String = ""
     var nextTrack: String = ""
     
     init(with roomInfo: RoomInfo) {
         self.roomInfo = roomInfo
-        self.members = [Member()]
     }
 }
+

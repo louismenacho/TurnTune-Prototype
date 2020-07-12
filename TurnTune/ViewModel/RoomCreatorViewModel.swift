@@ -15,7 +15,7 @@ class RoomCreatorViewModel {
     
     let roomInfo: RoomInfo
     var roomCode: String { roomInfo.code }
-    var token: Token? { roomInfo.token }
+    var roomToken: Token? { roomInfo.token }
     
     private let spotifyAccountsService = NetworkManager<SpotifyAccountsService>()
     private let spotifyTokenSwap = NetworkManager<SpotifyTokenSwap>()
@@ -33,8 +33,8 @@ class RoomCreatorViewModel {
     func generateRoomCode() {
         repeat {
             let letter = Character(UnicodeScalar(Int.random(in: 65...90))!)
-            roomInfo.code = "\(roomInfo.code)\(letter)"
-        } while roomInfo.code.count < 4
+            roomInfo.code = "\(roomCode)\(letter)"
+        } while roomCode.count < 4
     }
     
     func generateToken(with authorizationCode: String) {
@@ -51,12 +51,18 @@ class RoomCreatorViewModel {
             "date_created": Timestamp(date: Date())
         ])
         
-        let hostDocumentRef = roomDocumentRef.collection("members").document("host")
-        try! hostDocumentRef.setData(from: Member())
+        let hostDocumentRef = roomDocumentRef.collection("info").document("host")
+        hostDocumentRef.setData([
+            "uid": Auth.auth().currentUser!.uid
+        ])
+        
+        let memberDocumentRef = roomDocumentRef.collection("members").document(Auth.auth().currentUser!.uid)
+        try! memberDocumentRef.setData(from: Member(uid: Auth.auth().currentUser!.uid, name: Auth.auth().currentUser!.displayName!))
+        
         // notify when token generates
         group.notify(queue: .main) {
             let tokenDocument = roomDocumentRef.collection("info").document("token")
-            try! tokenDocument.setData(from: self.token!)
+            try! tokenDocument.setData(from: self.roomToken!)
         }
     }
 }

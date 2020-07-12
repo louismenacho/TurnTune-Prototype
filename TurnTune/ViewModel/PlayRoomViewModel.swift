@@ -8,10 +8,12 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 
 class PlayRoomViewModel {
     
     private let playRoom: PlayRoom
+    private let roomDocumentRef: DocumentReference
 
     var roomInfo: RoomInfo { playRoom.roomInfo }
     var members: [Member] { playRoom.members }
@@ -20,5 +22,6 @@ class PlayRoomViewModel {
     
     init(with playRoom: PlayRoom) {
         self.playRoom = playRoom
+        self.roomDocumentRef = Firestore.firestore().collection("rooms").document(playRoom.roomInfo.code)
     }
 }

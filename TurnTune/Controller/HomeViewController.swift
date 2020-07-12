@@ -24,14 +24,15 @@ class HomeViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RoomCreatorViewController" {
-            let roomInfo = RoomInfo()
+            let roomInfo = RoomInfo(host: Auth.auth().currentUser!.uid)
             let roomCreatorViewModel = RoomCreatorViewModel(with: roomInfo)
             let roomCreatorViewController = segue.destination as! RoomCreatorViewController
             roomCreatorViewController.viewModel = roomCreatorViewModel
         }
         if segue.identifier == "PlayRoomViewController" {
             let navigationController = segue.destination as! UINavigationController
-            let playRoom = PlayRoom(with: RoomInfo(code: roomCodeTextField.text!))
+            let roomInfo = RoomInfo(code: roomCodeTextField.text!)
+            let playRoom = PlayRoom(with: roomInfo)
             let playRoomViewModel = PlayRoomViewModel(with: playRoom)
             let playRoomViewController = navigationController.viewControllers[0] as! PlayRoomViewController
             playRoomViewController.viewModel = playRoomViewModel
