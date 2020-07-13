@@ -12,10 +12,8 @@ class PlayRoomViewController: UIViewController {
     
     var viewModel: PlayRoomViewModel! {
         didSet {
-            if !isViewLoaded {
-                return
-            }
-            tableView.dataSource = self
+            if !isViewLoaded { return }
+            setup()
             tableView.reloadData()
         }
     }
@@ -24,8 +22,14 @@ class PlayRoomViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if viewModel != nil {
-            tableView.dataSource = self
+        if viewModel == nil { return }
+        setup()
+    }
+    
+    func setup() {
+        tableView.dataSource = self
+        viewModel.membersChanged = { members in
+            print(members)
         }
     }
 }

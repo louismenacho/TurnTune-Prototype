@@ -13,7 +13,7 @@ import FirebaseFirestoreSwift
 
 class RoomCreatorViewModel {
     
-    let roomInfo: RoomInfo
+    private let roomInfo: RoomInfo
     var roomCode: String { roomInfo.code }
     var roomToken: Token? { roomInfo.token }
     
@@ -64,5 +64,9 @@ class RoomCreatorViewModel {
             let tokenDocument = roomDocumentRef.collection("info").document("token")
             try! tokenDocument.setData(from: self.roomToken!)
         }
+    }
+    
+    func getRoomInfo() -> RoomInfo {
+        return roomInfo
     }
 }

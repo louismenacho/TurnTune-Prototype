@@ -13,7 +13,7 @@ import FirebaseFirestore
 class HomeViewModel {
     
     var signInCompletion: (() -> Void)?
-    var getRoomCompletion: (() -> Void)?
+    var joinRoomCompletion: (() -> Void)?
     
     private let roomsCollectionRef = Firestore.firestore().collection("rooms")
     
@@ -28,17 +28,22 @@ class HomeViewModel {
         }
     }
     
-    func getRoom(with code: String) {
+    func joinRoom(with code: String) {
         if code.isEmpty {
             print("Enter a Room Code")
             return
         }
-        roomsCollectionRef.document(code).getDocument { (documentSnapshot, error) in
+        
+        let roomDocumentRef = roomsCollectionRef.document(code)
+        roomDocumentRef.getDocument { (documentSnapshot, error) in
             guard let document = documentSnapshot, document.exists else {
                 print(error ?? "Room does not exist")
                 return
             }
-            self.getRoomCompletion?()
+            let memberDocumentRef = roomDocumentRef.collection("members").document(Auth.auth().currentUser!.uid)
+            try! memberDocumentRef.setData(from: Member(uid: Auth.auth().currentUser!.uid, name: Auth.auth().currentUser!.displayName!))
+            
+            self.joinRoomCompletion?()
         }
     }
     

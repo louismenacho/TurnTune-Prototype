@@ -20,4 +20,3 @@ class PlayRoom {
         self.roomInfo = roomInfo
     }
 }
-

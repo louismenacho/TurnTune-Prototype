@@ -24,7 +24,7 @@ class RoomCreatorViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlayRoomViewController" {
             let navigationController = segue.destination as! UINavigationController
-            let playRoom = PlayRoom(with: viewModel.roomInfo)
+            let playRoom = PlayRoom(with: viewModel.getRoomInfo())
             let playRoomViewModel = PlayRoomViewModel(with: playRoom)
             let playRoomViewController = navigationController.viewControllers[0] as! PlayRoomViewController
             playRoomViewController.viewModel = playRoomViewModel

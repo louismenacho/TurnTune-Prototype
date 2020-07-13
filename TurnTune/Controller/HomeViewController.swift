@@ -42,9 +42,9 @@ class HomeViewController: UIViewController {
     @IBAction func joinButtonPressed(_ sender: UIButton) {
         viewModel.signIn(with: nameTextField.text!)
         viewModel.signInCompletion = {
-            self.viewModel.getRoom(with: self.roomCodeTextField.text!)
+            self.viewModel.joinRoom(with: self.roomCodeTextField.text!)
         }
-        viewModel.getRoomCompletion = {
+        viewModel.joinRoomCompletion = {
             self.performSegue(withIdentifier: "PlayRoomViewController", sender: self)
         }
     }
