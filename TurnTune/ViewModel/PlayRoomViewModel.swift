@@ -26,6 +26,18 @@ class PlayRoomViewModel {
     init(with playRoom: PlayRoom) {
         self.playRoom = playRoom
         self.roomDocumentRef = Firestore.firestore().collection("rooms").document(playRoom.roomInfo.code)
+        roomDocumentRef.collection("members").getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            guard let query = querySnapshot else {
+                print("No query")
+                return
+            }
+            playRoom.members = query.documents.map { try! $0.data(as: Member.self)! }
+        }
+        
         roomDocumentRef.collection("members").addSnapshotListener { (querySnapshot, error) in
             if let error = error {
                 print(error)

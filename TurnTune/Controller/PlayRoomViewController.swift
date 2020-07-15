@@ -29,7 +29,7 @@ class PlayRoomViewController: UIViewController {
     func setup() {
         tableView.dataSource = self
         viewModel.membersChanged = { members in
-            print(members)
+            self.tableView.reloadData()
         }
     }
 }
@@ -57,8 +57,14 @@ extension PlayRoomViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = indexPath.section == 3 ? "MemberTableViewCell" : "TrackTableViewCell"
+        let identifier = indexPath.section == 2 ? "MemberTableViewCell" : "TrackTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        
+        if identifier == "MemberTableViewCell" {
+            let cell = cell as! MemberTableViewCell
+            cell.nameLabel.text! = viewModel.members[indexPath.row].name
+        }
+        
         return cell
     }
 }

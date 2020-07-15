@@ -227,7 +227,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MemberTableViewCell" id="0xx-Pf-qR2">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MemberTableViewCell" id="0xx-Pf-qR2" customClass="MemberTableViewCell" customModule="TurnTune" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="70" width="414" height="42"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0xx-Pf-qR2" id="ftJ-t9-SvO">
@@ -258,6 +258,9 @@
                                                 <constraint firstItem="Dg2-L0-AcN" firstAttribute="leading" secondItem="ftJ-t9-SvO" secondAttribute="leading" constant="20" id="oCr-qs-WOw"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="HF3-G9-BOP" id="WCS-ns-V2r"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
