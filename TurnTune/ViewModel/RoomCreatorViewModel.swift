@@ -31,8 +31,9 @@ class RoomCreatorViewModel {
     }
     
     func generateRoomCode() {
+        let alphabeticRange = 65...90
         repeat {
-            let letter = Character(UnicodeScalar(Int.random(in: 65...90))!)
+            let letter = Character(UnicodeScalar(Int.random(in: alphabeticRange))!)
             roomInfo.code = "\(roomCode)\(letter)"
         } while roomCode.count < 4
     }

@@ -40,14 +40,24 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func joinButtonPressed(_ sender: UIButton) {
-        viewModel.join(room: roomCodeTextField.text!, name: nameTextField.text!) {
-            self.performSegue(withIdentifier: "PlayRoomViewController", sender: self)
+        viewModel.join(room: roomCodeTextField.text!, name: nameTextField.text!) { result in
+            switch result {
+            case.failure(let error):
+                print(error.localizedDescription)
+            case .success:
+                self.performSegue(withIdentifier: "PlayRoomViewController", sender: self)
+            }
         }
     }
     
     @IBAction func hostButtonPressed(_ sender: UIButton) {
-        viewModel.host {
-            self.performSegue(withIdentifier: "RoomCreatorViewController", sender: self)
+        viewModel.host { result in
+            switch result {
+            case.failure(let error):
+                print(error.localizedDescription)
+            case .success:
+                self.performSegue(withIdentifier: "RoomCreatorViewController", sender: self)
+            }
         }
     }
 }

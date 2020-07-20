@@ -44,6 +44,7 @@
 		958063C7249FA06D00514688 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 958063C6249FA06D00514688 /* GoogleService-Info.plist */; };
 		958347B924B438D60066ACD3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958347B824B438D60066ACD3 /* HomeViewModel.swift */; };
 		958347BB24B6D9D90066ACD3 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958347BA24B6D9D90066ACD3 /* Member.swift */; };
+		959903E724C508BB00EA7565 /* TurnTuneError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959903E624C508BB00EA7565 /* TurnTuneError.swift */; };
 		95AEC939248C052200105F73 /* HTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AEC938248C052200105F73 /* HTTPResponse.swift */; };
 		95C008702482FAC800A8626A /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C0086F2482FAC800A8626A /* JSONParameterEncoder.swift */; };
 		95C008722482FDEA00A8626A /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C008712482FDEA00A8626A /* URLParameterEncoder.swift */; };
@@ -118,6 +119,7 @@
 		958063C6249FA06D00514688 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		958347B824B438D60066ACD3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		958347BA24B6D9D90066ACD3 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		959903E624C508BB00EA7565 /* TurnTuneError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnTuneError.swift; sourceTree = "<group>"; };
 		95AEC938248C052200105F73 /* HTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponse.swift; sourceTree = "<group>"; };
 		95C0086F2482FAC800A8626A /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
 		95C008712482FDEA00A8626A /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				958347B824B438D60066ACD3 /* HomeViewModel.swift */,
 				955FC15124989C2200C52854 /* RoomCreatorViewModel.swift */,
 				956E6DB4249C651900664518 /* PlayRoomViewModel.swift */,
+				959903E624C508BB00EA7565 /* TurnTuneError.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -644,6 +647,7 @@
 				958347BB24B6D9D90066ACD3 /* Member.swift in Sources */,
 				956E6DB5249C651A00664518 /* PlayRoomViewModel.swift in Sources */,
 				9520BD1824823E980086DD02 /* HTTPParameters.swift in Sources */,
+				959903E724C508BB00EA7565 /* TurnTuneError.swift in Sources */,
 				958063BD249EC41F00514688 /* Playlist.swift in Sources */,
 				958063C5249EC61F00514688 /* Artist.swift in Sources */,
 				958063BF249EC4CA00514688 /* Paging.swift in Sources */,
