@@ -13,7 +13,8 @@ import FirebaseFirestoreSwift
 
 class PlayRoomViewModel {
     
-    var membersChanged: (([Member]) -> Void)?
+    var roomInfoChanged: (() -> Void)?
+    var membersChanged: (() -> Void)?
     
     private let playRoom: PlayRoom
     var roomInfo: RoomInfo { playRoom.roomInfo }
@@ -26,19 +27,26 @@ class PlayRoomViewModel {
     init(with playRoom: PlayRoom) {
         self.playRoom = playRoom
         self.roomDocumentRef = Firestore.firestore().collection("rooms").document(playRoom.roomInfo.code)
-        roomDocumentRef.collection("members").getDocuments { (querySnapshot, error) in
-            if let error = error {
-                print(error)
-                return
-            }
-            guard let query = querySnapshot else {
-                print("No query")
-                return
-            }
-            playRoom.members = query.documents.map { try! $0.data(as: Member.self)! }
+        addRoomInfoListener()
+        addMembersListener()
+    }
+    
+    func addRoomInfoListener() {
+        addSnapshotListener(for: roomDocumentRef.collection("info")) { roomInfo in
+            print(roomInfo.documents.map({ $0.data() }))
+            self.roomInfoChanged?()
         }
-        
-        roomDocumentRef.collection("members").addSnapshotListener { (querySnapshot, error) in
+    }
+    
+    func addMembersListener() {
+        addSnapshotListener(for: roomDocumentRef.collection("members")) { members in
+            self.playRoom.members = members.documents.map { try! $0.data(as: Member.self)! }
+            self.membersChanged?()
+        }
+    }
+    
+    func addSnapshotListener(for collectionReference: CollectionReference, completion: @escaping (QuerySnapshot) -> Void) {
+        collectionReference.addSnapshotListener { (querySnapshot, error) in
             if let error = error {
                 print(error)
                 return
@@ -47,8 +55,7 @@ class PlayRoomViewModel {
                 print("No query")
                 return
             }
-            playRoom.members = query.documents.map { try! $0.data(as: Member.self)! }
-            self.membersChanged?(self.members)
+            completion(query)
         }
     }
 }

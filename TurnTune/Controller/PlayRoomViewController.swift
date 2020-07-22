@@ -28,7 +28,7 @@ class PlayRoomViewController: UIViewController {
     
     func setup() {
         tableView.dataSource = self
-        viewModel.membersChanged = { members in
+        viewModel.membersChanged = {
             self.tableView.reloadData()
         }
     }
