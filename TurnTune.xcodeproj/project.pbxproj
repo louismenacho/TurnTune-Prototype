@@ -15,6 +15,7 @@
 		9508C24823EFDF1F0050017F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9508C24623EFDF1F0050017F /* LaunchScreen.storyboard */; };
 		9508C25323EFDF200050017F /* TurnTuneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C25223EFDF200050017F /* TurnTuneTests.swift */; };
 		9508C25E23EFDF200050017F /* TurnTuneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C25D23EFDF200050017F /* TurnTuneUITests.swift */; };
+		95F7D70124EF72DA0062DF39 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F7D70024EF72DA0062DF39 /* SpotifyiOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		9508C25923EFDF200050017F /* TurnTuneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TurnTuneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9508C25D23EFDF200050017F /* TurnTuneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnTuneUITests.swift; sourceTree = "<group>"; };
 		9508C25F23EFDF200050017F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95F7D70024EF72DA0062DF39 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
+		95F7D70224EF791F0062DF39 /* TurnTune-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TurnTune-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95F7D70124EF72DA0062DF39 /* SpotifyiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +87,7 @@
 				9508C25123EFDF200050017F /* TurnTuneTests */,
 				9508C25C23EFDF200050017F /* TurnTuneUITests */,
 				9508C23923EFDF1A0050017F /* Products */,
+				95F7D6FF24EF72BA0062DF39 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +104,7 @@
 		9508C23A23EFDF1A0050017F /* TurnTune */ = {
 			isa = PBXGroup;
 			children = (
+				95F7D70224EF791F0062DF39 /* TurnTune-Bridging-Header.h */,
 				9508C23B23EFDF1A0050017F /* AppDelegate.swift */,
 				9508C23D23EFDF1B0050017F /* SceneDelegate.swift */,
 				9508C23F23EFDF1B0050017F /* ViewController.swift */,
@@ -126,6 +132,14 @@
 				9508C25F23EFDF200050017F /* Info.plist */,
 			);
 			path = TurnTuneUITests;
+			sourceTree = "<group>";
+		};
+		95F7D6FF24EF72BA0062DF39 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				95F7D70024EF72DA0062DF39 /* SpotifyiOS.framework */,
+			);
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,6 +450,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RUKEA88AF2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = TurnTune/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -443,6 +461,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.louismenacho.TurnTune;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TurnTune/TurnTune-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -454,6 +473,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RUKEA88AF2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = TurnTune/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -461,6 +484,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.louismenacho.TurnTune;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TurnTune/TurnTune-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
