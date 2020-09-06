@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		9508C23C23EFDF1A0050017F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C23B23EFDF1A0050017F /* AppDelegate.swift */; };
 		9508C23E23EFDF1B0050017F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C23D23EFDF1B0050017F /* SceneDelegate.swift */; };
-		9508C24023EFDF1B0050017F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C23F23EFDF1B0050017F /* ViewController.swift */; };
+		9508C24023EFDF1B0050017F /* HostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C23F23EFDF1B0050017F /* HostViewController.swift */; };
 		9508C24323EFDF1B0050017F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9508C24123EFDF1B0050017F /* Main.storyboard */; };
 		9508C24523EFDF1F0050017F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9508C24423EFDF1F0050017F /* Assets.xcassets */; };
 		9508C24823EFDF1F0050017F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9508C24623EFDF1F0050017F /* LaunchScreen.storyboard */; };
 		9508C25323EFDF200050017F /* TurnTuneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C25223EFDF200050017F /* TurnTuneTests.swift */; };
 		9508C25E23EFDF200050017F /* TurnTuneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C25D23EFDF200050017F /* TurnTuneUITests.swift */; };
+		950AB05324FF42FE00C1205B /* SpotifyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950AB05224FF42FE00C1205B /* SpotifyConstants.swift */; };
+		950AB05524FF4C7F00C1205B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950AB05424FF4C7F00C1205B /* HomeViewController.swift */; };
 		95F7D70124EF72DA0062DF39 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F7D70024EF72DA0062DF39 /* SpotifyiOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +41,7 @@
 		9508C23823EFDF1A0050017F /* TurnTune.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TurnTune.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9508C23B23EFDF1A0050017F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9508C23D23EFDF1B0050017F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9508C23F23EFDF1B0050017F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9508C23F23EFDF1B0050017F /* HostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostViewController.swift; sourceTree = "<group>"; };
 		9508C24223EFDF1B0050017F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9508C24423EFDF1F0050017F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9508C24723EFDF1F0050017F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,8 +52,10 @@
 		9508C25923EFDF200050017F /* TurnTuneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TurnTuneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9508C25D23EFDF200050017F /* TurnTuneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnTuneUITests.swift; sourceTree = "<group>"; };
 		9508C25F23EFDF200050017F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		950AB05224FF42FE00C1205B /* SpotifyConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyConstants.swift; sourceTree = "<group>"; };
+		950AB05424FF4C7F00C1205B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		95F7D70024EF72DA0062DF39 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
-		95F7D70224EF791F0062DF39 /* TurnTune-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TurnTune-Bridging-Header.h"; sourceTree = "<group>"; };
+		95F7D70224EF791F0062DF39 /* SpotifyiOS-Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpotifyiOS-Bridge.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,13 +108,15 @@
 		9508C23A23EFDF1A0050017F /* TurnTune */ = {
 			isa = PBXGroup;
 			children = (
-				95F7D70224EF791F0062DF39 /* TurnTune-Bridging-Header.h */,
 				9508C23B23EFDF1A0050017F /* AppDelegate.swift */,
 				9508C23D23EFDF1B0050017F /* SceneDelegate.swift */,
-				9508C23F23EFDF1B0050017F /* ViewController.swift */,
-				9508C24123EFDF1B0050017F /* Main.storyboard */,
+				950AB04C24FBD3AB00C1205B /* Bridge */,
+				950AB05124FF2F6B00C1205B /* Constants */,
+				950AB05024FBD48300C1205B /* Model */,
+				950AB04F24FBD3C400C1205B /* View */,
+				950AB04E24FBD3BD00C1205B /* ViewModel */,
+				950AB04D24FBD3BB00C1205B /* Controller */,
 				9508C24423EFDF1F0050017F /* Assets.xcassets */,
-				9508C24623EFDF1F0050017F /* LaunchScreen.storyboard */,
 				9508C24923EFDF1F0050017F /* Info.plist */,
 			);
 			path = TurnTune;
@@ -132,6 +138,54 @@
 				9508C25F23EFDF200050017F /* Info.plist */,
 			);
 			path = TurnTuneUITests;
+			sourceTree = "<group>";
+		};
+		950AB04C24FBD3AB00C1205B /* Bridge */ = {
+			isa = PBXGroup;
+			children = (
+				95F7D70224EF791F0062DF39 /* SpotifyiOS-Bridge.h */,
+			);
+			path = Bridge;
+			sourceTree = "<group>";
+		};
+		950AB04D24FBD3BB00C1205B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				950AB05424FF4C7F00C1205B /* HomeViewController.swift */,
+				9508C23F23EFDF1B0050017F /* HostViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		950AB04E24FBD3BD00C1205B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		950AB04F24FBD3C400C1205B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9508C24623EFDF1F0050017F /* LaunchScreen.storyboard */,
+				9508C24123EFDF1B0050017F /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		950AB05024FBD48300C1205B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		950AB05124FF2F6B00C1205B /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				950AB05224FF42FE00C1205B /* SpotifyConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		95F7D6FF24EF72BA0062DF39 /* Frameworks */ = {
@@ -273,7 +327,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9508C24023EFDF1B0050017F /* ViewController.swift in Sources */,
+				950AB05524FF4C7F00C1205B /* HomeViewController.swift in Sources */,
+				950AB05324FF42FE00C1205B /* SpotifyConstants.swift in Sources */,
+				9508C24023EFDF1B0050017F /* HostViewController.swift in Sources */,
 				9508C23C23EFDF1A0050017F /* AppDelegate.swift in Sources */,
 				9508C23E23EFDF1B0050017F /* SceneDelegate.swift in Sources */,
 			);
@@ -461,7 +517,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.louismenacho.TurnTune;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "TurnTune/TurnTune-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "TurnTune/Bridge/SpotifyiOS-Bridge.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -484,7 +540,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.louismenacho.TurnTune;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "TurnTune/TurnTune-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "TurnTune/Bridge/SpotifyiOS-Bridge.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
