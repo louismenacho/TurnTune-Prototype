@@ -7,37 +7,26 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeViewController: UIViewController {
     
-    lazy var sessionManager = (UIApplication.shared.delegate as! AppDelegate).sessionManager
-    lazy var appRemote = (UIApplication.shared.delegate as! AppDelegate).appRemote
+    var viewModel: HomeViewModel = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func hostButtonPressed(_ sender: UIButton) {
-        sessionManager.delegate = self
-        if sessionManager.isSpotifyAppInstalled {
-            sessionManager.initiateSession(with: .appRemoteControl, options: .default)
-        } else {
-            print("Spotify app not installed")
+        viewModel.host(name: "Louis") { result in
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success:
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "HostViewController", sender: self)
+                }
+            }
         }
-    }
-}
-
-extension HomeViewController: SPTSessionManagerDelegate {
-    
-    func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
-        print("SPTSession initiated")
-        DispatchQueue.main.async {
-            self.appRemote.connectionParameters.accessToken = session.accessToken
-            self.performSegue(withIdentifier: "HostViewController", sender: self)
-        }
-    }
-    
-    func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
-        print(error.localizedDescription)
     }
 }

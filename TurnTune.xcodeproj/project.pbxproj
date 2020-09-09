@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		915189E6C661A8AA41A2CC61 /* Pods_TurnTuneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E799F47E00641E5E44D11249 /* Pods_TurnTuneTests.framework */; };
 		9508C23C23EFDF1A0050017F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C23B23EFDF1A0050017F /* AppDelegate.swift */; };
 		9508C23E23EFDF1B0050017F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C23D23EFDF1B0050017F /* SceneDelegate.swift */; };
 		9508C24023EFDF1B0050017F /* HostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C23F23EFDF1B0050017F /* HostViewController.swift */; };
@@ -17,7 +18,11 @@
 		9508C25E23EFDF200050017F /* TurnTuneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C25D23EFDF200050017F /* TurnTuneUITests.swift */; };
 		950AB05324FF42FE00C1205B /* SpotifyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950AB05224FF42FE00C1205B /* SpotifyConstants.swift */; };
 		950AB05524FF4C7F00C1205B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950AB05424FF4C7F00C1205B /* HomeViewController.swift */; };
+		95610C49250744100016B072 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95610C48250744100016B072 /* HomeViewModel.swift */; };
+		956E2C4D250733AD000E2E5D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 956E2C4C250733AD000E2E5D /* GoogleService-Info.plist */; };
 		95F7D70124EF72DA0062DF39 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F7D70024EF72DA0062DF39 /* SpotifyiOS.framework */; };
+		C21DF4FB35B0149E85A4D2AB /* Pods_TurnTune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4131E55AE14E49F838751DF /* Pods_TurnTune.framework */; };
+		FED99F640F92A654202157C5 /* Pods_TurnTune_TurnTuneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E567E44782E726A33338D5 /* Pods_TurnTune_TurnTuneUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0502C425CA272AF3477CB63B /* Pods-TurnTune-TurnTuneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurnTune-TurnTuneUITests.release.xcconfig"; path = "Target Support Files/Pods-TurnTune-TurnTuneUITests/Pods-TurnTune-TurnTuneUITests.release.xcconfig"; sourceTree = "<group>"; };
+		07E93B241118898FA2126A13 /* Pods-TurnTune-TurnTuneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurnTune-TurnTuneUITests.debug.xcconfig"; path = "Target Support Files/Pods-TurnTune-TurnTuneUITests/Pods-TurnTune-TurnTuneUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7D68F2C15F544DE2F39E13C3 /* Pods-TurnTune.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurnTune.debug.xcconfig"; path = "Target Support Files/Pods-TurnTune/Pods-TurnTune.debug.xcconfig"; sourceTree = "<group>"; };
+		8C901DF47003AD34F120559F /* Pods-TurnTuneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurnTuneTests.debug.xcconfig"; path = "Target Support Files/Pods-TurnTuneTests/Pods-TurnTuneTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9508C23823EFDF1A0050017F /* TurnTune.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TurnTune.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9508C23B23EFDF1A0050017F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9508C23D23EFDF1B0050017F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,8 +63,15 @@
 		9508C25F23EFDF200050017F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		950AB05224FF42FE00C1205B /* SpotifyConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyConstants.swift; sourceTree = "<group>"; };
 		950AB05424FF4C7F00C1205B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		95610C48250744100016B072 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		956E2C4C250733AD000E2E5D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		95F7D70024EF72DA0062DF39 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		95F7D70224EF791F0062DF39 /* SpotifyiOS-Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpotifyiOS-Bridge.h"; sourceTree = "<group>"; };
+		A5E567E44782E726A33338D5 /* Pods_TurnTune_TurnTuneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TurnTune_TurnTuneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD02877EEAB2D23BBE9156CD /* Pods-TurnTuneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurnTuneTests.release.xcconfig"; path = "Target Support Files/Pods-TurnTuneTests/Pods-TurnTuneTests.release.xcconfig"; sourceTree = "<group>"; };
+		C4131E55AE14E49F838751DF /* Pods_TurnTune.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TurnTune.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E799F47E00641E5E44D11249 /* Pods_TurnTuneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TurnTuneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F55656ED0522D21073A34745 /* Pods-TurnTune.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurnTune.release.xcconfig"; path = "Target Support Files/Pods-TurnTune/Pods-TurnTune.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +80,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95F7D70124EF72DA0062DF39 /* SpotifyiOS.framework in Frameworks */,
+				C21DF4FB35B0149E85A4D2AB /* Pods_TurnTune.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				915189E6C661A8AA41A2CC61 /* Pods_TurnTuneTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,12 +96,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FED99F640F92A654202157C5 /* Pods_TurnTune_TurnTuneUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2746379DA8432B71496CAE12 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7D68F2C15F544DE2F39E13C3 /* Pods-TurnTune.debug.xcconfig */,
+				F55656ED0522D21073A34745 /* Pods-TurnTune.release.xcconfig */,
+				07E93B241118898FA2126A13 /* Pods-TurnTune-TurnTuneUITests.debug.xcconfig */,
+				0502C425CA272AF3477CB63B /* Pods-TurnTune-TurnTuneUITests.release.xcconfig */,
+				8C901DF47003AD34F120559F /* Pods-TurnTuneTests.debug.xcconfig */,
+				BD02877EEAB2D23BBE9156CD /* Pods-TurnTuneTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		9508C22F23EFDF1A0050017F = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +124,7 @@
 				9508C25C23EFDF200050017F /* TurnTuneUITests */,
 				9508C23923EFDF1A0050017F /* Products */,
 				95F7D6FF24EF72BA0062DF39 /* Frameworks */,
+				2746379DA8432B71496CAE12 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +151,7 @@
 				950AB04D24FBD3BB00C1205B /* Controller */,
 				9508C24423EFDF1F0050017F /* Assets.xcassets */,
 				9508C24923EFDF1F0050017F /* Info.plist */,
+				956E2C4C250733AD000E2E5D /* GoogleService-Info.plist */,
 			);
 			path = TurnTune;
 			sourceTree = "<group>";
@@ -160,6 +194,7 @@
 		950AB04E24FBD3BD00C1205B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				95610C48250744100016B072 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -192,6 +227,9 @@
 			isa = PBXGroup;
 			children = (
 				95F7D70024EF72DA0062DF39 /* SpotifyiOS.framework */,
+				C4131E55AE14E49F838751DF /* Pods_TurnTune.framework */,
+				A5E567E44782E726A33338D5 /* Pods_TurnTune_TurnTuneUITests.framework */,
+				E799F47E00641E5E44D11249 /* Pods_TurnTuneTests.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -203,9 +241,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9508C26223EFDF200050017F /* Build configuration list for PBXNativeTarget "TurnTune" */;
 			buildPhases = (
+				EE20D3482AB0D1E3823F44D8 /* [CP] Check Pods Manifest.lock */,
 				9508C23423EFDF1A0050017F /* Sources */,
 				9508C23523EFDF1A0050017F /* Frameworks */,
 				9508C23623EFDF1A0050017F /* Resources */,
+				58D2A53F86560A879E7C78E2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -220,6 +260,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9508C26523EFDF200050017F /* Build configuration list for PBXNativeTarget "TurnTuneTests" */;
 			buildPhases = (
+				036FF60A1F2D9405E22FC237 /* [CP] Check Pods Manifest.lock */,
 				9508C24A23EFDF200050017F /* Sources */,
 				9508C24B23EFDF200050017F /* Frameworks */,
 				9508C24C23EFDF200050017F /* Resources */,
@@ -238,9 +279,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9508C26823EFDF200050017F /* Build configuration list for PBXNativeTarget "TurnTuneUITests" */;
 			buildPhases = (
+				536829B6D43FCD1D5D8A9C88 /* [CP] Check Pods Manifest.lock */,
 				9508C25523EFDF200050017F /* Sources */,
 				9508C25623EFDF200050017F /* Frameworks */,
 				9508C25723EFDF200050017F /* Resources */,
+				ED8E96D7A217DF596CF5ABC0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -301,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9508C24823EFDF1F0050017F /* LaunchScreen.storyboard in Resources */,
+				956E2C4D250733AD000E2E5D /* GoogleService-Info.plist in Resources */,
 				9508C24523EFDF1F0050017F /* Assets.xcassets in Resources */,
 				9508C24323EFDF1B0050017F /* Main.storyboard in Resources */,
 			);
@@ -322,12 +366,116 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		036FF60A1F2D9405E22FC237 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TurnTuneTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		536829B6D43FCD1D5D8A9C88 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TurnTune-TurnTuneUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		58D2A53F86560A879E7C78E2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TurnTune/Pods-TurnTune-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TurnTune/Pods-TurnTune-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TurnTune/Pods-TurnTune-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED8E96D7A217DF596CF5ABC0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TurnTune-TurnTuneUITests/Pods-TurnTune-TurnTuneUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TurnTune-TurnTuneUITests/Pods-TurnTune-TurnTuneUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TurnTune-TurnTuneUITests/Pods-TurnTune-TurnTuneUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE20D3482AB0D1E3823F44D8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TurnTune-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9508C23423EFDF1A0050017F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				950AB05524FF4C7F00C1205B /* HomeViewController.swift in Sources */,
+				95610C49250744100016B072 /* HomeViewModel.swift in Sources */,
 				950AB05324FF42FE00C1205B /* SpotifyConstants.swift in Sources */,
 				9508C24023EFDF1B0050017F /* HostViewController.swift in Sources */,
 				9508C23C23EFDF1A0050017F /* AppDelegate.swift in Sources */,
@@ -502,6 +650,7 @@
 		};
 		9508C26323EFDF200050017F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D68F2C15F544DE2F39E13C3 /* Pods-TurnTune.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -525,6 +674,7 @@
 		};
 		9508C26423EFDF200050017F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F55656ED0522D21073A34745 /* Pods-TurnTune.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -548,6 +698,7 @@
 		};
 		9508C26623EFDF200050017F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C901DF47003AD34F120559F /* Pods-TurnTuneTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -570,6 +721,7 @@
 		};
 		9508C26723EFDF200050017F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD02877EEAB2D23BBE9156CD /* Pods-TurnTuneTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -592,6 +744,7 @@
 		};
 		9508C26923EFDF200050017F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07E93B241118898FA2126A13 /* Pods-TurnTune-TurnTuneUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -612,6 +765,7 @@
 		};
 		9508C26A23EFDF200050017F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0502C425CA272AF3477CB63B /* Pods-TurnTune-TurnTuneUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
