@@ -43,7 +43,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="zmp-qb-OoT"/>
                     <connections>
-                        <segue destination="dmX-y9-KaE" kind="presentation" identifier="HostViewController" modalPresentationStyle="fullScreen" id="GIT-BJ-NmU"/>
+                        <segue destination="dmX-y9-KaE" kind="presentation" identifier="RoomViewController" modalPresentationStyle="fullScreen" id="GIT-BJ-NmU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -51,10 +51,10 @@
             </objects>
             <point key="canvasLocation" x="889.85507246376824" y="37.5"/>
         </scene>
-        <!--Host View Controller-->
+        <!--Room View Controller-->
         <scene sceneID="6yT-jo-3Gw">
             <objects>
-                <viewController id="t3M-th-H4C" customClass="HostViewController" customModule="TurnTune" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="t3M-th-H4C" customClass="RoomViewController" customModule="TurnTune" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fdh-lR-xWN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

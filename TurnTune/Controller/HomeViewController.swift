@@ -11,20 +11,29 @@ import Firebase
 
 class HomeViewController: UIViewController {
     
-    var viewModel: HomeViewModel = HomeViewModel()
+    var sessionViewModel: SessionViewModel = SessionViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "RoomViewController" {
+            let navigationController = segue.destination as! UINavigationController
+            let roomViewController = navigationController.viewControllers.first! as! RoomViewController
+            roomViewController.roomViewModel = RoomViewModel(room: sessionViewModel.newRoom)
+            roomViewController.playerViewModel = PlayerViewModel()
+        }
+    }
+    
     @IBAction func hostButtonPressed(_ sender: UIButton) {
-        viewModel.host(name: "Louis") { result in
+        sessionViewModel.host(name: "Louis") { result in
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
             case .success:
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "HostViewController", sender: self)
+                    self.performSegue(withIdentifier: "RoomViewController", sender: self)
                 }
             }
         }

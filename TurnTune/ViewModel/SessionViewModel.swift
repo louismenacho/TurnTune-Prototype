@@ -13,8 +13,9 @@ import Firebase
 class SessionViewModel: NSObject {
     
     var cancellable: AnyCancellable?
+    var newRoom = Room()
     
-    lazy private var spotifyLoginCompletion: ((Result<SPTSession, Error>) -> Void)? = nil
+    lazy private var spotifyLoginCompletion: ((Result<Void, Error>) -> Void)? = nil
     lazy private var appDelegate = UIApplication.shared.delegate as! AppDelegate
     lazy var sessionManager = appDelegate.sessionManager
     lazy var appRemote = appDelegate.appRemote
@@ -25,12 +26,12 @@ class SessionViewModel: NSObject {
             return
         }
         cancellable =
+            self.spotifyLogin()
+        .flatMap {
             self.signIn()
+        }
         .flatMap { user in
             self.setDisplayName(to: name, for: user)
-        }
-        .flatMap {
-            self.spotifyLogin()
         }
         .sink(receiveCompletion: {
             switch $0 {
@@ -39,10 +40,26 @@ class SessionViewModel: NSObject {
             case .finished:
                 completion(.success(()))
             }
-        }, receiveValue: { session in
-            self.appRemote.connectionParameters.accessToken = session.accessToken
+        }, receiveValue: {
+            self.createRoom()
         })
     }
+    
+    private func spotifyLogin() -> Future<Void, Error> {
+        Future<Void, Error> { promise in
+            self.sessionManager.delegate = self
+            self.sessionManager.initiateSession(with: .appRemoteControl, options: .default)
+            self.spotifyLoginCompletion = { result in
+                switch result {
+                case .failure(let error):
+                    return promise(.failure(error))
+                case .success():
+                    return promise(.success(()))
+                }
+            }
+        }
+    }
+
     
     private func signIn() -> Future<User, Error> {
         Future<User, Error> { promise in
@@ -71,19 +88,29 @@ class SessionViewModel: NSObject {
         }
     }
     
-    private func spotifyLogin() -> Future<SPTSession, Error> {
-        Future<SPTSession, Error> { promise in
-            self.sessionManager.delegate = self
-            self.sessionManager.initiateSession(with: .appRemoteControl, options: .default)
-            self.spotifyLoginCompletion = { result in
-                switch result {
-                case let .success(session):
-                    return promise(.success(session))
-                case let .failure(error):
-                    return promise(.failure(error))
-                }
-            }
+    private func generateRoomCode() {
+        var roomCode = ""
+        let alphabeticRange = 65...90
+        while roomCode.count < 4 {
+            let letter = Character(UnicodeScalar(Int.random(in: alphabeticRange))!)
+            roomCode = "\(roomCode)\(letter)"
         }
+        newRoom.roomCode = roomCode
+    }
+        
+    private func createRoom() {
+        generateRoomCode()
+        let roomsCollectionRef = Firestore.firestore().collection("rooms")
+        
+        let roomDocumentRef = roomsCollectionRef.document(newRoom.roomCode)
+        roomDocumentRef.setData([
+            "date_created": Timestamp(date: Date())
+        ])
+        
+        let memberDocumentRef = roomDocumentRef.collection("members").document(Auth.auth().currentUser!.uid)
+        memberDocumentRef.setData([
+            "display_name": Auth.auth().currentUser!.displayName!
+        ])
     }
 }
 
@@ -91,7 +118,8 @@ extension SessionViewModel: SPTSessionManagerDelegate {
     
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
         print("SPTSession initiated")
-        spotifyLoginCompletion?(.success(session))
+        appRemote.connectionParameters.accessToken = session.accessToken
+        spotifyLoginCompletion?(.success(()))
     }
     
     func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {

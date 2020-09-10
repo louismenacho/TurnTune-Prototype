@@ -10,7 +10,7 @@
 		915189E6C661A8AA41A2CC61 /* Pods_TurnTuneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E799F47E00641E5E44D11249 /* Pods_TurnTuneTests.framework */; };
 		9508C23C23EFDF1A0050017F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C23B23EFDF1A0050017F /* AppDelegate.swift */; };
 		9508C23E23EFDF1B0050017F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C23D23EFDF1B0050017F /* SceneDelegate.swift */; };
-		9508C24023EFDF1B0050017F /* HostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C23F23EFDF1B0050017F /* HostViewController.swift */; };
+		9508C24023EFDF1B0050017F /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C23F23EFDF1B0050017F /* RoomViewController.swift */; };
 		9508C24323EFDF1B0050017F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9508C24123EFDF1B0050017F /* Main.storyboard */; };
 		9508C24523EFDF1F0050017F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9508C24423EFDF1F0050017F /* Assets.xcassets */; };
 		9508C24823EFDF1F0050017F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9508C24623EFDF1F0050017F /* LaunchScreen.storyboard */; };
@@ -18,8 +18,11 @@
 		9508C25E23EFDF200050017F /* TurnTuneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508C25D23EFDF200050017F /* TurnTuneUITests.swift */; };
 		950AB05324FF42FE00C1205B /* SpotifyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950AB05224FF42FE00C1205B /* SpotifyConstants.swift */; };
 		950AB05524FF4C7F00C1205B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950AB05424FF4C7F00C1205B /* HomeViewController.swift */; };
-		95610C49250744100016B072 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95610C48250744100016B072 /* HomeViewModel.swift */; };
+		95316A7225089AE300F22B22 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95316A7125089AE300F22B22 /* PlayerViewModel.swift */; };
+		95610C49250744100016B072 /* SessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95610C48250744100016B072 /* SessionViewModel.swift */; };
 		956E2C4D250733AD000E2E5D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 956E2C4C250733AD000E2E5D /* GoogleService-Info.plist */; };
+		95B368552509B80300B01A80 /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B368542509B80300B01A80 /* RoomViewModel.swift */; };
+		95B368572509B82200B01A80 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B368562509B82200B01A80 /* Room.swift */; };
 		95F7D70124EF72DA0062DF39 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F7D70024EF72DA0062DF39 /* SpotifyiOS.framework */; };
 		C21DF4FB35B0149E85A4D2AB /* Pods_TurnTune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4131E55AE14E49F838751DF /* Pods_TurnTune.framework */; };
 		FED99F640F92A654202157C5 /* Pods_TurnTune_TurnTuneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E567E44782E726A33338D5 /* Pods_TurnTune_TurnTuneUITests.framework */; };
@@ -50,7 +53,7 @@
 		9508C23823EFDF1A0050017F /* TurnTune.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TurnTune.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9508C23B23EFDF1A0050017F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9508C23D23EFDF1B0050017F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9508C23F23EFDF1B0050017F /* HostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostViewController.swift; sourceTree = "<group>"; };
+		9508C23F23EFDF1B0050017F /* RoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
 		9508C24223EFDF1B0050017F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9508C24423EFDF1F0050017F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9508C24723EFDF1F0050017F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -63,8 +66,11 @@
 		9508C25F23EFDF200050017F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		950AB05224FF42FE00C1205B /* SpotifyConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyConstants.swift; sourceTree = "<group>"; };
 		950AB05424FF4C7F00C1205B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		95610C48250744100016B072 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		95316A7125089AE300F22B22 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
+		95610C48250744100016B072 /* SessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewModel.swift; sourceTree = "<group>"; };
 		956E2C4C250733AD000E2E5D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		95B368542509B80300B01A80 /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
+		95B368562509B82200B01A80 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		95F7D70024EF72DA0062DF39 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		95F7D70224EF791F0062DF39 /* SpotifyiOS-Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpotifyiOS-Bridge.h"; sourceTree = "<group>"; };
 		A5E567E44782E726A33338D5 /* Pods_TurnTune_TurnTuneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TurnTune_TurnTuneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,7 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				950AB05424FF4C7F00C1205B /* HomeViewController.swift */,
-				9508C23F23EFDF1B0050017F /* HostViewController.swift */,
+				9508C23F23EFDF1B0050017F /* RoomViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -194,7 +200,9 @@
 		950AB04E24FBD3BD00C1205B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				95610C48250744100016B072 /* HomeViewModel.swift */,
+				95610C48250744100016B072 /* SessionViewModel.swift */,
+				95316A7125089AE300F22B22 /* PlayerViewModel.swift */,
+				95B368542509B80300B01A80 /* RoomViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -211,6 +219,7 @@
 		950AB05024FBD48300C1205B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				95B368562509B82200B01A80 /* Room.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -475,11 +484,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				950AB05524FF4C7F00C1205B /* HomeViewController.swift in Sources */,
-				95610C49250744100016B072 /* HomeViewModel.swift in Sources */,
+				95610C49250744100016B072 /* SessionViewModel.swift in Sources */,
 				950AB05324FF42FE00C1205B /* SpotifyConstants.swift in Sources */,
-				9508C24023EFDF1B0050017F /* HostViewController.swift in Sources */,
+				9508C24023EFDF1B0050017F /* RoomViewController.swift in Sources */,
 				9508C23C23EFDF1A0050017F /* AppDelegate.swift in Sources */,
+				95B368572509B82200B01A80 /* Room.swift in Sources */,
+				95316A7225089AE300F22B22 /* PlayerViewModel.swift in Sources */,
 				9508C23E23EFDF1B0050017F /* SceneDelegate.swift in Sources */,
+				95B368552509B80300B01A80 /* RoomViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

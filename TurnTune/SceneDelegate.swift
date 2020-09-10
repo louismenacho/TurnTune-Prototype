@@ -53,7 +53,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         let homeViewController = window?.rootViewController as! HomeViewController
-        homeViewController.viewModel.sessionManager.application(UIApplication.shared, open: url, options: [:])
+        homeViewController.sessionViewModel.sessionManager.application(UIApplication.shared, open: url, options: [:])
     }
 }
 
