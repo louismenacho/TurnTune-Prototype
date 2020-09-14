@@ -8,6 +8,7 @@ target 'TurnTune' do
   # Pods for TurnTune
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
+  pod 'Firebase/Functions'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
 

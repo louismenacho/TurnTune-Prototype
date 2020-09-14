@@ -17,8 +17,7 @@ class SessionViewModel: NSObject {
     
     lazy private var spotifyLoginCompletion: ((Result<Void, Error>) -> Void)? = nil
     lazy private var appDelegate = UIApplication.shared.delegate as! AppDelegate
-    lazy var sessionManager = appDelegate.sessionManager
-    lazy var appRemote = appDelegate.appRemote
+    lazy private var sessionManager = appDelegate.sessionManager
     
     func host(name: String, completion: @escaping (Result<Void, Error>) -> Void) {
         guard sessionManager.isSpotifyAppInstalled else {
@@ -118,7 +117,7 @@ extension SessionViewModel: SPTSessionManagerDelegate {
     
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
         print("SPTSession initiated")
-        appRemote.connectionParameters.accessToken = session.accessToken
+        appDelegate.appRemote.connectionParameters.accessToken = session.accessToken
         spotifyLoginCompletion?(.success(()))
     }
     

@@ -7,37 +7,22 @@
 //
 
 import Foundation
+import Combine
+import Firebase
 
 class PlayerViewModel: NSObject {
     
     var playerState: SPTAppRemotePlayerState?
     
     lazy private var appDelegate = UIApplication.shared.delegate as! AppDelegate
-    lazy var sessionManager = appDelegate.sessionManager
-    lazy var appRemote = appDelegate.appRemote
+    lazy private var appRemote = appDelegate.appRemote
     
     override init() {
         super.init()
-        sessionManager.delegate = self
         appRemote.delegate = self
         appRemote.connect()
     }
     
-}
-
-extension PlayerViewModel: SPTSessionManagerDelegate {
-    
-    func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
-        print("SPTSession initiated")
-    }
-    
-    func sessionManager(manager: SPTSessionManager, didRenew session: SPTSession) {
-        print("SPTSession renewed")
-    }
-    
-    func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
-        print(error)
-    }
 }
 
 extension PlayerViewModel: SPTAppRemoteDelegate {

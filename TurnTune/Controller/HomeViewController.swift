@@ -23,6 +23,7 @@ class HomeViewController: UIViewController {
             let roomViewController = navigationController.viewControllers.first! as! RoomViewController
             roomViewController.roomViewModel = RoomViewModel(room: sessionViewModel.newRoom)
             roomViewController.playerViewModel = PlayerViewModel()
+            roomViewController.searcherViewModel = SearcherViewModel()
         }
     }
     

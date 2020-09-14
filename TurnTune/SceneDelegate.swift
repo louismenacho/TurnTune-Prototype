@@ -52,8 +52,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let url = URLContexts.first?.url else {
             return
         }
-        let homeViewController = window?.rootViewController as! HomeViewController
-        homeViewController.sessionViewModel.sessionManager.application(UIApplication.shared, open: url, options: [:])
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.sessionManager.application(UIApplication.shared, open: url, options: [:])
     }
 }
 
