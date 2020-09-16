@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import SwiftyJSON
 
 class SearcherViewModel {
     
@@ -38,14 +39,15 @@ class SearcherViewModel {
                 if let error = error {
                     print(error.localizedDescription)
                 }
-                if let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any] {
-                    self.searcher.accessToken = json["access_token"] as! String
+                if let json = try? JSON(data: data!) {
+                    print(json["access_token"].string!)
+                    self.searcher.accessToken = json["access_token"].string!
                 }
             }).resume()
         }
     }
     
-    func search(query: String) {
+    func search(query: String, completion: @escaping (JSON) -> Void) {
         let url = URL(string: "https://api.spotify.com/v1/search")!
         let queryParameters = ["q": query, "type": "track"]
         
@@ -62,8 +64,8 @@ class SearcherViewModel {
             if let error = error {
                 print(error.localizedDescription)
             }
-            if let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any] {
-                print(json)
+            if let json = try? JSON(data: data!) {
+                completion(json)
             }
         }).resume()
     }

@@ -11,6 +11,8 @@ target 'TurnTune' do
   pod 'Firebase/Functions'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
+  
+  pod 'SwiftyJSON', '~> 4.0'
 
   target 'TurnTuneTests' do
     inherit! :search_paths
