@@ -68,7 +68,7 @@
                                 <rect key="frame" x="0.0" y="244" width="414" height="652"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="qvd-g6-N1y">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TrackTableViewCell" id="qvd-g6-N1y" customClass="TrackTableViewCell" customModule="TurnTune" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qvd-g6-N1y" id="bgF-bP-Vfl">
@@ -100,6 +100,10 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="ERx-Xd-gZ7" secondAttribute="trailing" id="ewK-ae-oCH"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="artistNameLabel" destination="M5Z-VK-02k" id="UrQ-Ky-q5i"/>
+                                            <outlet property="trackNameLabel" destination="yqw-Kl-Sl7" id="ohV-tC-acn"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -116,7 +120,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="N7X-nq-rWY">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemberCollectionViewCell" id="N7X-nq-rWY" customClass="MemberCollectionViewCell" customModule="TurnTune" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="12.5" width="75" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7kj-Mn-PST">
@@ -135,6 +139,9 @@
                                                 <constraint firstItem="01b-CJ-Vnq" firstAttribute="centerY" secondItem="7kj-Mn-PST" secondAttribute="centerY" id="wCH-ST-Ixh"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="memberNameLabel" destination="01b-CJ-Vnq" id="DN4-9W-kBZ"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

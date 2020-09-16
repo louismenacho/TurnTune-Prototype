@@ -40,7 +40,6 @@ class SearcherViewModel {
                     print(error.localizedDescription)
                 }
                 if let json = try? JSON(data: data!) {
-                    print(json["access_token"].string!)
                     self.searcher.accessToken = json["access_token"].string!
                 }
             }).resume()

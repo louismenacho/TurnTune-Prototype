@@ -12,7 +12,9 @@ import Firebase
 
 class PlayerViewModel: NSObject {
     
-    var playerState: SPTAppRemotePlayerState?
+    private var playerState: SPTAppRemotePlayerState?
+    var currentTrack: SPTAppRemoteTrack? { playerState?.track }
+    var playerStateDidChange: (() -> Void)?
     
     lazy private var appDelegate = UIApplication.shared.delegate as! AppDelegate
     lazy private var appRemote = appDelegate.appRemote
@@ -53,9 +55,6 @@ extension PlayerViewModel: SPTAppRemoteDelegate {
 extension PlayerViewModel: SPTAppRemotePlayerStateDelegate {
     func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
         self.playerState = playerState
-        print("\(playerState.track.name) - \(playerState.track.artist.name)")
-        print(playerState.contextURI)
-        print(playerState.playbackPosition/1000)
-        print(playerState.track.duration/1000)
+        playerStateDidChange?()
     }
 }

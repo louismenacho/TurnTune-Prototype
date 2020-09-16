@@ -27,6 +27,8 @@
 		95B368552509B80300B01A80 /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B368542509B80300B01A80 /* RoomViewModel.swift */; };
 		95B368572509B82200B01A80 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B368562509B82200B01A80 /* Room.swift */; };
 		95F7D70124EF72DA0062DF39 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F7D70024EF72DA0062DF39 /* SpotifyiOS.framework */; };
+		95F814D02511DA920087194B /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F814CF2511DA920087194B /* TrackTableViewCell.swift */; };
+		95F814D22511DB9E0087194B /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F814D12511DB9E0087194B /* MemberCollectionViewCell.swift */; };
 		C21DF4FB35B0149E85A4D2AB /* Pods_TurnTune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4131E55AE14E49F838751DF /* Pods_TurnTune.framework */; };
 		FED99F640F92A654202157C5 /* Pods_TurnTune_TurnTuneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E567E44782E726A33338D5 /* Pods_TurnTune_TurnTuneUITests.framework */; };
 /* End PBXBuildFile section */
@@ -79,6 +81,8 @@
 		95B368562509B82200B01A80 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		95F7D70024EF72DA0062DF39 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		95F7D70224EF791F0062DF39 /* SpotifyiOS-Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpotifyiOS-Bridge.h"; sourceTree = "<group>"; };
+		95F814CF2511DA920087194B /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
+		95F814D12511DB9E0087194B /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5E567E44782E726A33338D5 /* Pods_TurnTune_TurnTuneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TurnTune_TurnTuneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD02877EEAB2D23BBE9156CD /* Pods-TurnTuneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurnTuneTests.release.xcconfig"; path = "Target Support Files/Pods-TurnTuneTests/Pods-TurnTuneTests.release.xcconfig"; sourceTree = "<group>"; };
 		C4131E55AE14E49F838751DF /* Pods_TurnTune.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TurnTune.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +223,8 @@
 			children = (
 				9508C24623EFDF1F0050017F /* LaunchScreen.storyboard */,
 				9508C24123EFDF1B0050017F /* Main.storyboard */,
+				95F814D12511DB9E0087194B /* MemberCollectionViewCell.swift */,
+				95F814CF2511DA920087194B /* TrackTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -497,8 +503,10 @@
 				952DD0F6250F42790045498E /* Searcher.swift in Sources */,
 				95610C49250744100016B072 /* SessionViewModel.swift in Sources */,
 				950AB05324FF42FE00C1205B /* SpotifyConstants.swift in Sources */,
+				95F814D02511DA920087194B /* TrackTableViewCell.swift in Sources */,
 				9508C24023EFDF1B0050017F /* RoomViewController.swift in Sources */,
 				9508C23C23EFDF1A0050017F /* AppDelegate.swift in Sources */,
+				95F814D22511DB9E0087194B /* MemberCollectionViewCell.swift in Sources */,
 				952DD0F4250F3CF30045498E /* SearcherViewModel.swift in Sources */,
 				95B368572509B82200B01A80 /* Room.swift in Sources */,
 				95316A7225089AE300F22B22 /* PlayerViewModel.swift in Sources */,
