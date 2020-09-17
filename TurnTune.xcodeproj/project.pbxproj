@@ -26,6 +26,7 @@
 		956E2C4D250733AD000E2E5D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 956E2C4C250733AD000E2E5D /* GoogleService-Info.plist */; };
 		95B368552509B80300B01A80 /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B368542509B80300B01A80 /* RoomViewModel.swift */; };
 		95B368572509B82200B01A80 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B368562509B82200B01A80 /* Room.swift */; };
+		95F3421D251320CF000EBC0B /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F3421C251320CF000EBC0B /* Track.swift */; };
 		95F7D70124EF72DA0062DF39 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F7D70024EF72DA0062DF39 /* SpotifyiOS.framework */; };
 		95F814D02511DA920087194B /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F814CF2511DA920087194B /* TrackTableViewCell.swift */; };
 		95F814D22511DB9E0087194B /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F814D12511DB9E0087194B /* MemberCollectionViewCell.swift */; };
@@ -79,6 +80,7 @@
 		956E2C4C250733AD000E2E5D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		95B368542509B80300B01A80 /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
 		95B368562509B82200B01A80 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		95F3421C251320CF000EBC0B /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		95F7D70024EF72DA0062DF39 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		95F7D70224EF791F0062DF39 /* SpotifyiOS-Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpotifyiOS-Bridge.h"; sourceTree = "<group>"; };
 		95F814CF2511DA920087194B /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				95B368562509B82200B01A80 /* Room.swift */,
+				95F3421C251320CF000EBC0B /* Track.swift */,
 				952DD0F5250F42790045498E /* Searcher.swift */,
 			);
 			path = Model;
@@ -509,6 +512,7 @@
 				95F814D22511DB9E0087194B /* MemberCollectionViewCell.swift in Sources */,
 				952DD0F4250F3CF30045498E /* SearcherViewModel.swift in Sources */,
 				95B368572509B82200B01A80 /* Room.swift in Sources */,
+				95F3421D251320CF000EBC0B /* Track.swift in Sources */,
 				95316A7225089AE300F22B22 /* PlayerViewModel.swift in Sources */,
 				9508C23E23EFDF1B0050017F /* SceneDelegate.swift in Sources */,
 				95B368552509B80300B01A80 /* RoomViewModel.swift in Sources */,

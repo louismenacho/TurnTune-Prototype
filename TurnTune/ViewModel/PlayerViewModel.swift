@@ -12,9 +12,7 @@ import Firebase
 
 class PlayerViewModel: NSObject {
     
-    private var playerState: SPTAppRemotePlayerState?
-    var currentTrack: SPTAppRemoteTrack? { playerState?.track }
-    var playerStateDidChange: (() -> Void)?
+    var playerStateDidChange: ((SPTAppRemotePlayerState) -> Void)?
     
     lazy private var appDelegate = UIApplication.shared.delegate as! AppDelegate
     lazy private var appRemote = appDelegate.appRemote
@@ -54,7 +52,6 @@ extension PlayerViewModel: SPTAppRemoteDelegate {
 
 extension PlayerViewModel: SPTAppRemotePlayerStateDelegate {
     func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
-        self.playerState = playerState
-        playerStateDidChange?()
+        playerStateDidChange?(playerState)
     }
 }

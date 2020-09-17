@@ -67,5 +67,7 @@ class SearcherViewModel {
                 completion(json)
             }
         }).resume()
+        
+        searcher.history.append(query)
     }
 }

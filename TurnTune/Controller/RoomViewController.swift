@@ -11,8 +11,8 @@ import UIKit
 class RoomViewController: UIViewController  {
     
     var roomViewModel: RoomViewModel!
-    var playerViewModel: PlayerViewModel!
     var searcherViewModel: SearcherViewModel!
+    var playerViewModel: PlayerViewModel?
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -27,12 +27,14 @@ class RoomViewController: UIViewController  {
         tableView.dataSource = self
         tableView.delegate = self
         
-        roomViewModel.membersDidChange = {
+        roomViewModel.roomStateDidChange = {
             self.collectionView.reloadData()
+            self.tableView.reloadData()
         }
         
-        playerViewModel.playerStateDidChange = {
-            self.tableView.reloadData()
+        // if host, call playerStateDidChange closure
+        playerViewModel?.playerStateDidChange = { playerState in
+            self.roomViewModel.updateRoomState(from: playerState)
         }
     }
 }
@@ -58,14 +60,27 @@ extension RoomViewController: UICollectionViewDataSource {
 extension RoomViewController: UICollectionViewDelegate {}
 
 extension RoomViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionHeaderTitles = [
+            "Now Playing",
+            "Next in Queue",
+            "From You"
+        ]
+        return sectionHeaderTitles[section]
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TrackTableViewCell", for: indexPath) as! TrackTableViewCell
-        cell.trackNameLabel.text = playerViewModel.currentTrack?.name
-        cell.artistNameLabel.text = playerViewModel.currentTrack?.artist.name
+        cell.trackNameLabel.text = roomViewModel?.currentTrack?.name
+        cell.artistNameLabel.text = roomViewModel?.currentTrack?.artist
         return cell
     }
 }

@@ -103,6 +103,7 @@ class SessionViewModel: NSObject {
         
         let roomDocumentRef = roomsCollectionRef.document(newRoom.roomCode)
         roomDocumentRef.setData([
+            "host_uid": Auth.auth().currentUser!.uid,
             "date_created": Timestamp(date: Date())
         ])
         

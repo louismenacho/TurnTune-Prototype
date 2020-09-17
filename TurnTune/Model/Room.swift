@@ -11,4 +11,5 @@ import Foundation
 class Room {    
     var roomCode = ""
     var members = [String]()
+    var currentTrack: Track?
 }

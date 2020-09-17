@@ -10,4 +10,5 @@ import Foundation
 
 class Searcher {
     var accessToken = ""
+    var history = [String]()
 }
