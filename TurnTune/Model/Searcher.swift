@@ -10,5 +10,6 @@ import Foundation
 
 class Searcher {
     var accessToken = ""
+    var searchResult = [Track]()
     var history = [String]()
 }

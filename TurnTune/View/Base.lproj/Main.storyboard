@@ -60,12 +60,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="40V-8Y-2gy">
-                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pLw-ZF-lIH">
-                                <rect key="frame" x="0.0" y="244" width="414" height="652"/>
+                                <rect key="frame" x="0.0" y="188" width="414" height="708"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TrackTableViewCell" id="qvd-g6-N1y" customClass="TrackTableViewCell" customModule="TurnTune" customModuleProvider="target">
@@ -108,7 +104,7 @@
                                 </prototypes>
                             </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VAx-NN-0Ye">
-                                <rect key="frame" x="0.0" y="144" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="lSx-J0-Fkr"/>
@@ -149,14 +145,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="pLw-ZF-lIH" firstAttribute="trailing" secondItem="8Yb-ba-LdB" secondAttribute="trailing" id="BfX-az-NzP"/>
-                            <constraint firstItem="40V-8Y-2gy" firstAttribute="leading" secondItem="8Yb-ba-LdB" secondAttribute="leading" id="IQa-Yg-NZ7"/>
-                            <constraint firstItem="40V-8Y-2gy" firstAttribute="trailing" secondItem="8Yb-ba-LdB" secondAttribute="trailing" id="N2A-2N-a9t"/>
+                            <constraint firstItem="VAx-NN-0Ye" firstAttribute="top" secondItem="8Yb-ba-LdB" secondAttribute="top" id="Lyw-qj-kpt"/>
                             <constraint firstItem="VAx-NN-0Ye" firstAttribute="trailing" secondItem="8Yb-ba-LdB" secondAttribute="trailing" id="Ozf-eO-NTA"/>
                             <constraint firstItem="pLw-ZF-lIH" firstAttribute="leading" secondItem="8Yb-ba-LdB" secondAttribute="leading" id="Pa9-0M-OzJ"/>
-                            <constraint firstItem="40V-8Y-2gy" firstAttribute="top" secondItem="8Yb-ba-LdB" secondAttribute="top" id="T4o-8T-d8I"/>
-                            <constraint firstItem="VAx-NN-0Ye" firstAttribute="top" secondItem="40V-8Y-2gy" secondAttribute="bottom" id="Yq7-bx-r7V"/>
+                            <constraint firstItem="pLw-ZF-lIH" firstAttribute="top" secondItem="VAx-NN-0Ye" secondAttribute="bottom" id="bEg-oG-Ekm"/>
                             <constraint firstAttribute="bottom" secondItem="pLw-ZF-lIH" secondAttribute="bottom" id="eTd-xg-K0F"/>
-                            <constraint firstItem="pLw-ZF-lIH" firstAttribute="top" secondItem="VAx-NN-0Ye" secondAttribute="bottom" id="rO0-Qx-KUb"/>
                             <constraint firstItem="VAx-NN-0Ye" firstAttribute="leading" secondItem="8Yb-ba-LdB" secondAttribute="leading" id="xij-kA-7px"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Yb-ba-LdB"/>
@@ -164,7 +157,6 @@
                     <navigationItem key="navigationItem" id="ud5-Y0-LJB"/>
                     <connections>
                         <outlet property="collectionView" destination="VAx-NN-0Ye" id="ifd-MG-Fg7"/>
-                        <outlet property="searchBar" destination="40V-8Y-2gy" id="hDC-ov-zyK"/>
                         <outlet property="tableView" destination="pLw-ZF-lIH" id="Fb9-w9-Rac"/>
                     </connections>
                 </viewController>

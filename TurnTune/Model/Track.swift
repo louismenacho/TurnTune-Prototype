@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class Track: Codable {
     var uri: String
@@ -14,7 +15,16 @@ class Track: Codable {
     var artist: String
     var album: String
     var duration: UInt
-    var imageIdentifier: String
+    var imageIdentifier: String?
+    
+    init(_ track: JSON) {
+        uri = track["uri"].stringValue
+        name = track["name"].stringValue
+        artist = track["artists"].arrayValue.map({ $0["name"].stringValue }).joined(separator: ", ")
+        album = track["album"]["name"].stringValue
+        duration = track["duration_ms"].uIntValue
+        imageIdentifier = nil
+    }
     
     init(_ track: SPTAppRemoteTrack) {
         uri = track.uri

@@ -1,5 +1,5 @@
 //
-//  TurnTune-Bridging-Header.h
+//  SpotifyiOS-Bridge.h
 //  TurnTune
 //
 //  Created by Louis Menacho on 8/20/20.

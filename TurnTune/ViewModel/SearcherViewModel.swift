@@ -13,6 +13,7 @@ import SwiftyJSON
 class SearcherViewModel {
     
     private var searcher: Searcher
+    var searchResult: [Track] { searcher.searchResult }
     
     init() {
         searcher = Searcher()
@@ -46,7 +47,7 @@ class SearcherViewModel {
         }
     }
     
-    func search(query: String, completion: @escaping (JSON) -> Void) {
+    func search(query: String, completion: @escaping () -> Void) {
         let url = URL(string: "https://api.spotify.com/v1/search")!
         let queryParameters = ["q": query, "type": "track"]
         
@@ -64,7 +65,8 @@ class SearcherViewModel {
                 print(error.localizedDescription)
             }
             if let json = try? JSON(data: data!) {
-                completion(json)
+                self.searcher.searchResult = json["tracks"]["items"].arrayValue.map({ Track($0) })
+                completion()
             }
         }).resume()
         

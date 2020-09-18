@@ -14,16 +14,23 @@ class RoomViewController: UIViewController  {
     var searcherViewModel: SearcherViewModel!
     var playerViewModel: PlayerViewModel?
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = roomViewModel.roomCode
-        searchBar.delegate = self
+        
+        navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Track"
+        definesPresentationContext = true
+        
         collectionView.dataSource = self
         collectionView.delegate = self
+        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -39,9 +46,13 @@ class RoomViewController: UIViewController  {
     }
 }
 
-extension RoomViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
+extension RoomViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        searcherViewModel.search(query: searchController.searchBar.searchTextField.text!) {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -61,26 +72,41 @@ extension RoomViewController: UICollectionViewDelegate {}
 
 extension RoomViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        if searchController.isActive {
+            return 1
+        } else {
+            return 3
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sectionHeaderTitles = [
-            "Now Playing",
-            "Next in Queue",
-            "From You"
-        ]
-        return sectionHeaderTitles[section]
+        if searchController.isActive {
+            return nil
+        } else {
+            let sectionHeaderTitles = ["Now Playing", "Next in Queue", "From You"]
+            return sectionHeaderTitles[section]
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if searchController.isActive {
+            return searcherViewModel.searchResult.count
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TrackTableViewCell", for: indexPath) as! TrackTableViewCell
-        cell.trackNameLabel.text = roomViewModel?.currentTrack?.name
-        cell.artistNameLabel.text = roomViewModel?.currentTrack?.artist
+        
+        if searchController.isActive {
+            cell.trackNameLabel.text = searcherViewModel.searchResult[indexPath.row].name
+            cell.artistNameLabel.text = searcherViewModel.searchResult[indexPath.row].artist
+        } else {
+            cell.trackNameLabel.text = roomViewModel?.currentTrack?.name
+            cell.artistNameLabel.text = roomViewModel?.currentTrack?.artist
+        }
+        
         return cell
     }
 }

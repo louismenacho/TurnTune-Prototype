@@ -15,9 +15,10 @@ class SessionViewModel: NSObject {
     var cancellable: AnyCancellable?
     var newRoom = Room()
     
-    lazy private var spotifyLoginCompletion: ((Result<Void, Error>) -> Void)? = nil
+    lazy private var spotifyLoginCompletion: ((Result<SPTSession, Error>) -> Void)? = nil
     lazy private var appDelegate = UIApplication.shared.delegate as! AppDelegate
     lazy private var sessionManager = appDelegate.sessionManager
+    lazy private var appRemote = appDelegate.appRemote
     
     func host(name: String, completion: @escaping (Result<Void, Error>) -> Void) {
         guard sessionManager.isSpotifyAppInstalled else {
@@ -52,7 +53,8 @@ class SessionViewModel: NSObject {
                 switch result {
                 case .failure(let error):
                     return promise(.failure(error))
-                case .success():
+                case .success(let session):
+                    self.appRemote.connectionParameters.accessToken = session.accessToken
                     return promise(.success(()))
                 }
             }
@@ -118,8 +120,7 @@ extension SessionViewModel: SPTSessionManagerDelegate {
     
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
         print("SPTSession initiated")
-        appDelegate.appRemote.connectionParameters.accessToken = session.accessToken
-        spotifyLoginCompletion?(.success(()))
+        spotifyLoginCompletion?(.success(session))
     }
     
     func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
