@@ -52,8 +52,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let url = URLContexts.first?.url else {
             return
         }
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.sessionManager.application(UIApplication.shared, open: url, options: [:])
+        SpotifyApp.sessionManager.application(UIApplication.shared, open: url, options: [:])
     }
 }
 

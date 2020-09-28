@@ -11,25 +11,9 @@ import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    lazy var configuration: SPTConfiguration = {
-        let configuration = SPTConfiguration(clientID: Spotify.ClientID, redirectURL: URL(string:Spotify.RedirectURL)!)
-        configuration.tokenSwapURL = URL(string: Spotify.TokenSwapURL)
-        configuration.tokenRefreshURL =  URL(string: Spotify.TokenRefreshURL)
-        configuration.playURI = ""
-        return configuration
-    }()
-    
-    lazy var sessionManager: SPTSessionManager = {
-        return SPTSessionManager(configuration: self.configuration, delegate: nil)
-    }()
-    
-    lazy var appRemote: SPTAppRemote = {
-        return SPTAppRemote(configuration: self.configuration, logLevel: .debug)
-    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        SpotifyApp.configure()
         FirebaseApp.configure()
         return true
     }

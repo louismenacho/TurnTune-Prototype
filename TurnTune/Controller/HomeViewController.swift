@@ -21,9 +21,7 @@ class HomeViewController: UIViewController {
         if segue.identifier == "RoomViewController" {
             let navigationController = segue.destination as! UINavigationController
             let roomViewController = navigationController.viewControllers.first! as! RoomViewController
-            roomViewController.roomViewModel = RoomViewModel(room: sessionViewModel.newRoom)
-            roomViewController.searcherViewModel = SearcherViewModel()
-            roomViewController.playerViewModel = PlayerViewModel()
+            roomViewController.roomViewModel = RoomViewModel(sessionViewModel.createRoom(host: Auth.auth().currentUser!))
         }
     }
     
