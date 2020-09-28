@@ -13,21 +13,15 @@ import Firebase
 class SessionViewModel: NSObject {
     
     var cancellable: AnyCancellable?
-    var newRoom = Room()
-    
-    lazy private var spotifyLoginCompletion: ((Result<SPTSession, Error>) -> Void)? = nil
-    lazy private var appDelegate = UIApplication.shared.delegate as! AppDelegate
-    lazy private var sessionManager = appDelegate.sessionManager
-    lazy private var appRemote = appDelegate.appRemote
     
     func host(name: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        guard sessionManager.isSpotifyAppInstalled else {
+        guard SpotifyApp.sessionManager.isSpotifyAppInstalled else {
             print("Spotify app not installed")
             return
         }
         cancellable =
             self.spotifyLogin()
-        .flatMap {
+        .flatMap { session in
             self.signIn()
         }
         .flatMap { user in
@@ -40,22 +34,17 @@ class SessionViewModel: NSObject {
             case .finished:
                 completion(.success(()))
             }
-        }, receiveValue: {
-            self.createRoom()
-        })
+        }, receiveValue: { _ in })
     }
     
-    private func spotifyLogin() -> Future<Void, Error> {
-        Future<Void, Error> { promise in
-            self.sessionManager.delegate = self
-            self.sessionManager.initiateSession(with: .appRemoteControl, options: .default)
-            self.spotifyLoginCompletion = { result in
+    private func spotifyLogin() -> Future<SPTSession, Error> {
+        Future<SPTSession, Error> { promise in
+            SpotifyApp.sessionManager.initiateSession(with: .appRemoteControl, options: .default) { result in
                 switch result {
                 case .failure(let error):
                     return promise(.failure(error))
                 case .success(let session):
-                    self.appRemote.connectionParameters.accessToken = session.accessToken
-                    return promise(.success(()))
+                    return promise(.success((session)))
                 }
             }
         }
@@ -75,56 +64,38 @@ class SessionViewModel: NSObject {
         }
     }
     
-    private func setDisplayName(to name: String, for user: User) -> Future<Void, Error> {
-        Future<Void, Error> { promise in
+    private func setDisplayName(to name: String, for user: User) -> Future<User, Error> {
+        Future<User, Error> { promise in
             let changeRequest = user.createProfileChangeRequest()
             changeRequest.displayName = name
             changeRequest.commitChanges { error in
                 if let error = error {
                     promise(.failure(error))
                 } else {
-                    promise(.success(()))
+                    promise(.success((user)))
                 }
             }
         }
     }
     
-    private func generateRoomCode() {
-        var roomCode = ""
+    private func generateRoomCode() -> String {
         let alphabeticRange = 65...90
-        while roomCode.count < 4 {
-            let letter = Character(UnicodeScalar(Int.random(in: alphabeticRange))!)
-            roomCode = "\(roomCode)\(letter)"
-        }
-        newRoom.roomCode = roomCode
+        return String( "0000".map{ _ in Character(UnicodeScalar(Int.random(in: alphabeticRange))!)} )
     }
-        
-    private func createRoom() {
-        generateRoomCode()
+    
+    func createRoom(host: User) -> DocumentReference {
         let roomsCollectionRef = Firestore.firestore().collection("rooms")
-        
-        let roomDocumentRef = roomsCollectionRef.document(newRoom.roomCode)
+        let roomDocumentRef = roomsCollectionRef.document(generateRoomCode())
         roomDocumentRef.setData([
-            "host_uid": Auth.auth().currentUser!.uid,
-            "date_created": Timestamp(date: Date())
+            "host": host.uid,
+            "dateCreated": Timestamp(date: Date())
         ])
         
-        let memberDocumentRef = roomDocumentRef.collection("members").document(Auth.auth().currentUser!.uid)
+        let memberDocumentRef = roomDocumentRef.collection("members").document(host.uid)
         memberDocumentRef.setData([
-            "display_name": Auth.auth().currentUser!.displayName!
+            "displayName": host.displayName!
         ])
-    }
-}
-
-extension SessionViewModel: SPTSessionManagerDelegate {
-    
-    func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
-        print("SPTSession initiated")
-        spotifyLoginCompletion?(.success(session))
-    }
-    
-    func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
-        print(error.localizedDescription)
-        spotifyLoginCompletion?(.failure(error))
+        
+        return roomDocumentRef
     }
 }

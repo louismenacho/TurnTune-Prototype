@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import SwiftyJSON
 
 extension Functions {
     func spotifyClientSecret(completion: @escaping (String) -> Void) {

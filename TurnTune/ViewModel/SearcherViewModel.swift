@@ -24,7 +24,7 @@ class SearcherViewModel {
         Functions.functions().spotifyClientSecret { clientSecret in
             let url = URL(string: "https://accounts.spotify.com/api/token")!
             let bodyParameters = ["grant_type": "client_credentials"]
-            let base64Credentials = (Spotify.ClientID+":"+clientSecret).data(using: .utf8)!.base64EncodedString()
+            let base64Credentials = (SpotifyApp.configuration.clientID+":"+clientSecret).data(using: .utf8)!.base64EncodedString()
             
             var urlComponents = URLComponents()
             urlComponents.queryItems = bodyParameters.map({
