@@ -14,7 +14,10 @@ class SpotifyApp: NSObject {
     static var configuration: SPTConfiguration { app.configuration! }
     static var sessionManager: SPTSessionManager { app.sessionManager! }
     static var appRemote: SPTAppRemote { app.appRemote! }
+    
     static var didInitiateSession: ((Result<SPTSession, Error>) -> Void)?
+    static var didConnectAppRemote: ((Result<SPTAppRemote, Error>) -> Void)?
+    static var playerStateDidChange: ((SPTAppRemotePlayerState) -> Void)?
 
     private var configuration: SPTConfiguration?
     private var sessionManager: SPTSessionManager?
@@ -38,15 +41,17 @@ class SpotifyApp: NSObject {
         app.configuration = configuration
         app.sessionManager = SPTSessionManager(configuration: configuration, delegate: app)
         app.appRemote = SPTAppRemote(configuration: configuration, logLevel: .debug)
+        app.appRemote?.delegate = app
     }
 }
+
 
 extension SpotifyApp: SPTSessionManagerDelegate {
     
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
         print("SPTSession initiated")
-        appRemote?.connectionParameters.accessToken = session.accessToken
         SpotifyApp.didInitiateSession?(.success(session))
+        appRemote?.connectionParameters.accessToken = session.accessToken
     }
     
     func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
@@ -55,9 +60,35 @@ extension SpotifyApp: SPTSessionManagerDelegate {
     }
 }
 
-extension SPTSessionManager {
-    func initiateSession(with scope: SPTScope, options: AuthorizationOptions = [], completion: @escaping ((Result<SPTSession, Error>) -> Void)) {
-        initiateSession(with: scope, options: options)
-        SpotifyApp.didInitiateSession = { completion($0) }
+
+extension SpotifyApp: SPTAppRemoteDelegate {
+
+    func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
+        print("SPTAppRemote connection established")
+        SpotifyApp.didConnectAppRemote?(.success(appRemote))
+        if let playerAPI = appRemote.playerAPI {
+            playerAPI.delegate = SpotifyApp.app
+            playerAPI.subscribe(toPlayerState: { print($1?.localizedDescription ?? "subscribed to playerState") })
+        }
+    }
+
+    func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
+        if let error = error {
+            print(error.localizedDescription)
+            SpotifyApp.didConnectAppRemote?(.failure(error))
+        }
+    }
+
+    func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
+        if let error = error {
+            print(error.localizedDescription)
+        }
+    }
+}
+
+
+extension SpotifyApp: SPTAppRemotePlayerStateDelegate {
+    func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
+        SpotifyApp.playerStateDidChange?(playerState)
     }
 }

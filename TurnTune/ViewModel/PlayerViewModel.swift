@@ -12,26 +12,20 @@ import Firebase
 import FirebaseFirestoreSwift
 import SwiftyJSON
 
-class PlayerViewModel: NSObject {
+class PlayerViewModel {
     
-//    lazy private var appDelegate = UIApplication.shared.delegate as! AppDelegate
-//    lazy private var appRemote = appDelegate.appRemote
     private var currentTrack: Track?
     private var playerStateCollectionRef: CollectionReference
     
     var currentTrackName: String? { currentTrack?.name }
     var currentTrackArtist: String? { currentTrack?.artist }
-    
-    var playerStateDidChange: (() -> Void)?
+    var currentTrackDidChange: (() -> Void)?
     
     init(_ playerStateCollectionRef: CollectionReference) {
         self.playerStateCollectionRef = playerStateCollectionRef
-        super.init()
-//        appRemote.delegate = self
-//        appRemote.connect()
+        SpotifyApp.appRemote.connect()
         addPlayerStateListener()
-        //TODO: Determine where to write data to FireStore
-        //TODO: init() parameter must come from FireStore, passed in by RoomViewModel
+        subscribeSpotifyPlayerState()
     }
     
     private func addPlayerStateListener() {
@@ -50,41 +44,26 @@ class PlayerViewModel: NSObject {
             }
             do {
                 self.currentTrack = try document.data(as: Track.self)
-                self.playerStateDidChange?()
+                self.currentTrackDidChange?()
             } catch  {
                 print(error.localizedDescription)
             }
         }
     }
+    
+    private func subscribeSpotifyPlayerState() {
+        SpotifyApp.playerStateDidChange = { playerState in
+            if self.currentTrack?.uri != playerState.track.uri {
+                self.currentTrack = Track(playerState.track)
+                print("Write to FireStore")
+                do {
+                    try self.playerStateCollectionRef.document("currentTrack").setData(from: self.currentTrack)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
 }
 
-//extension PlayerViewModel: SPTAppRemoteDelegate {
-//
-//    func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
-//        print("SPTAppRemote connection established")
-//        guard let playerAPI = appRemote.playerAPI else {
-//            print("playerAPI nil")
-//            return
-//        }
-//        playerAPI.delegate = self
-//        playerAPI.subscribe(toPlayerState: { print($1?.localizedDescription ?? "subscribed to playerState") })
-//    }
-//
-//    func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
-//        if let error = error {
-//            print(error.localizedDescription)
-//        }
-//    }
-//
-//    func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
-//        if let error = error {
-//            print(error.localizedDescription)
-//        }
-//    }
-//}
-//
-//extension PlayerViewModel: SPTAppRemotePlayerStateDelegate {
-//    func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
-//
-//    }
-//}
+

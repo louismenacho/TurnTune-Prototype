@@ -10,7 +10,7 @@ import Foundation
 import Combine
 import Firebase
 
-class SessionViewModel: NSObject {
+class SessionViewModel {
     
     var cancellable: AnyCancellable?
     
@@ -39,7 +39,8 @@ class SessionViewModel: NSObject {
     
     private func spotifyLogin() -> Future<SPTSession, Error> {
         Future<SPTSession, Error> { promise in
-            SpotifyApp.sessionManager.initiateSession(with: .appRemoteControl, options: .default) { result in
+            SpotifyApp.sessionManager.initiateSession(with: .appRemoteControl, options: .default)
+            SpotifyApp.didInitiateSession = { result in
                 switch result {
                 case .failure(let error):
                     return promise(.failure(error))

@@ -17,7 +17,6 @@ class MembersViewModel {
     
     var count: Int { members.count }
     var member: (Int) -> String { { self.members[$0] } }
-    
     var membersDidChange: (() -> Void)?
     
     init(_ membersCollectionRef: CollectionReference) {

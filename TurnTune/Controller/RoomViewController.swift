@@ -25,6 +25,7 @@ class RoomViewController: UIViewController  {
             membersViewController.membersViewModel = MembersViewModel(roomViewModel.membersCollectionRef)
         }
         if segue.identifier == "PlayerViewController" {
+            print("here")
             let playerViewController = segue.destination as! PlayerViewController
             playerViewController.playerViewModel = PlayerViewModel(roomViewModel.playerStateCollectionRef)
         }

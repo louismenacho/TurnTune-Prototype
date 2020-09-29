@@ -10,7 +10,7 @@ import UIKit
 
 class PlayerViewController: UIViewController {
     
-    var playerViewModel: PlayerViewModel?
+    var playerViewModel: PlayerViewModel!
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -18,6 +18,9 @@ class PlayerViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        playerViewModel.currentTrackDidChange = {
+            self.tableView.reloadData()
+        }
     }
 }
 
