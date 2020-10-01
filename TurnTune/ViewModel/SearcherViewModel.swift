@@ -65,6 +65,7 @@ class SearcherViewModel {
                 print(error.localizedDescription)
             }
             if let json = try? JSON(data: data!) {
+                print(json)
                 self.searcher.searchResult = json["tracks"]["items"].arrayValue.map({ Track($0) })
                 completion()
             }

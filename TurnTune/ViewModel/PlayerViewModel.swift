@@ -53,7 +53,7 @@ class PlayerViewModel {
     
     private func subscribeSpotifyPlayerState() {
         SpotifyApp.playerStateDidChange = { playerState in
-            if self.currentTrack?.uri != playerState.track.uri {
+            if self.currentTrack?.uri != playerState.track.uri { // temp workaround for multiple callback
                 self.currentTrack = Track(playerState.track)
                 print("Write to FireStore")
                 do {

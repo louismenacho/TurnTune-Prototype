@@ -36,9 +36,10 @@ extension SearchResultsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TrackTableViewCell", for: indexPath) as! TrackTableViewCell
-        cell.trackNameLabel.text = searcherViewModel.searchResult[indexPath.row].name
-        cell.artistNameLabel.text = searcherViewModel.searchResult[indexPath.row].artist
+        let track = searcherViewModel.searchResult[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultsTableViewCell", for: indexPath) as! SearchResultsTableViewCell
+        cell.trackNameLabel.text = track.name
+        cell.artistNameLabel.text = track.artist
         return cell
     }
 }

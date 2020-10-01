@@ -13,6 +13,7 @@ import Firebase
 class SessionViewModel {
     
     var cancellable: AnyCancellable?
+    var newRoomDocumentRef: DocumentReference?
     
     func host(name: String, completion: @escaping (Result<Void, Error>) -> Void) {
         guard SpotifyApp.sessionManager.isSpotifyAppInstalled else {
@@ -27,6 +28,12 @@ class SessionViewModel {
         .flatMap { user in
             self.setDisplayName(to: name, for: user)
         }
+        .flatMap { user in
+            self.createRoom(host: user)
+        }
+        .flatMap { room in
+            self.addMember(member: Auth.auth().currentUser!, to: room)
+        }
         .sink(receiveCompletion: {
             switch $0 {
             case let .failure(error):
@@ -34,7 +41,80 @@ class SessionViewModel {
             case .finished:
                 completion(.success(()))
             }
-        }, receiveValue: { _ in })
+        }, receiveValue: { room in
+            self.newRoomDocumentRef = room
+        })
+    }
+    
+    func join(room code: String, name: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        cancellable =
+            self.signIn()
+        .flatMap { user in
+            self.setDisplayName(to: name, for: user)
+        }
+        .flatMap { _ in
+            self.findRoom(room: code)
+        }
+        .flatMap { room in
+            self.addMember(member: Auth.auth().currentUser!, to: room)
+        }
+        .sink(receiveCompletion: {
+            switch $0 {
+            case let .failure(error):
+                completion(.failure(error))
+            case .finished:
+                completion(.success(()))
+            }
+        }, receiveValue: { room in
+            self.newRoomDocumentRef = room
+        })
+    }
+    
+    func createRoom(host: User) -> Future<DocumentReference, Error>  {
+        Future<DocumentReference, Error> { promise in
+            let roomsCollectionRef = Firestore.firestore().collection("rooms")
+            let roomDocumentRef = roomsCollectionRef.document(self.generateRoomCode())
+            roomDocumentRef.setData([
+                "host": host.uid,
+                "dateCreated": Timestamp(date: Date())
+            ]) { error in
+                if let error = error {
+                    promise(.failure(error))
+                } else {
+                    promise(.success(roomDocumentRef))
+                }
+            }
+        }
+    }
+    
+    func findRoom(room code: String) -> Future<DocumentReference, Error> {
+        Future<DocumentReference, Error> { promise in
+            let roomsCollectionRef = Firestore.firestore().collection("rooms")
+            let roomDocumentRef = roomsCollectionRef.document(code)
+            roomDocumentRef.getDocument { (documentSnapshot, error) in
+                if let error = error {
+                    promise(.failure(error))
+                } else
+                if let document = documentSnapshot, document.exists {
+                    promise(.success(roomDocumentRef))
+                }
+            }
+        }
+    }
+    
+    func addMember(member: User, to roomDocumentRef: DocumentReference) -> Future<DocumentReference, Error> {
+        Future<DocumentReference, Error> { promise in
+            let memberDocumentRef = roomDocumentRef.collection("members").document(member.uid)
+            memberDocumentRef.setData([
+                "displayName": member.displayName!
+            ]) { error in
+                if let error = error {
+                    promise(.failure(error))
+                } else {
+                    promise(.success(roomDocumentRef))
+                }
+            }
+        }
     }
     
     private func spotifyLogin() -> Future<SPTSession, Error> {
@@ -84,19 +164,4 @@ class SessionViewModel {
         return String( "0000".map{ _ in Character(UnicodeScalar(Int.random(in: alphabeticRange))!)} )
     }
     
-    func createRoom(host: User) -> DocumentReference {
-        let roomsCollectionRef = Firestore.firestore().collection("rooms")
-        let roomDocumentRef = roomsCollectionRef.document(generateRoomCode())
-        roomDocumentRef.setData([
-            "host": host.uid,
-            "dateCreated": Timestamp(date: Date())
-        ])
-        
-        let memberDocumentRef = roomDocumentRef.collection("members").document(host.uid)
-        memberDocumentRef.setData([
-            "displayName": host.displayName!
-        ])
-        
-        return roomDocumentRef
-    }
 }
